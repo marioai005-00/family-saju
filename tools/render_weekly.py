@@ -268,7 +268,8 @@ def render(sun):
             if 'lotto' in d:
                 lo = d['lotto']
                 lot = (f'<div class="lotto"><div class="ball">{lo["number"]}</div><div><b>오늘의 숫자</b><p>오늘 필요한 오행: {lo["element"]} · {E(lo["why"])}</p>'
-                       f'<p>하도수에서 {lo["element"]}에 해당하는 수({", ".join(map(str, lo["cands"]))}) 가운데, 오늘 일진의 육십갑자 순번({lo["rank"]}번째)으로 골랐어요. 앞선 날과 겹치지 않게 조정했어요.</p>'
+                       f'<p>만든 방법: {E(lo["formula"])}</p>'
+                       f'<p>후보 여러 개 가운데 앞선 날과 번호·끝자리·번호대가 겹치지 않고, 다른 가족과도 겹치지 않는 수를 골랐어요.</p>'
                        f'<p>명리적 상징 적합도 {"★"*lo["stars"]}{"☆"*(5-lo["stars"])} <small>(당첨 확률이 아니라 그날 테마와의 어울림)</small></p></div></div>')
             hsay = tx.get('say', '')
             swn = f"<p class='note'>이날 {d['switch'][1]} 무렵 {d['switch'][0]} 절기로 월운이 바뀌어요.</p>" if d['switch'] else ''
@@ -291,6 +292,7 @@ def render(sun):
         H.append(f'<section class="wk"><h2>이번 주 현암 선생 로또 6/45</h2><div class="tbl"><table><thead><tr><th>선정일</th><th>추천번호</th><th>핵심 명리 근거</th></tr></thead><tbody>{rowsL}</tbody></table></div>'
                  f'<div class="final">{" · ".join(str(n) for n in pp["lotto"])}</div>'
                  f'<p>오행 분포: {", ".join(f"{k} {v}개" for k, v in dist.items())}. 일요일부터 금요일까지 매일 하나씩 쌓은 조합이라 토요일에 바꾸지 않았어요. {E(t.get("lotto_note", ""))}</p>'
+                 '<p class="note">숫자 만드는 법 · 간지를 수로 바꿀 때는 선천수(갑·기·자·오 9, 을·경·축·미 8, 병·신·인·신 7, 정·임·묘·유 6, 무·계·진·술 5, 사·해 4) 하나만, 오행을 수로 바꿀 때는 하도수(물 1·6, 불 2·7, 나무 3·8, 쇠 4·9, 흙 5·10) 하나만 써요. 그날 일진, 이달 글자, 내 원국 글자, 그날 필요한 오행의 수를 엮어 후보를 만들고, 좋은 날은 성수(큰 수) 쪽, 무거운 날은 생수(균형) 쪽 후보부터 봐요. 45를 넘으면 한 바퀴 돌려 1~45 안에 넣어요. 끝자리와 번호대가 한쪽으로 몰리지 않게 골라요.</p>'
                  '<p class="note">이 번호는 사주와 해당 주간 운의 상징을 이용해 선정한 재미·참고용 조합이며, 실제 로또 당첨번호를 예측하거나 당첨확률을 높인다는 의미는 아니에요. 재물운이 좋다고 복권 당첨운이 높아지는 것도 아니에요.</p></section>')
         b = pp['bests']
         H.append('<section class="wk"><h2>이번 주 최종 결론</h2><div class="pair">' + ''.join(f'<div><b>{k}</b><span>{v}</span></div>' for k, v in [

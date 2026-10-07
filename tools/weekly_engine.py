@@ -251,33 +251,81 @@ _f = os.path.join(_root, 'data', 'ilji-dad-2026.json')
 if os.path.exists(_f): CALIB['dad'] = json.load(open(_f))
 
 # ---------------- 숫자 ----------------
-def pick_number(p, day, used, elcount):
-    s, b = day['gz']
+# 선천수: 간지 → 수 (갑·기·자·오 9, 을·경·축·미 8, 병·신·인·신 7, 정·임·묘·유 6, 무·계·진·술 5, 사·해 4)
+SCS = {}
+for _chars, _v in [('甲己子午', 9), ('乙庚丑未', 8), ('丙辛寅申', 7), ('丁壬卯酉', 6), ('戊癸辰戌', 5), ('巳亥', 4)]:
+    for _c in _chars: SCS[_c] = _v
+def _kn(c): return GK[G.index(c)] if c in G else ZK[Z.index(c)]
+def _wrap(x): return (x - 1) % 45 + 1
+def _band(n): return min(n // 10, 4)   # 1~9, 10~19, 20~29, 30~39, 40~45
+
+def pick_number(p, day, used, elcount, family=()):
+    """그날의 숫자 1개.
+    1단계: 그날 필요한 오행을 정한다 (용신·희신, 같은 기운이 세 번 넘게 몰리지 않게).
+    2단계: 후보를 만든다. 간지→수는 선천수, 오행→수는 하도수(생수·성수) 하나씩만 쓴다.
+           일진 윗글자 수, 아랫글자 수, 내 일간 수, 이달 아랫글자 수, 필요한 오행의 하도수를 여러 방식으로 엮는다.
+    3단계: 이미 고른 번호, 같은 끝자리, 같은 번호대(1~9, 10번대 …)가 겹치지 않는 후보를 고른다.
+    """
+    s, b = day['gz']; ms, mb = day['month_h']
     els = [SEL[s], BEL[b]]
-    ev = p['ev']
     if p['yong'] in els: need, why = p['yong'], '오늘 들어온 용신을 살리는 쪽'
     elif p['hee'] in els: need, why = p['hee'], '오늘 들어온 희신을 살리는 쪽'
     else: need, why = p['yong'], '오늘 부족한 용신으로 균형을 잡는 쪽'
     if elcount.get(need, 0) >= 3:
         need = p['hee'] if need == p['yong'] else p['yong']; why += ' (같은 기운이 세 번 이상 몰리지 않게 조정)'
-    cands = [n for n in range(1, 46) if (n % 10) in HADO[need]]
-    gi = (G.index(s) * 6 + Z.index(b) * 5) % 60
-    k = (gi + p['seed']) % len(cands)
-    for j in range(len(cands)):
-        n = cands[(k + j) % len(cands)]
-        if n not in used: break
+    dm = p['pillars'][2][0]; db = p['pillars'][2][1]; hb_ = p['pillars'][3][1]
+    vs, vb, vp, vm = SCS[s], SCS[b], SCS[dm], SCS[mb]
+    vd, vh = SCS[db], SCS[hb_]
+    h1, h2 = HADO[need][0], HADO[need][1] or 10
+    N = lambda c: f"{_kn(c)}({SCS[c]})"
+    E_ = ELK[need]
+    raw = [
+     (vs + vb + vp + h2, f"일진 {N(s)}+{N(b)} + 내 일간 {N(dm)} + {E_}의 성수 {h2}"),
+     (vs * vb + h1,      f"일진 {N(s)}×{N(b)} + {E_}의 생수 {h1}"),
+     (vs + vb + vp + vm + h1, f"일진 {N(s)}+{N(b)} + 내 일간 {N(dm)} + 이달 {N(mb)} + {E_}의 생수 {h1}"),
+     (vb * h2 + vs,      f"일진 아랫글자 {N(b)}×{E_}의 성수 {h2} + 윗글자 {N(s)}"),
+     (vp * h1 + vs + vb, f"내 일간 {N(dm)}×{E_}의 생수 {h1} + 일진 {N(s)}+{N(b)}"),
+     (vs * h2 + vb + vm, f"일진 윗글자 {N(s)}×{E_}의 성수 {h2} + 아랫글자 {N(b)} + 이달 {N(mb)}"),
+     (vs + vb + h1,      f"일진 {N(s)}+{N(b)} + {E_}의 생수 {h1}"),
+     (vp * vb + h2,      f"내 일간 {N(dm)}×일진 아랫글자 {N(b)} + {E_}의 성수 {h2}"),
+     (vd * vs + h1 + vp, f"내 배우자 자리 {N(db)}×일진 윗글자 {N(s)} + {E_}의 생수 {h1} + 내 일간 {N(dm)}"),
+     (vh * vb + vd + h2, f"내 시지 {N(hb_)}×일진 아랫글자 {N(b)} + 배우자 자리 {N(db)} + {E_}의 성수 {h2}"),
+     (vp + vd + vs + vb + vh + h1, f"내 일주 {N(dm)}+{N(db)} + 시지 {N(hb_)} + 일진 {N(s)}+{N(b)} + {E_}의 생수 {h1}"),
+    ]
+    # 사람마다 원국이 다르니, 후보를 고르는 출발점도 원국(일주)의 선천수로 돌린다
+    rot = (vp + vd) % len(raw)
+    raw = raw[rot:] + raw[:rot]
+    good = day['scores']['종합'] >= 55
+    order = raw if good else raw[2:] + raw[:2]   # 좋은 날은 성수(큰 수)부터, 무거운 날은 생수(균형)부터
+    tails = {u % 10 for u in used}
+    bands = {}
+    for u in used: bands[_band(u)] = bands.get(_band(u), 0) + 1
+    pick = None
+    fam = set(family)
+    for strict in (3, 2, 1, 0):
+        for x, f in order:
+            n = _wrap(x)
+            if n in used: continue
+            if strict >= 1 and bands.get(_band(n), 0) >= 2: continue
+            if strict >= 2 and n % 10 in tails: continue
+            if strict >= 3 and n in fam: continue
+            pick = (n, x, f); break
+        if pick: break
+    n, x, f = pick
+    formula = f"{f} = {x}" + (f", 45를 넘어 한 바퀴 돌려 {n}" if x > 45 else "")
     stars = 3 + (1 if p['yong'] in els or p['hee'] in els else 0) + (1 if day['scores']['종합'] >= 60 else 0) - (1 if day['scores']['종합'] < 40 else 0)
-    return dict(number=n, element=ELK[need], why=why, rank=gi + 1, cands=cands, stars=max(1, min(5, stars)))
+    return dict(number=n, element=E_, why=why, formula=formula, stars=max(1, min(5, stars)))
 
 # ---------------- 주간 ----------------
 def week(sun):
     days = [sun + dt.timedelta(i) for i in range(7)]
     out = dict(week_start=days[0].isoformat(), week_end=days[-1].isoformat(), people=[])
+    family = []
     for p in PEOPLE:
         dl = [day_calc(p, d) for d in days]
         used = []; elc = {}
         for day in dl[:6]:
-            pk = pick_number(p, day, used, elc)
+            pk = pick_number(p, day, used, elc, family)
             used.append(pk['number']); elc[{v: k for k, v in ELK.items()}[pk['element']]] = elc.get({v: k for k, v in ELK.items()}[pk['element']], 0) + 1
             day['lotto'] = pk
         keys = list(dl[0]['scores'].keys())
@@ -290,6 +338,7 @@ def week(sun):
             best=[order[0]['date'], order[1]['date']], worst=[order[-1]['date'], order[-2]['date']],
             bests=dict(업무=bestfor('업무'), 재물=bestfor('재물'), 인간관계=bestfor('인간관계'), 결정=bestfor('결정'), 휴식=bestfor('컨디션', True)),
             lotto=sorted(used)))
+        family += used
     return out
 
 if __name__ == '__main__':

@@ -1,0 +1,2299 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>우리 가족 사주</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* 레이아웃: 밤하늘 먹빛 바탕 위 금박 테두리 카드, 오방색으로 간지를 물들이는 단일 다크 테마 */
+:root{
+  --paper:#0C1222; --paper2:#121A30; --sheet:rgba(255,255,255,.035); --sheet2:rgba(255,255,255,.06);
+  --ink:#EEE7D7; --muted:#A3A7B7; --line:rgba(214,178,110,.20); --line2:rgba(214,178,110,.42);
+  --gold:#D6B26E; --gold2:#F1D9A0; --seal:#E8735A; --water:#86C9DA; --water-soft:rgba(134,201,218,.13);
+  --g5:#5CC8B4; --g4:#7FAED0; --g3:#9399AE; --g2:#DDAA5A; --g1:#E8845F; --g0:#EC5F4F;
+  --chip-good:rgba(92,200,180,.14); --chip-bad:rgba(236,95,79,.15); --chip-mid:rgba(255,255,255,.07);
+  --e-wood:#62C795; --e-fire:#F0715A; --e-earth:#E0B25E; --e-metal:#E4E6F0; --e-water:#7C9CF0;
+  --display:"Song Myung","Nanum Myeongjo","AppleMyungjo",serif;
+  --serif:"Nanum Myeongjo","AppleMyungjo",serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color-scheme:dark;
+}
+
+/* 레이아웃: 왼쪽 고정 목차 + 오른쪽 한 줄 길이 제한 본문. 한지 바탕, 인주(붉은 도장)와 물빛 강조 */
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.75;word-break:keep-all}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 72px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:500}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:28px}
+header.top h1{font-size:clamp(28px,5vw,42px);line-height:1.2}
+header.top .who{color:var(--muted);font-size:14px}
+.seal{display:inline-grid;place-items:center;width:52px;height:52px;border:2px solid var(--seal);color:var(--seal);font-family:var(--display);font-weight:700;font-size:15px;line-height:1.1;text-align:center;border-radius:6px;transform:rotate(-4deg)}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:900px){.layout{grid-template-columns:1fr;gap:20px}}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);overflow-y:auto;font-size:13px;line-height:1.5;padding-right:6px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+nav.toc a{color:var(--muted);text-decoration:none;display:grid;grid-template-columns:2em 1fr;padding:2px 0}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink)}
+nav.toc a.on{color:var(--seal);font-weight:600}
+nav.toc .tt{font-size:12px;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+@media (max-width:900px){nav.toc{position:static;max-height:none;background:var(--sheet);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+  nav.toc ol{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px}}
+main{min-width:0;display:grid;gap:0}
+section.s{padding-block:30px;border-top:1px solid var(--line);scroll-margin-top:16px;display:grid;gap:14px}
+section.s:first-child{border-top:0;padding-top:0}
+section.s > h2{font-size:24px;display:flex;gap:12px;align-items:baseline}
+section.s > h2 .no{font-family:var(--body);font-size:13px;color:var(--seal);font-weight:600;font-variant-numeric:tabular-nums;min-width:1.8em}
+section.s h3{font-size:18px;margin-top:6px}
+p{margin:0;max-width:72ch}
+.tag{display:inline-block;font-family:var(--body);font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:1px 8px;border-radius:3px;margin-right:6px;vertical-align:2px}
+.t-c{background:var(--chip-mid);color:var(--ink)} .t-i{background:var(--water-soft);color:var(--water)} .t-r{background:var(--chip-bad);color:var(--seal)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted)}
+.lead{font-family:var(--display);font-size:clamp(17px,2.2vw,20px);line-height:1.75;max-width:62ch}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.55}
+th,td{padding:8px 12px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+thead th{border-top:0;font-weight:600;color:var(--muted);font-size:12.5px;letter-spacing:.04em;white-space:nowrap}
+tbody th{font-weight:600;white-space:nowrap}
+td.num,th.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:620px}
+.pil{background:var(--sheet);border:1px solid var(--line);border-radius:4px;padding:12px 8px;text-align:center;display:grid;gap:4px}
+.pil .lab{font-size:12px;color:var(--muted)}
+.pil .ch{font-family:var(--display);font-size:clamp(22px,4vw,30px);font-weight:700;line-height:1.15}
+.pil .na{font-size:12px;color:var(--muted);line-height:1.35}
+.pil .tg{font-size:12px;font-weight:600;color:var(--water)}
+.pil.me{border-color:var(--seal)} .pil.me .lab{color:var(--seal)}
+.bars{display:grid;gap:8px;max-width:620px}
+.bar{display:grid;grid-template-columns:4.5em minmax(0,1fr) 6.5em;gap:10px;align-items:center;font-size:14px}
+.bar .tr{height:10px;background:var(--chip-mid);border-radius:2px;overflow:hidden}
+.bar .fl{height:100%;border-radius:2px}
+.bar .lv{font-size:13px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:700px){.cards{grid-template-columns:1fr}}
+.card{min-width:0;background:var(--sheet);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:6px;font-size:14.5px}
+.card h4{margin:0;font-family:var(--display);font-size:16.5px}
+.card dl{margin:0;display:grid;gap:4px}
+.card dl div{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:8px}
+.card dt{color:var(--muted);font-size:13px}
+.card dd{margin:0}
+.card.good{border-top:3px solid var(--water)} .card.bad{border-top:3px solid var(--seal)}
+ul.plain{margin:0;padding-left:1.15em;display:grid;gap:4px;max-width:72ch}
+.pair{display:grid;grid-template-columns:minmax(0,1fr);gap:0;max-width:76ch}
+.pair div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:12px;padding:9px 0;border-top:1px solid var(--line)}
+.pair div:first-child{border-top:0}
+.pair b{font-weight:600}
+@media (max-width:520px){.pair div,.card dl div{grid-template-columns:1fr;gap:2px}}
+.lv-s{color:var(--water);font-weight:600} .lv-m{color:var(--muted);font-weight:600} .lv-w{color:var(--seal);font-weight:600}
+.score{font-variant-numeric:tabular-nums;font-weight:600}
+.saying{font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.7;border-left:3px solid var(--seal);padding-left:18px;max-width:56ch;margin:0}
+.saying small{display:block;font-family:var(--body);font-size:13px;color:var(--muted);margin-top:8px}
+.note{font-size:13px;color:var(--muted);max-width:76ch}
+a{color:var(--water)}
+a:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+
+/* ===== 사주 홈페이지 테마 덧씌움 ===== */
+html{background:var(--paper)}
+body{background-color:var(--paper);color:var(--ink);
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(214,178,110,.10), transparent 60%),
+    radial-gradient(900px 700px at -10% 30%, rgba(60,110,160,.16), transparent 60%),
+    radial-gradient(800px 600px at 110% 90%, rgba(40,120,120,.12), transparent 60%),
+    radial-gradient(1.2px 1.2px at 20px 30px, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(1px 1px at 120px 80px, rgba(255,255,255,.35), transparent 60%),
+    radial-gradient(1.4px 1.4px at 200px 150px, rgba(241,217,160,.45), transparent 60%),
+    radial-gradient(1px 1px at 60px 190px, rgba(255,255,255,.3), transparent 60%);
+  background-size:auto,auto,auto,240px 240px,240px 240px,240px 240px,240px 240px;
+  background-attachment:fixed}
+::selection{background:rgba(214,178,110,.35)}
+a{color:var(--gold2)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;letter-spacing:.01em}
+.eyebrow{color:var(--gold);letter-spacing:.32em;font-size:12px}
+
+/* 머리글: 금박 테두리 히어로 */
+header.top{position:relative;overflow:hidden;border:1px solid var(--line2);border-radius:24px;padding:clamp(24px,4vw,44px);
+  background:linear-gradient(135deg,rgba(214,178,110,.10),rgba(255,255,255,.02) 40%,rgba(124,156,240,.06));
+  box-shadow:0 30px 80px -40px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.06);align-items:center;margin-bottom:8px}
+header.top::before{content:"";position:absolute;inset:10px;border:1px solid var(--line);border-radius:16px;pointer-events:none}
+header.top > div:first-child{position:relative;z-index:1;display:grid;gap:10px;min-width:0;flex:1 1 320px}
+header.top h1{font-size:clamp(30px,5.4vw,52px);line-height:1.2;
+  background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,#B08A48);-webkit-background-clip:text;background-clip:text;color:transparent}
+header.top .who{color:var(--muted);font-size:13.5px;line-height:1.7}
+.wheel{position:relative;z-index:1;width:clamp(130px,22vw,200px);aspect-ratio:1;max-width:100%;flex:0 0 auto}
+.wheel svg{width:100%;height:100%;overflow:visible}
+.wheel .spin{transform-origin:100px 100px;animation:spin 160s linear infinite}
+.wheel .spin2{transform-origin:100px 100px;animation:spin 90s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:none}}
+header.top > div:first-child{animation:rise .9s ease-out both}
+@media (prefers-reduced-motion:reduce){.wheel .spin,.wheel .spin2,header.top > div:first-child{animation:none}}
+
+/* 섹션 제목 */
+section > h2, section.s > h2{font-size:clamp(24px,3.2vw,30px);color:var(--ink);display:flex;align-items:center;gap:14px}
+section > h2::before{content:"";width:9px;height:9px;flex:0 0 auto;transform:rotate(45deg);border:1px solid var(--gold);background:rgba(214,178,110,.25)}
+section.s > h2::before{display:none}
+section.s > h2 .no{display:inline-grid;place-items:center;min-width:34px;height:34px;border:1px solid var(--line2);border-radius:50%;color:var(--gold);font-family:var(--display);font-size:15px;font-weight:400}
+section.s{border-top:1px solid var(--line)}
+.lead{color:#D9D2C2}
+p{color:#DDD6C6}
+
+/* 공통 판넬 */
+.panel,.pil,.chartbox,.tbl,.card,.dw,.cell{border-color:var(--line)!important}
+.panel,.chartbox,.tbl,.card,.dw{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 20px 50px -30px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.05);backdrop-filter:blur(6px)}
+.chartbox{padding:18px 14px 8px}
+
+/* 원국 기둥: 오방색 타일 */
+.pillars{gap:10px}
+.pil{border-radius:18px;padding:16px 8px 14px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid var(--line);gap:6px}
+.pil .lab{color:var(--gold);letter-spacing:.12em}
+.pil .ch{font-family:var(--display);font-size:clamp(30px,5vw,42px);font-weight:400;width:1.6em;height:1.6em;display:grid;place-items:center;margin:2px auto;border-radius:14px;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.12),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
+.pil .na{color:var(--muted)}
+.pil .tg{color:var(--gold2);font-weight:500}
+.pil.me{border-color:var(--gold)!important;box-shadow:0 0 0 1px rgba(214,178,110,.35),0 0 40px -10px rgba(214,178,110,.45)}
+.pil.me .lab{color:var(--gold2)}
+[data-el="wood"]{color:var(--e-wood)!important} [data-el="fire"]{color:var(--e-fire)!important} [data-el="earth"]{color:var(--e-earth)!important}
+[data-el="metal"]{color:var(--e-metal)!important} [data-el="water"]{color:var(--e-water)!important}
+.pil .ch[data-el]{text-shadow:0 0 18px currentColor}
+.pil .ch[data-el="wood"]{border-color:rgba(98,199,149,.35)} .pil .ch[data-el="fire"]{border-color:rgba(240,113,90,.35)}
+.pil .ch[data-el="earth"]{border-color:rgba(224,178,94,.35)} .pil .ch[data-el="metal"]{border-color:rgba(228,230,240,.35)} .pil .ch[data-el="water"]{border-color:rgba(124,156,240,.35)}
+
+/* 칩·태그 */
+.chip{border-radius:999px;padding:3px 11px;border:1px solid rgba(255,255,255,.07);color:var(--ink)}
+.chip.good{border-color:rgba(92,200,180,.3)} .chip.bad{border-color:rgba(236,95,79,.3)}
+.med{border:1px solid rgba(255,255,255,.08)} .med.w{color:var(--g5)} .med.b{color:var(--seal)}
+.tag{border-radius:999px}
+.t-c{background:rgba(255,255,255,.08);color:var(--ink)} .t-i{background:rgba(134,201,218,.14);color:var(--water)} .t-r{background:rgba(232,115,90,.15);color:var(--seal)}
+
+/* 표 */
+table{color:var(--ink)}
+thead th{color:var(--gold);letter-spacing:.08em;background:rgba(214,178,110,.06)}
+th,td{border-top:1px solid var(--line)}
+tbody tr:hover td,tbody tr:hover th{background:rgba(255,255,255,.025)}
+table.calc th{color:var(--gold)}
+
+/* 점수 숫자 */
+.score .n,.meta .sc .n,.yc .n,.score .n{font-family:var(--display);font-weight:400;text-shadow:0 0 24px currentColor}
+.ok{color:var(--g5);font-family:var(--display);font-weight:400;font-size:22px}
+.ok::before{content:"";width:22px;height:22px;border-radius:50%;border:1px solid var(--g5);background:radial-gradient(circle,rgba(92,200,180,.5),transparent 70%)}
+
+/* 일진 달력 */
+.tab{border-color:var(--line2);color:var(--ink);background:transparent;font-family:var(--display);font-size:15px;padding:6px 18px}
+.tab[aria-selected="true"]{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#1A1408;border-color:var(--gold)}
+.dow{color:var(--gold)} .dow.sun{color:var(--seal)}
+.cell{border-radius:12px;background:rgba(255,255,255,.035);border:1px solid var(--line);transition:transform .15s ease,background .15s ease}
+.cell:not(.out):not(.empty):hover{transform:translateY(-2px);background:rgba(214,178,110,.08)}
+.cell .gz{font-family:var(--display);font-size:13px}
+.cell .bar{height:4px;border-radius:99px;box-shadow:0 0 10px currentColor}
+.cell[aria-pressed="true"]{outline:none;border-color:var(--gold)!important;box-shadow:0 0 0 1px var(--gold),0 0 24px -6px rgba(214,178,110,.6);background:rgba(214,178,110,.10)}
+.cell.today .dn::after{color:var(--gold2)}
+.cell .jq{color:var(--gold2)}
+.panel{padding:26px clamp(18px,3vw,32px)}
+.ph .gzbig{font-family:var(--display);font-weight:400;font-size:36px}
+.panel h3{font-family:var(--serif);font-weight:800;font-size:21px;color:var(--gold2)}
+.glyph{border-left-width:2px}
+.navrow button,.mnav button{border-color:var(--line2);color:var(--ink);background:rgba(255,255,255,.03)}
+.navrow button:hover,.mnav button:hover{border-color:var(--gold);color:var(--gold2)}
+.mnav{background:rgba(12,18,34,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.mnav .yr{color:var(--gold)}
+
+/* 월운·대운 카드 */
+.mcard,.yc{border-top-width:2px;padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.month{border-top:1px solid var(--line);padding-block:34px}
+.meta .gzb{font-family:var(--display);font-weight:400;font-size:46px}
+.meta .lab{color:var(--gold);letter-spacing:.12em}
+.body h3,.mcard h3,.yc h3{color:var(--gold2)}
+.body h3{font-family:var(--serif);font-weight:800}
+.strip div{background:rgba(255,255,255,.04);border-radius:8px}
+.past{background:rgba(214,178,110,.12);color:var(--gold2);border:1px solid var(--line2)}
+.doms div.plan dt{color:var(--gold2)}
+.dlink{color:var(--water)} .dlink.bad{color:var(--seal)}
+
+/* 원국 리포트 */
+nav.toc a{color:var(--muted)} nav.toc a.on{color:var(--gold2)} nav.toc .tt{color:var(--gold)}
+.card.good{border-top:2px solid var(--g5)!important} .card.bad{border-top:2px solid var(--seal)!important}
+.card h4{color:var(--gold2)}
+.bar .tr{background:rgba(255,255,255,.06);border-radius:99px;height:8px}
+.bar .fl{border-radius:99px;box-shadow:0 0 14px currentColor}
+.lv-s{color:var(--g5)} .lv-w{color:var(--seal)} .lv-m{color:var(--muted)}
+
+/* 한마디 */
+.saying{position:relative;border:1px solid var(--line2);border-left:1px solid var(--line2);border-radius:22px;padding:34px clamp(22px,4vw,46px) 26px;max-width:none;
+  background:radial-gradient(600px 200px at 50% 0%,rgba(214,178,110,.12),transparent 70%),rgba(255,255,255,.02);
+  font-family:var(--serif);font-weight:700;color:var(--ink);text-align:center}
+.saying::before{content:"";display:block;width:160px;height:1px;margin:0 auto 24px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.saying::after{content:"";position:absolute;top:34px;left:50%;width:7px;height:7px;transform:translate(-50%,-50%) rotate(45deg);background:var(--paper2);border:1px solid var(--gold)}
+.saying small{color:var(--gold);letter-spacing:.24em;font-weight:500}
+.notes,.note{color:var(--muted)}
+.notes a,.note a{color:var(--gold2)}
+
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:960px){.trio{grid-template-columns:1fr}}
+.person{min-width:0;display:grid;gap:12px;padding:20px 16px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}
+.person .who2{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.person .who2 h3{font-size:24px}
+.person .who2 span{font-size:12.5px;color:var(--muted)}
+.person .pillars{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none;gap:6px}
+.person .pil{padding:10px 4px;border-radius:14px}
+.person .pil .ch{font-size:clamp(24px,3.4vw,32px)}
+.person .pil .na{font-size:11px}
+.person .ess{font-family:var(--serif);font-weight:700;font-size:16px;line-height:1.6}
+.kv{display:grid;gap:6px;font-size:13.5px}
+.kv div{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:8px}
+.kv dt{color:var(--gold)} .kv dd{margin:0}
+.kv{margin:0}
+.triad{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:22px;padding:10px;overflow-x:auto}
+.triad svg{display:block;width:100%;min-width:560px;height:auto}
+.mbars{display:grid;gap:8px;max-width:640px}
+.mbar{display:grid;grid-template-columns:3em minmax(0,1fr) 5.5em;gap:10px;align-items:center;font-size:14px}
+.mbar .tr{display:flex;height:12px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.05)}
+.mbar .tr span{height:100%}
+.mbar .ct{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.keys{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted)}
+.keys i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-2px}
+.match{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:880px){.match{grid-template-columns:1fr}}
+.dial{display:grid;place-items:center;gap:6px;padding:22px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(circle at 50% 40%,rgba(214,178,110,.12),transparent 70%)}
+.dial svg{width:170px;height:170px}
+.dial .nm{font-family:var(--display);font-size:20px;color:var(--gold2)}
+.dial .sub{font-size:13px;color:var(--muted);text-align:center}
+.areas{display:grid;gap:7px}
+.area{display:grid;grid-template-columns:7.5em minmax(0,1fr) 2.4em;gap:10px;align-items:center;font-size:13.5px}
+.area .tr{height:8px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+.area .fl{height:100%;border-radius:99px}
+.area b{font-variant-numeric:tabular-nums;text-align:right;font-weight:600}
+.flow{overflow-x:auto;border:1px solid var(--line);border-radius:18px}
+.famnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(12,18,34,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.famnav .in{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.famnav .brand{font-family:var(--display);color:var(--gold2);font-size:19px;margin-right:auto;letter-spacing:.04em}
+.famnav [role=tablist]{display:flex;gap:6px;flex-wrap:wrap}
+.famnav button{font:inherit;cursor:pointer;display:grid;gap:0;text-align:center;padding:6px 18px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--ink);line-height:1.25}
+.famnav button b{font-family:var(--display);font-weight:400;font-size:16px}
+.famnav button small{font-size:11px;color:var(--muted)}
+.famnav button[aria-selected=true]{background:linear-gradient(180deg,var(--gold2),var(--gold));border-color:var(--gold);color:#1A1408}
+.famnav button[aria-selected=true] small{color:#3A2E14}
+.famnav button:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+nav.toc{top:calc(env(safe-area-inset-top,0px) + 76px)!important;max-height:calc(100vh - 96px)!important}
+section.s{scroll-margin-top:84px}
+@media (max-width:600px){.famnav .brand{width:100%}.famnav button{padding:5px 14px}}
+</style>
+<style>body{margin:0;font-family:var(--body)}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<nav class="famnav" aria-label="가족 선택"><div class="in"><span class="brand">우리 가족 사주</span><div role="tablist"><button role="tab" data-key="dad" aria-selected="true"><b>아빠</b><small>신해일주 · 1988</small></button><button role="tab" data-key="mom" aria-selected="false"><b>엄마</b><small>기사일주 · 1973</small></button><button role="tab" data-key="daughter" aria-selected="false"><b>딸</b><small>정묘일주 · 2013</small></button><button role="tab" data-key="family" aria-selected="false"><b>가족 궁합</b><small>부부 · 부녀 · 모녀</small></button></div></div></nav>
+<div class="person-pane" id="pane-dad" data-key="dad"><div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">현암 선생의 원국 정밀 분석</div>
+    <h1>신해일주 · 늦가을의 보석</h1>
+    <div class="who">남성 · 1988년 10월 23일 양력 오후 3시 35분 · 경기 성남 · 윤달 아님 · 분석 기준일 2026년 10월 7일</div>
+  </div>
+  <div class="wheel" aria-hidden="true"><svg viewBox="0 0 200 200">
+<defs><radialGradient id="wg-dad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D6B26E" stop-opacity=".28"/><stop offset="100%" stop-color="#D6B26E" stop-opacity="0"/></radialGradient></defs>
+<circle cx="100" cy="100" r="98" fill="url(#wg-dad)"/>
+<g class="spin">
+<circle cx="100" cy="100" r="94" fill="none" stroke="#D6B26E" stroke-opacity=".55" stroke-width="1"/>
+<circle cx="100" cy="100" r="76" fill="none" stroke="#D6B26E" stroke-opacity=".3" stroke-width="1"/>
+<text x="100.0" y="19.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">자</text>
+<line x1="119.7" y1="26.6" x2="124.3" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">축</text>
+<line x1="153.7" y1="46.3" x2="166.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">인</text>
+<line x1="173.4" y1="80.3" x2="190.8" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="185.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">묘</text>
+<line x1="173.4" y1="119.7" x2="190.8" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">진</text>
+<line x1="153.7" y1="153.7" x2="166.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">사</text>
+<line x1="119.7" y1="173.4" x2="124.3" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="100.0" y="189.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">오</text>
+<line x1="80.3" y1="173.4" x2="75.7" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">미</text>
+<line x1="46.3" y1="153.7" x2="33.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">신</text>
+<line x1="26.6" y1="119.7" x2="9.2" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="15.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">유</text>
+<line x1="26.6" y1="80.3" x2="9.2" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">술</text>
+<line x1="46.3" y1="46.3" x2="33.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">해</text>
+<line x1="80.3" y1="26.6" x2="75.7" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+</g>
+<g class="spin2">
+<circle cx="100" cy="100" r="54" fill="none" stroke="#D6B26E" stroke-opacity=".25" stroke-dasharray="2 4"/>
+<circle cx="100.0" cy="46.0" r="11" fill="#0C1222" stroke="#62C795" stroke-width="1.2"/><text x="100.0" y="50.0" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#62C795">목</text>
+<circle cx="151.4" cy="83.3" r="11" fill="#0C1222" stroke="#F0715A" stroke-width="1.2"/><text x="151.4" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#F0715A">화</text>
+<circle cx="131.7" cy="143.7" r="11" fill="#0C1222" stroke="#E0B25E" stroke-width="1.2"/><text x="131.7" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E0B25E">토</text>
+<circle cx="68.3" cy="143.7" r="11" fill="#0C1222" stroke="#E4E6F0" stroke-width="1.2"/><text x="68.3" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E4E6F0">금</text>
+<circle cx="48.6" cy="83.3" r="11" fill="#0C1222" stroke="#7C9CF0" stroke-width="1.2"/><text x="48.6" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#7C9CF0">수</text>
+</g>
+<circle cx="100" cy="100" r="30" fill="#0C1222" stroke="#D6B26E" stroke-opacity=".8"/>
+<circle cx="100" cy="100" r="25" fill="none" stroke="#D6B26E" stroke-opacity=".35"/>
+<text x="100" y="97" text-anchor="middle" font-family="Song Myung, serif" font-size="13" fill="#F1D9A0">현암</text>
+<text x="100" y="113" text-anchor="middle" font-family="Song Myung, serif" font-size="9.5" fill="#D6B26E" letter-spacing="2">선생</text>
+</svg></div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <div class="tt">목차</div>
+  <ol class="toc-list"></ol>
+</nav>
+
+<main >
+
+<section class="s" id="dad-s0">
+  <h2><span class="no">0</span>한눈에 보는 결론</h2>
+  <div class="legend"><span><span class="tag t-c">계산</span>확정할 수 있는 값</span><span><span class="tag t-i">명리 해석</span>전통 명리 체계에 따른 해석</span><span><span class="tag t-r">현실 가능성</span>현실에서 나타나기 쉬운 모습</span></div>
+  <p class="lead">늦가을 마른 흙의 달에 태어난 작은 보석이에요. 이 명식의 본질은 <b>흙이 너무 많아 보석이 묻히기 쉬운 구조</b>입니다. 나를 돕는 흙(정인)이 겉에 하나, 네 개의 땅 글자 속에 모두 숨어 있어요. 그래서 생각하고 준비하고 검토하는 힘은 아주 강하지만, 그만큼 출발이 늦고 혼자 끌어안기 쉽습니다.</p>
+  <p>이 보석을 빛나게 하는 것은 월간에 떠 있는 큰 강(임수)이에요. 생각과 재주를 밖으로 내보내는 힘(상관)입니다. 이 사주가 가장 잘 될 때는 쌓아 둔 지식을 말·글·기술로 꺼낼 때예요. 반대로 가장 막힐 때는 할 말을 삼키고 흙 속에 묻혀 있을 때입니다.</p>
+  <p>돈의 기운인 나무(재성)는 겉에 전혀 없어요. 돈 감각은 타고난 무기라기보다, 운에서 나무가 들어올 때 깨어나는 능력입니다. 다행히 15세부터 55세까지 대운이 나무를 계속 공급해요. 그래서 인생의 중반이 재물과 기반을 만드는 시기입니다.</p>
+  <p>원국 안에는 일과 직책에 스스로를 묶는 끈(병신합)이 있고, 부모·바깥 자리와 일터 자리가 부딪히는 축(진술충)도 있어요. 조직 안에서 신뢰를 얻는 힘과, 그 조직에 묶여 답답해하는 마음이 함께 있는 명식입니다. 55세 이후로는 흙과 불의 대운이 이어지니, 중년에 쌓은 것을 지키는 준비가 장기 과제예요.</p>
+</section>
+
+<section class="s" id="dad-s1">
+  <h2><span class="no">1</span>출생정보와 계산 기준</h2>
+  <div class="tbl"><table>
+    <tbody>
+      <tr><th>성별</th><td>남성</td></tr>
+      <tr><th>생년월일</th><td>1988년 10월 23일, 양력, 윤달 아님</td></tr>
+      <tr><th>출생시각</th><td>오후 3시 35분 (출생신고 기준)</td></tr>
+      <tr><th>출생지역</th><td>대한민국 경기도 성남시 (약 동경 127.1도)</td></tr>
+      <tr><th>해 기준</th><td>입춘으로 해가 바뀜</td></tr>
+      <tr><th>달 기준</th><td>절기가 드는 시각으로 달이 바뀜</td></tr>
+      <tr><th>날 기준</th><td>밤 0시에 날이 바뀌는 방식으로 계산. 출생이 낮이라 밤 11시를 기준으로 보는 방식(야자시)과 결과가 같아요.</td></tr>
+      <tr><th>시 기준</th><td>최종 진태양시로 판단</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="dad-s2">
+  <h2><span class="no">2</span>진태양시 계산</h2>
+  <div class="tbl"><table>
+    <tbody>
+      <tr><th>출생신고 시각</th><td>15시 35분</td></tr>
+      <tr><th>표준시 보정</th><td>당시 한국 표준시(동경 135도 기준) 그대로. 1988년 서머타임은 5월 8일~10월 9일이라 10월 23일은 <b>해당 없음</b>.</td></tr>
+      <tr><th>경도 보정</th><td>(127.14 − 135) × 4분 = <b>약 −31.5분</b></td></tr>
+      <tr><th>균시차</th><td>10월 23일, 실제 해가 시계보다 <b>약 +15.7분</b> 빠름</td></tr>
+      <tr><th>최종 진태양시</th><td><b>약 15시 19분</b></td></tr>
+      <tr><th>보정 전후 차이</th><td>약 16분 이름</td></tr>
+      <tr><th>최종 적용 시각</th><td>15시 19분 → 원숭이 시(오후 3시~5시)</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-c">계산</span>원숭이 시의 시작인 15시 정각에서 19분 안쪽이에요. 진태양시가 19분 넘게 이르다면 양(미) 시로 넘어가지만, 경도와 균시차는 확정값이라 그럴 여지는 없어요. 보정 없이 시계 시각 15시 35분으로 봐도 원숭이 시라 시주는 바뀌지 않습니다.</p>
+</section>
+
+<section class="s" id="dad-s3">
+  <h2><span class="no">3</span>절기와 사주팔자 확정</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th>경계</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><th>해</th><td>1988년 입춘 2월 4일 오후 11시 36분</td><td>입춘 이후 → <b>무진년</b></td></tr>
+      <tr><th>달</th><td>한로 10월 8일 오전 10시 40분 ~ 입동 11월 7일 오후 1시 44분</td><td>그 사이 → 개의 달, <b>임술월</b></td></tr>
+      <tr><th>상강</th><td>10월 23일 오후 1시 42분</td><td>출생 약 2시간 전. 달이 바뀌는 절기가 아니라 영향 없음</td></tr>
+      <tr><th>날</th><td>날짜 계산</td><td><b>신해일</b></td></tr>
+      <tr><th>시</th><td>진태양시 15시 19분</td><td>신금 날의 원숭이 시 → <b>병신시</b></td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-c">계산</span>네 기둥 모두 경계와 거리가 넉넉해요. 학파에 따라 결과가 달라질 부분이 없는 명식입니다.</p>
+</section>
+
+<section class="s" id="dad-s4">
+  <h2><span class="no">4</span>원국 표</h2>
+  <div class="pillars">
+    <div class="pil"><span class="lab">시주</span><span class="tg">정관</span><span class="ch">병</span><span class="na">하늘의 태양</span><span class="ch">신</span><span class="na">원숭이 · 초가을의 쇠</span><span class="tg">겁재</span></div>
+    <div class="pil me"><span class="lab">일주 · 나</span><span class="tg">나</span><span class="ch">신</span><span class="na">작은 보석</span><span class="ch">해</span><span class="na">돼지 · 초겨울의 물</span><span class="tg">상관</span></div>
+    <div class="pil"><span class="lab">월주</span><span class="tg">상관</span><span class="ch">임</span><span class="na">큰 강</span><span class="ch">술</span><span class="na">개 · 늦가을 마른 흙</span><span class="tg">정인</span></div>
+    <div class="pil"><span class="lab">년주</span><span class="tg">정인</span><span class="ch">무</span><span class="na">큰 땅</span><span class="ch">진</span><span class="na">용 · 늦봄 축축한 흙</span><span class="tg">정인</span></div>
+  </div>
+  <p><span class="tag t-c">계산</span>일간(나)은 신금, 작은 보석·칼날 같은 기운이에요. 월령(태어난 달의 계절 힘)은 개, 늦가을의 마른 흙입니다.</p>
+  <p><span class="tag t-i">명리 해석</span>이 표에서 눈여겨볼 점은 세 가지예요. 겉에 나무가 하나도 없다는 것. 윗줄에 흙·물·불이 하나씩 다 드러나 있다는 것. 아랫줄의 용과 개가 서로 마주 보고 부딪힌다는 것입니다.</p>
+</section>
+
+<section class="s" id="dad-s5">
+  <h2><span class="no">5</span>지장간과 십성</h2>
+  <p>지장간은 땅 글자 속에 숨어 있는 기운이에요. 겉으로 드러나지 않아도 운에서 건드리면 깨어나요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>자리</th><th>땅 글자</th><th>숨은 기운 (앞 → 뒤)</th><th>십성</th><th>보석의 생애 단계</th></tr></thead>
+    <tbody>
+      <tr><th>년</th><td>용</td><td>풀(을목) · 비(계수) · <b>큰 땅(무토)</b></td><td>편재 · 식신 · 정인</td><td>묘 (창고에 들어간 상태)</td></tr>
+      <tr><th>월</th><td>개</td><td>보석(신금) · 등불(정화) · <b>큰 땅(무토)</b></td><td>비견 · 편관 · 정인</td><td>관대 (사회에 나서는 청년기)</td></tr>
+      <tr><th>일</th><td>돼지</td><td>큰 땅(무토) · 큰 나무(갑목) · <b>큰 강(임수)</b></td><td>정인 · 정재 · 상관</td><td>목욕 (예민하고 감성적인 단계)</td></tr>
+      <tr><th>시</th><td>원숭이</td><td>큰 땅(무토) · 큰 강(임수) · <b>큰 바위(경금)</b></td><td>정인 · 상관 · 겁재</td><td>제왕 (힘이 가장 센 단계)</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-c">계산</span>굵게 쓴 것이 그 땅 글자의 본기운(정기)이에요. 태어난 날은 한로 후 15일째라, 개 달의 기운 중 큰 땅(무토)이 주관하던 때(사령)입니다.</p>
+  <p><span class="tag t-i">명리 해석</span>가장 눈에 띄는 건 <b>네 땅 글자 모두에 큰 땅(무토)이 숨어 있다</b>는 점이에요. 여기에 년간에도 큰 땅이 드러나 있어서, 흙의 세력은 표에 보이는 것보다 훨씬 큽니다. 한편 나무는 용 속의 풀, 돼지 속의 큰 나무로만 숨어 있어요. 배우자 자리 돼지 안에 차곡차곡 쌓는 돈의 기운(정재)이 숨어 있다는 것도 기억해 둘 만한 점입니다.</p>
+</section>
+
+<section class="s" id="dad-s6">
+  <h2><span class="no">6</span>음양 구조</h2>
+  <p><span class="tag t-c">계산</span>여덟 글자 중 양이 여섯(큰 땅, 용, 큰 강, 개, 태양, 원숭이), 음이 둘(작은 보석, 돼지)이에요. 돼지는 보는 법에 따라 양으로 쓰기도 하니, 양 쪽이 더 기울 수도 있어요.</p>
+  <p><span class="tag t-i">명리 해석</span>양기가 강한 명식에 <b>나 자신(일간)만 음</b>이에요. 둘러싼 환경과 겉모습은 굵고 단단한데, 중심에 있는 나는 섬세하고 정밀한 보석입니다.</p>
+  <p><span class="tag t-r">현실 가능성</span>밖에서는 듬직하고 원칙적이며 흔들리지 않는 사람으로 보이기 쉬워요. 그런데 속으로는 작은 차이에 민감하고, 일의 완성도를 끝까지 따지는 편일 가능성이 높아요. 이 차이가 지나치면 "괜찮아 보이는데 사실은 혼자 많이 소모하는" 모습이 됩니다.</p>
+</section>
+
+<section class="s" id="dad-s7">
+  <h2><span class="no">7</span>오행 실제 세력</h2>
+  <p><span class="tag t-c">계산</span>겉 글자 수로는 흙 3, 물 2, 쇠 2, 불 1, 나무 0이에요. 하지만 개수만으로 판단하지 않고, 계절·뿌리·숨은 기운·합충까지 반영하면 실제 세력은 이렇습니다.</p>
+  <div class="bars">
+    <div class="bar"><b>흙</b><div class="tr"><div class="fl" style="width:95%;background:var(--g0)"></div></div><span class="lv">매우 강함</span></div>
+    <div class="bar"><b>쇠</b><div class="tr"><div class="fl" style="width:70%;background:var(--g2)"></div></div><span class="lv">강함</span></div>
+    <div class="bar"><b>물</b><div class="tr"><div class="fl" style="width:55%;background:var(--g4)"></div></div><span class="lv">보통</span></div>
+    <div class="bar"><b>불</b><div class="tr"><div class="fl" style="width:30%;background:var(--g1)"></div></div><span class="lv">약함</span></div>
+    <div class="bar"><b>나무</b><div class="tr"><div class="fl" style="width:10%;background:var(--g5)"></div></div><span class="lv">매우 약함</span></div>
+  </div>
+  <div class="pair">
+    <div><b>흙 · 매우 강함</b><span>월령이 흙이고, 그 흙이 년간에 드러나 있어요. 년주는 위아래가 모두 흙이고, 네 땅 글자 속에 전부 흙이 숨어 있습니다. 용과 개가 부딪혀(진술충) 흙끼리 흔들리지만, 흙의 양 자체가 줄지는 않아요.</span></div>
+    <div><b>쇠 · 강함</b><span>내가 쇠예요. 원숭이 속 큰 바위(경금)에 강하게 뿌리를 내렸고(제왕), 개 속 보석에도 뿌리가 있어요. 흙이 쇠를 계속 낳아 줍니다. 다만 쇠는 겉에 나 하나뿐이라 '매우 강함'까지는 아니에요.</span></div>
+    <div><b>물 · 보통</b><span>큰 강이 월간에 드러났고, 돼지의 본기운이 물, 원숭이와 용 속에도 물이 있어요. 가을 쇠가 물을 낳아 힘을 보태지만, 사방의 흙이 물을 막고 있어 '보통'으로 봅니다.</span></div>
+    <div><b>불 · 약함</b><span>태양이 시간에 드러났지만 원숭이 위에 앉아 힘이 약한 단계(병)예요. 개 속 등불이 유일한 뿌리이고, 큰 강과 맞서며(병임충) 나와 묶여(병신합) 제 빛을 다 내지 못해요.</span></div>
+    <div><b>나무 · 매우 약함</b><span>겉에 하나도 없어요. 숨은 기운으로만 존재하고, 가을은 쇠가 나무를 자르는 계절이라 힘이 가장 약할 때예요.</span></div>
+  </div>
+  <p><span class="tag t-i">명리 해석</span>나무가 없다고 해서 나무가 곧 용신이라고 보지 않아요. 나무가 필요한 이유는 따로 있어요. 넘치는 흙을 갈아엎을 수 있는 게 나무뿐이기 때문입니다. 14번에서 자세히 설명할게요.</p>
+</section>
+
+<section class="s" id="dad-s8">
+  <h2><span class="no">8</span>월령과 계절</h2>
+  <p><span class="tag t-c">계산</span>한로와 입동 사이, 상강 무렵 늦가을에 태어났어요. 월지 개는 가을의 마지막 흙이고, 불을 저장하는 창고(화고)이기도 합니다.</p>
+  <p><span class="tag t-i">명리 해석</span>월령은 원국에서 가장 큰 힘이에요. 이 명식에서 월령의 흙은 나를 낳아 주는 기운(인성)이라, 보석은 계절로부터 큰 지원을 받아요(득령). 보석의 생애 단계로는 개 자리가 '관대', 막 사회에 나서는 청년기에 해당해 기세가 좋습니다.</p>
+  <p>문제는 늦가을 흙이 마른 흙(조토)이라는 점이에요. 마른 흙은 쇠를 시원하게 낳기보다 덮어 버리는 성질이 강해요. 그래서 이 계절의 보석은 흙에 묻히지 않도록 물로 씻어 주고, 나무로 흙을 헤쳐 줘야 빛이 나요. 전통 조후론에서도 늦가을 신금에는 "큰 강을 먼저, 큰 나무를 다음으로" 쓰라고 봅니다.</p>
+</section>
+
+<section class="s" id="dad-s9">
+  <h2><span class="no">9</span>신강·신약</h2>
+  <div class="pair">
+    <div><b>득령</b><span>있음. 월령이 나를 낳는 흙이에요.</span></div>
+    <div><b>득지</b><span>약함. 바로 아래 돼지는 물이라 내 힘을 빼 가는 자리예요. 다만 속에 흙이 조금 있어요.</span></div>
+    <div><b>득세</b><span>있음. 년간 큰 땅, 년지 용, 시지 원숭이(제왕 뿌리)가 나를 받쳐요.</span></div>
+    <div><b>통근</b><span>원숭이 속 큰 바위(강한 뿌리), 개 속 보석(약한 뿌리)</span></div>
+    <div><b>힘을 빼는 쪽</b><span>큰 강(드러남)과 돼지가 내 힘을 밖으로 빼고(설기), 태양이 나를 눌러요(극). 다만 태양은 약하고 나와 묶여 있어요.</span></div>
+  </div>
+  <p><span class="tag t-i">명리 해석</span>결론은 <b>신강</b>, 그중에서도 나를 돕는 흙이 넘치는 <b>인성 과다형 신강</b>이에요. 극신강까지 가지 않는 이유는 큰 강이 월간에 드러나 꾸준히 힘을 빼 주기 때문입니다. 이 판단은 꽤 분명해요.</p>
+  <p><span class="tag t-r">현실 가능성</span>버티는 힘과 회복력이 좋은 편이에요. 웬만한 압박에는 쉽게 무너지지 않아요. 다만 힘이 넘치는 쪽이라, 힘을 쓸 출구가 막히면 답답함과 고집으로 바뀌기 쉬워요.</p>
+</section>
+
+<section class="s" id="dad-s10">
+  <h2><span class="no">10</span>십성 핵심 구조</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>십성</th><th>쉬운 뜻</th><th>위치·세력</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><th>정인</th><td>나를 돕고 보살피는 기운</td><td>년간 드러남, 월령 사령, 네 땅 글자 모두에 숨음</td><td class="lv-w">과다</td></tr>
+      <tr><th>편인</th><td>독특한 생각·직감</td><td>없음 (흙이 대신 그 역할을 일부 함)</td><td class="lv-m">없음</td></tr>
+      <tr><th>상관</th><td>틀을 깨는 표현</td><td>월간 드러남, 돼지 본기운, 원숭이 속</td><td class="lv-s">강함</td></tr>
+      <tr><th>식신</th><td>꾸준히 만들어 내는 힘</td><td>용 속에 숨음</td><td class="lv-m">약함</td></tr>
+      <tr><th>겁재</th><td>경쟁하는 기운</td><td>원숭이 본기운, 제왕 자리</td><td class="lv-s">강함</td></tr>
+      <tr><th>비견</th><td>나와 같은 기운</td><td>개 속에 숨음</td><td class="lv-m">약함</td></tr>
+      <tr><th>정관</th><td>규칙과 질서</td><td>시간 드러남, 뿌리 약함, 나와 합</td><td class="lv-m">보통</td></tr>
+      <tr><th>편관</th><td>나를 누르는 압박</td><td>개 속 등불</td><td class="lv-m">약함</td></tr>
+      <tr><th>정재</th><td>차곡차곡 쌓는 돈</td><td>돼지 속(배우자 자리)</td><td class="lv-w">매우 약함</td></tr>
+      <tr><th>편재</th><td>크게 움직이는 돈</td><td>용 속</td><td class="lv-w">매우 약함</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-i">명리 해석</span>실제로 삶에서 강하게 작동할 순서는 이래요.</p>
+  <ul class="plain">
+    <li><b>1순위 정인:</b> 배우고, 준비하고, 검토하고, 자격을 갖추는 힘. 윗사람·조직·문서의 보호.</li>
+    <li><b>2순위 상관:</b> 머리에 든 것을 말·글·기술로 꺼내는 힘. 비판력, 개선 욕구.</li>
+    <li><b>3순위 겁재:</b> 지지 않으려는 힘, 독립심, 내 몫을 지키는 힘. 시지에 있어 나이 들수록 강해져요.</li>
+    <li><b>4순위 정관:</b> 조직과 직책에 대한 의식. 나와 합이라 비중에 비해 마음을 많이 씁니다.</li>
+  </ul>
+  <p>여기서 핵심 조합은 <b>강한 인성이 강한 상관을 붙잡고 있는 모양(상관패인)</b>이에요. 틀을 깨는 재주를 배움과 규범이 다듬어 주는 구조라, 전문성 있는 재능으로 이어지기 좋아요. 대신 상관이 인성에 눌려 있어서, 할 말이 있어도 바로 내지 않고 한 번 걸러 내는 습관이 생기기 쉬워요.</p>
+</section>
+
+<section class="s" id="dad-s11">
+  <h2><span class="no">11</span>합·충·형·파·해</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>관계</th><th>어디와 어디</th><th>쉬운 뜻</th><th>영향을 주는 영역</th></tr></thead>
+    <tbody>
+      <tr><th>병신합</th><td>일간 ↔ 시간</td><td>태양이 나를 끌어안음</td><td>직책·명예·자녀에 마음이 묶임. 책임을 쉽게 내려놓지 못함</td></tr>
+      <tr><th>병임충</th><td>월간 ↔ 시간</td><td>큰 강과 태양이 맞섬</td><td>표현(상관)과 조직의 규칙(정관)이 부딪힘. 직설이 윗선과 마찰을 부를 수 있음. 사이에 내가 있어 직접 충돌은 완화됨</td></tr>
+      <tr><th>진술충</th><td>년지 ↔ 월지</td><td>용과 개가 정면 충돌</td><td>부모·바깥 환경과 사회·직장 자리가 흔들림. 이동·변동. 두 창고가 부딪혀 열리는 구조라 숨은 기운이 드러나기도 함</td></tr>
+      <tr><th>신해 해</th><td>일지 ↔ 시지</td><td>원숭이와 돼지가 은근히 방해</td><td>배우자·집과 자녀·결과물 사이의 서운함. 일의 결과와 가정 사이의 줄다리기</td></tr>
+      <tr><th>진해 원진·귀문</th><td>년지 ↔ 일지</td><td>용과 돼지가 괜히 불편하고 예민함</td><td>윗세대와 배우자 사이 미묘한 감정. 직관과 신경의 예민함</td></tr>
+      <tr><th>신진 반합</th><td>시지 ↔ 년지</td><td>원숭이와 용이 물로 이어짐</td><td>떨어져 있어 힘은 약하지만, 운에서 쥐가 오면 물의 묶음이 완성됨</td></tr>
+      <tr><th>술해</th><td>월지 ↔ 일지</td><td>이어진 이웃</td><td>특별한 충돌 없음</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-i">명리 해석</span>원국의 중심축은 <b>병신합</b>과 <b>진술충</b>이에요. 하나는 묶는 힘, 하나는 흔드는 힘입니다. 직책에는 단단히 묶여 있는데 그 직책이 놓인 자리는 자주 흔들리는 구조예요. 충이라고 다 나쁜 건 아니에요. 진술충은 막힌 창고를 여는 작용이라, 정체 대신 변화를 통해 기회가 오는 면도 있어요.</p>
+  <p><span class="tag t-c">계산</span>원국 안에 세 글자가 모여 완성되는 묶음(삼합·방합)이나 세 글자가 꺾는 관계(삼형)는 없어요. 운에서 들어오는 글자가 이것들을 완성할 때 사건성이 커집니다. 쥐가 오면 물의 묶음, 호랑이·말이 오면 불의 묶음, 호랑이·뱀이 오면 꺾는 관계가 생겨요.</p>
+</section>
+
+<section class="s" id="dad-s12">
+  <h2><span class="no">12</span>조후</h2>
+  <p><span class="tag t-i">명리 해석</span>늦가을이라 차가워지기 시작하는 때예요. 하지만 이 명식에는 마른 흙(큰 땅, 개)이 많고 태양도 하나 있어서, 춥기보다는 <b>건조하고 막힌</b> 쪽에 가까워요. 돼지와 큰 강의 물이 그 건조함을 적셔 줍니다.</p>
+  <p>조후로 보면 필요한 건 <b>물</b>(마른 흙을 적시고 보석을 씻음)과 <b>나무</b>(흙을 헤침)예요. 억부로 보면 신강이라 힘을 빼는 물과 흙을 누르는 나무가 필요해요. 두 관점의 답이 같아서, 이 명식의 용신 판단은 흔들림이 적습니다. 불은 차가워지는 계절에 약간의 온기로는 쓸모가 있어요. 하지만 흙을 더 낳기 때문에 많아지면 부담이에요.</p>
+</section>
+
+<section class="s" id="dad-s13">
+  <h2><span class="no">13</span>격국</h2>
+  <p><span class="tag t-i">명리 해석</span>월지 개의 본기운인 큰 땅(무토)이 태어난 때를 주관하고(사령) 년간에 드러나 있어요. 그래서 <b>정인격</b>으로 봅니다. 월간에 큰 강이 떠 있어 상관격의 색도 있지만, 큰 강의 뿌리는 개가 아니라 돼지와 원숭이에 있어서 격의 중심은 정인이에요.</p>
+  <p>정인격은 몸이 약할 때 가장 빛나요. 이 명식은 몸이 이미 강해서 정인이 넘치는 쪽이라, 격이 완전히 성립하려면 넘치는 인성을 덜어 낼 장치가 필요합니다. 원국에서는 큰 강(상관)이 숨을 틔우고 있지만, 흙을 직접 다스릴 나무(재성)가 없어요. 그래서 <b>격은 갖췄지만 완성은 운에 맡겨진 명식</b>이에요. 나무가 오는 대운에서 격이 살아납니다.</p>
+</section>
+
+<section class="s" id="dad-s14">
+  <h2><span class="no">14</span>용신·희신·기신</h2>
+  <div class="cards">
+    <div class="card good"><h4>핵심 용신 · 물 (큰 강)</h4><p>넘치는 힘을 밖으로 빼 주고, 흙에 묻힌 보석을 씻어 빛나게 해요. 운에서 들어오면 말·글·기술·아이디어가 살아나고, 일이 시원하게 풀립니다.</p></div>
+    <div class="card good"><h4>보조 용신 · 나무 (큰 나무)</h4><p>넘치는 흙을 갈아엎어 생각과 걱정을 현실로 바꿔요. 이 명식의 돈(재성)이기도 해요. 운에서 들어오면 재물과 현실 감각이 깨어납니다.</p></div>
+    <div class="card"><h4>희신 · 물과 나무가 서로</h4><p>물은 나무를 키우고, 나무는 물이 만든 재주를 돈으로 바꿔요. 둘이 함께 올 때 가장 좋아요. 재능이 돈을 낳는 흐름(식상생재)입니다.</p></div>
+    <div class="card"><h4>중립 · 쇠, 약간의 불</h4><p>쇠는 이미 충분해서 더 오면 고집과 경쟁만 커져요. 불은 적당하면 직책과 온기, 많으면 흙을 키우는 부담이에요.</p></div>
+    <div class="card bad"><h4>기신 · 흙 (특히 마른 흙)</h4><p>이미 넘치는 기운이에요. 운에서 더 오면 생각·걱정·서류·의존이 늘고 실제 진행이 막혀요.</p></div>
+    <div class="card bad"><h4>부담 · 과한 불</h4><p>불이 묶음을 이뤄 강해지면 압박과 책임이 커지고, 흙을 더 낳아 묻히는 문제를 키워요.</p></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s15">
+  <h2><span class="no">15</span>이 사주의 가장 독특한 특징</h2>
+  <ul class="plain">
+    <li><b>네 땅 글자 모두에 큰 땅이 숨어 있음.</b> 인성이 겉보다 훨씬 많아요. 준비와 검토는 남다른데, 결정과 출발은 남보다 늦기 쉬운 구조예요.</li>
+    <li><b>돈의 기운(나무)이 겉에 전혀 없음.</b> 재물 감각은 타고난 무기가 아니에요. 운이 나무를 줄 때만 크게 깨어나는 능력이고, 그 시기가 15~55세에 몰려 있어요.</li>
+    <li><b>표현(상관)과 규칙(정관)이 둘 다 드러나 맞서는데, 나는 규칙 쪽과 묶여 있음.</b> 비판하고 고치고 싶은 마음이 강하면서도, 직책과 체면 때문에 그 말을 스스로 삼키는 구조예요.</li>
+    <li><b>바깥 자리와 일터 자리가 정면 충돌(진술충).</b> 젊은 시기와 사회생활의 환경이 자주 바뀌고, 한곳에 오래 머물기보다 변화를 통해 자리를 옮겨 가기 쉬워요.</li>
+    <li><b>가장 강한 뿌리가 시지(자녀·말년·결과 자리)에 있음.</b> 경쟁하는 기운이 제왕 자리에 있어요. 나이가 들수록 독립심과 고집이 강해지고, 결과물에 대한 소유욕도 커지는 쪽이에요.</li>
+    <li><b>배우자 자리 안에 차곡차곡 쌓는 돈(정재)이 숨어 있음.</b> 배우자와 가정이 곧 재물의 통로가 되는 구조예요. 그래서 배우자 자리를 건드리는 운이 재물에도 영향을 줘요.</li>
+    <li><b>양 여섯에 음은 나 하나.</b> 겉은 단단하고 굵게 보이지만, 중심은 정밀하고 예민한 사람이에요.</li>
+  </ul>
+</section>
+
+<section class="s" id="dad-s16">
+  <h2><span class="no">16</span>성격과 사고방식</h2>
+  <div class="pair">
+    <div><b>겉으로 보이는 모습</b><span>차분하고 원칙적이며 쉽게 흔들리지 않는 인상이에요(양 강함, 인성 과다).</span></div>
+    <div><b>내부 사고방식</b><span>정확해야 마음이 놓여요. 완성도를 끝까지 따지고, 머릿속에서 여러 번 검토합니다(보석, 인성).</span></div>
+    <div><b>판단 방식</b><span>자료와 근거를 모은 뒤 결정해요. 결정은 느리지만 한 번 내리면 잘 바꾸지 않아요.</span></div>
+    <div><b>행동 속도</b><span>시작은 늦고 지속은 길어요. 출발선에서 오래 서 있다가, 출발하면 꾸준히 갑니다.</span></div>
+    <div><b>스트레스 반응</b><span>먼저 안으로 삭여요(병신합, 인성). 쌓이다 한계를 넘으면 날카롭고 정확한 말 한마디로 터지는 쪽이에요(상관).</span></div>
+    <div><b>경쟁 상황</b><span>겉으로 티는 덜 내도 지는 걸 싫어해요(겁재 제왕). 경쟁이 붙으면 오히려 집중력이 올라가요.</span></div>
+    <div><b>인간관계</b><span>넓기보다 깊어요. 윗사람·선배와는 잘 맞고, 같은 위치의 경쟁자와는 은근히 긴장해요.</span></div>
+    <div><b>감정 표현</b><span>말보다 글과 행동이 편해요. 감정을 말로 꺼내는 데 시간이 걸려요.</span></div>
+    <div><b>약점이 드러날 때</b><span>압박은 커지는데 표현할 출구가 막혔을 때. 혼자 끌어안다가 고집과 침묵으로 굳어요.</span></div>
+    <div><b>장점이 가장 클 때</b><span>전문성이 인정되고, 규칙이 분명하면서 내 재량이 있는 환경. 쌓은 것을 말·글·기술로 꺼낼 수 있는 자리.</span></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s17">
+  <h2><span class="no">17</span>장점과 약점</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>성향</th><th>장점</th><th>과하면</th></tr></thead>
+    <tbody>
+      <tr><th>신중함 (인성)</th><td>실수가 적고 준비가 철저함</td><td>결정 지연, 기회를 놓침</td></tr>
+      <tr><th>정밀함 (보석)</th><td>오류를 잘 찾고 완성도가 높음</td><td>사소한 것에 집착, 스스로 지침</td></tr>
+      <tr><th>비판력 (상관)</th><td>문제를 정확히 짚고 개선함</td><td>직설이 윗선과 마찰을 부름</td></tr>
+      <tr><th>책임감 (병신합)</th><td>맡은 일을 끝까지 함</td><td>내려놓지 못하고 혼자 떠안음</td></tr>
+      <tr><th>버티는 힘 (신강)</th><td>압박에 잘 무너지지 않음</td><td>힘든 걸 너무 늦게 알아챔</td></tr>
+      <tr><th>독립심 (겁재)</th><td>스스로 판단하고 해냄</td><td>도움 요청을 어려워함, 고집</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="dad-s18">
+  <h2><span class="no">18</span>능력과 재능</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>영역</th><th>평가</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><th>분석</th><td class="lv-s">강</td><td>보석의 정밀함과 인성의 검토력</td></tr>
+      <tr><th>기획</th><td class="lv-s">강</td><td>인성(축적) + 상관(새로운 방식). 상관패인의 대표 재능</td></tr>
+      <tr><th>기술</th><td class="lv-s">강</td><td>정밀한 쇠와 상관의 손재주·응용력</td></tr>
+      <tr><th>연구</th><td class="lv-s">강</td><td>인성 과다, 오래 파고드는 힘</td></tr>
+      <tr><th>교육</th><td class="lv-s">강</td><td>배운 것(인성)을 풀어 전하는 힘(상관)</td></tr>
+      <tr><th>전문직</th><td class="lv-s">강</td><td>정인격 + 상관, 자격과 전문성의 구조</td></tr>
+      <tr><th>독립 업무</th><td class="lv-s">강</td><td>신강, 시지 겁재 제왕</td></tr>
+      <tr><th>창작</th><td class="lv-m">중</td><td>상관은 강하나 인성에 눌려 자유로운 발산은 제한</td></tr>
+      <tr><th>관리</th><td class="lv-m">중</td><td>정관은 있으나 재성이 약해 사람·자원 배분 감각은 보통</td></tr>
+      <tr><th>실행</th><td class="lv-m">중</td><td>지속력은 좋고 착수가 늦음</td></tr>
+      <tr><th>협상</th><td class="lv-m">중</td><td>논리는 강하고 거래 감각(재성)은 약함</td></tr>
+      <tr><th>조직 운영</th><td class="lv-m">중</td><td>규칙 감각은 좋고, 사람을 움직이는 유연함은 보통</td></tr>
+      <tr><th>리더십</th><td class="lv-m">중</td><td>전문성으로 이끄는 형. 카리스마형은 아님</td></tr>
+      <tr><th>영업</th><td class="lv-w">약</td><td>재성 부재, 먼저 다가가 거래를 만드는 힘이 약함</td></tr>
+      <tr><th>사업</th><td class="lv-w">약~중</td><td>원국만으로는 약하고, 나무 대운에서 중까지 올라옴</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="dad-s19">
+  <h2><span class="no">19</span>직업운</h2>
+  <div class="pair">
+    <div><b>조직생활</b><span>중상. 규칙과 직책에 적응하는 힘(정관 합)이 있어요.</span></div>
+    <div><b>상명하복</b><span>중. 합리적이면 잘 따르지만, 불합리하면 비판(상관)이 올라와요.</span></div>
+    <div><b>독립성 · 전문성</b><span>강. 이 명식의 중심 무기예요.</span></div>
+    <div><b>경쟁력</b><span>중상. 실력 경쟁에 강하고, 영업형 경쟁엔 약해요.</span></div>
+    <div><b>의사결정</b><span>느리지만 정확해요.</span></div>
+    <div><b>안정 vs 변동</b><span>안정형 소득 구조가 유리해요. 다만 직장 자리 자체는 진술충으로 자주 바뀌기 쉬워요.</span></div>
+  </div>
+  <p><span class="tag t-i">명리 해석</span>가장 맞는 형태는 <b>조직 안의 전문가</b>, 그다음이 <b>전문성을 가진 독립</b>이에요. 정해진 틀 안에서 정밀함을 요구하는 일, 그리고 축적된 지식을 말·글·설계로 바꾸는 일이 맞습니다. 사람을 설득해 돈을 만드는 일은 원국의 강점과 거리가 있어요.</p>
+  <p><span class="tag t-r">현실 가능성</span>예시 직업군은 연구·분석·기획, 엔지니어링·정보기술·데이터, 품질·감리·검증, 재무·회계·감사, 법무·특허·규제, 교육·강의·컨설팅, 설계·기술 문서 같은 쪽이에요. 하나로 단정하지 않습니다.</p>
+</section>
+
+<section class="s" id="dad-s20">
+  <h2><span class="no">20</span>재물운</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>평가</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><th>버는 힘</th><td class="lv-m">중</td><td>재능(상관)은 있으나 돈의 기운이 원국에 약함. 운에서 나무가 올 때 커짐</td></tr>
+      <tr><th>지키는 힘</th><td class="lv-s">중상</td><td>신강과 인성의 안정 지향</td></tr>
+      <tr><th>현금흐름 안정성</th><td class="lv-s">중상</td><td>직장 소득형 구조</td></tr>
+      <tr><th>소비</th><td class="lv-m">중</td><td>평소엔 절제, 경쟁·체면이 걸리면 지출(겁재)</td></tr>
+      <tr><th>저축</th><td class="lv-s">중상</td><td>준비하고 대비하는 인성</td></tr>
+      <tr><th>투자</th><td class="lv-m">중</td><td>분석력은 좋고, 돈 감각은 운에 따라 달라짐</td></tr>
+      <tr><th>투기</th><td class="lv-w">약</td><td>크게 움직이는 돈(편재)이 거의 없고 경쟁 기운이 강함. 손실 위험</td></tr>
+      <tr><th>사업 재물</th><td class="lv-w">약~중</td><td>재성 부재, 나무 대운에서만 가능성</td></tr>
+      <tr><th>직장 소득</th><td class="lv-s">강</td><td>정관 합 + 인성, 조직 안에서 인정받는 구조</td></tr>
+      <tr><th>장기 자산·부동산</th><td class="lv-s">중상</td><td>흙(문서·땅)과 인연이 깊음. 묶어 두는 자산이 맞음</td></tr>
+      <tr><th>갑작스러운 변동성</th><td class="lv-m">중</td><td>원국은 안정적, 대운·세운의 충이 올 때 커짐</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-i">명리 해석</span>돈을 버는 힘과 지키는 힘이 따로 놀아요. <b>지키는 힘은 타고났고, 버는 힘은 운이 빌려줘요.</b> 그래서 나무가 오는 시기에 번 것을 흙(부동산·장기 자산)으로 묶어 두는 방식이 이 명식에 가장 맞습니다. 재성을 감당하는 힘은 충분해요. 신강이라 큰돈이 와도 몸이 버틸 수 있는 구조입니다.</p>
+</section>
+
+<section class="s" id="dad-s21">
+  <h2><span class="no">21</span>인간관계</h2>
+  <div class="pair">
+    <div><b>처음 만날 때</b><span>신중하고 거리를 둬요. 쉽게 친해지지 않지만 예의는 바릅니다.</span></div>
+    <div><b>가까워진 뒤</b><span>깊고 오래 가요. 말이 많아지고 솔직해집니다(상관).</span></div>
+    <div><b>친구</b><span>소수 정예. 같은 길을 가는 친구와는 경쟁심도 섞여요(겁재).</span></div>
+    <div><b>동료</b><span>실력으로 인정받고, 비교되는 상황엔 예민해요.</span></div>
+    <div><b>상사</b><span>합리적인 윗사람과 잘 맞아요(인성·정관). 불합리한 윗사람에겐 겉으로 따르고 속으로 비판해요.</span></div>
+    <div><b>부하</b><span>기준이 높아 엄격해 보이기 쉬워요. 결과 자리(시지)와 배우자 자리가 서로 은근히 방해(해)해, 아랫사람 일로 신경 쓸 일이 생기기 쉬워요.</span></div>
+    <div><b>잘 맞는 사람</b><span>물과 나무 성향의 사람. 말이 통하고, 현실 감각이나 추진력을 보태 주는 사람이요.</span></div>
+    <div><b>자주 부딪히는 사람</b><span>체면과 형식을 앞세우며 말을 막는 사람, 그리고 같은 자리를 놓고 다투는 고집 센 사람이요.</span></div>
+    <div><b>갈등 방식</b><span>참다가 정확한 한마디로 선을 그어요.</span></div>
+    <div><b>관계를 끊는 방식</b><span>큰 싸움보다 조용히 거리를 두고 정리하는 쪽이에요. 한 번 정리하면 잘 되돌리지 않아요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s22">
+  <h2><span class="no">22</span>연애·배우자운</h2>
+  <p><span class="tag t-i">명리 해석</span>배우자 자리는 돼지예요. 틀을 깨는 표현(상관)의 물이고, 보석의 생애 단계로는 감성이 예민한 '목욕' 자리입니다. 그 속에 차곡차곡 쌓는 돈(정재)이 숨어 있어요. 남성에게 배우자 별인 재성은 원국에 겉으로는 없고, 배우자 자리 안에만 있어요.</p>
+  <div class="pair">
+    <div><b>연애 스타일</b><span>먼저 다가가기보다 오래 지켜보고 확신이 들 때 움직여요. 시작은 늦고, 시작하면 진지해요.</span></div>
+    <div><b>끌리는 방식</b><span>대화가 통하고 감성이 풍부하며, 나와 달리 표현이 자유로운 사람에게 끌려요(돼지 상관).</span></div>
+    <div><b>배우자상</b><span>말과 감정 표현이 풍부한 사람. 가정 경제의 통로가 되는 사람(속에 숨은 정재).</span></div>
+    <div><b>주도권</b><span>겉으로는 내가 쥐고, 생활의 결정은 의외로 배우자 쪽 의견이 크게 작용하는 구조예요.</span></div>
+    <div><b>갈등</b><span>윗세대 자리(용)와 배우자 자리가 원진·귀문이라, 부모·윗사람 문제로 배우자와 미묘하게 예민해질 수 있어요. 일·결과물과 가정 사이의 줄다리기(신해 해)도 있어요.</span></div>
+    <div><b>결혼생활 안정성</b><span>중간 이상. 원국에 배우자 자리를 직접 치는 충은 없어요. 다만 운에서 뱀이 올 때(뱀이 돼지를 침) 흔들림이 커져요.</span></div>
+    <div><b>반복될 수 있는 약점</b><span>서운한 걸 말하지 않고 쌓아 두는 것. 상대는 표현하는 사람인데 나는 삼키는 사람이라 온도 차가 생겨요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s23">
+  <h2><span class="no">23</span>가족운</h2>
+  <p><span class="tag t-i">명리 해석</span>년주가 위아래 모두 나를 돕는 흙(정인)이라, 윗세대로부터 받는 보호와 영향이 큰 구조예요. 동시에 년지(용)와 월지(개)가 정면으로 부딪혀서, 집안 환경과 내 사회적 자리가 일찍부터 분리되기 쉬워요.</p>
+  <ul class="plain">
+    <li><b>부모와의 관계:</b> 받는 것이 많은 구조지만, 그만큼 기대와 간섭도 함께 오기 쉬워요.</li>
+    <li><b>독립성:</b> 진술충과 시지의 강한 겁재 때문에 일찍 독립하거나, 나이가 들수록 독립성이 강해지는 쪽이에요.</li>
+    <li><b>가족으로 인한 부담:</b> 흙이 넘치는 구조라 문서·재산·부양 같은 가족의 현실 문제가 내 몫으로 오기 쉬워요.</li>
+    <li><b>가족 안 역할:</b> 정리하고 판단하는 역할을 맡기 쉬워요.</li>
+  </ul>
+  <p class="note">가족 구성이나 실제 관계가 어떤지는 원국만으로 알 수 없어요. 경향으로만 봐 주세요.</p>
+</section>
+
+<section class="s" id="dad-s24">
+  <h2><span class="no">24</span>자녀운</h2>
+  <p><span class="tag t-i">명리 해석</span>시주는 자녀 자리예요. 남성에게 자녀 별인 관성(태양)이 자녀 자리에 드러나 있고, 나와 합을 해요. 자녀에 대한 애착과 기대가 큰 구조입니다. 시지는 경쟁하는 기운(겁재)이 제왕 자리에 있어서, 자녀는 독립적이고 고집이 있는 성향으로 나타나기 쉬워요.</p>
+  <ul class="plain">
+    <li><b>관계 성향:</b> 책임감 있게 키우고 기대 수준이 높은 편이에요.</li>
+    <li><b>통제와 자유:</b> 기준이 높아 통제가 강해지기 쉬워요. 고집 있는 자녀와는 부딪힐 수 있어요.</li>
+    <li><b>세대 간 강점:</b> 지식과 기술을 물려주는 데 강해요(인성 + 상관).</li>
+    <li><b>갈등 가능성:</b> 지금 대운(병인)의 호랑이가 자녀 자리 원숭이를 정면으로 쳐서, 이 10년간 자녀나 아랫사람 쪽 변동이 생기기 쉬워요.</li>
+  </ul>
+  <p class="note">출산 여부나 자녀 수는 사주로 확정하지 않아요.</p>
+</section>
+
+<section class="s" id="dad-s25">
+  <h2><span class="no">25</span>건강의 명리적 경향</h2>
+  <p class="note">아래는 명리학적 경향일 뿐, 건강 진단이 아니에요.</p>
+  <ul class="plain">
+    <li><b>흙 과다:</b> 소화 기능이 무거워지고, 생각이 많아 몸이 처지는 경향.</li>
+    <li><b>강한 쇠:</b> 호흡기·피부 건조, 몸이 굳는 느낌의 경향.</li>
+    <li><b>나무 부족:</b> 피로 회복이 더디고, 근육·눈의 긴장이 쌓이는 경향.</li>
+    <li><b>생활 리듬:</b> 과로를 늦게 알아채는 신강 체질이에요. 스트레스는 수면과 소화로 먼저 드러나기 쉬워요.</li>
+    <li><b>운의 영향:</b> 불과 흙이 몰리는 해(2025·2026년, 2036~2038년, 55세 이후 대운)에 부담이 커지고, 물이 오는 해에 회복해요.</li>
+  </ul>
+</section>
+
+<section class="s" id="dad-s26">
+  <h2><span class="no">26</span>이동·변화운</h2>
+  <ul class="plain">
+    <li><b>정착 vs 이동:</b> 성향은 정착형(인성)인데 원국 구조는 이동형(진술충)이에요. 원하지 않아도 환경이 바뀌는 일이 생기기 쉬워요.</li>
+    <li><b>이동을 통한 기회:</b> 막힌 창고를 여는 충이라, 자리를 옮겼을 때 숨은 기회가 드러나기 쉬워요.</li>
+    <li><b>환경 변화 스트레스:</b> 큰 편이에요. 정밀한 보석은 낯선 환경에 적응하는 데 에너지를 많이 써요.</li>
+    <li><b>지역 이동:</b> 년지 기준 이동의 글자(역마)가 호랑이예요. 지금 병인 대운(2023~2033)에 이동·이사·출장이 잦아지기 쉬워요.</li>
+    <li><b>직장 이동:</b> 일터 자리(개)를 치는 해(용의 해)와 꺾는 해(양·소의 해)에 이동 압력이 커져요.</li>
+    <li><b>해외·먼 이동:</b> 원국에 강한 근거는 없어요. 이동의 글자가 오는 시기에 가능성이 생기는 정도예요.</li>
+  </ul>
+</section>
+
+<section class="s" id="dad-s27">
+  <h2><span class="no">27</span>인생 강점 TOP 5</h2>
+  <div class="cards">
+    <div class="card good"><h4>1. 깊은 전문성</h4><dl><div><dt>근거</dt><dd>인성 과다 + 정인격</dd></div><div><dt>잘 쓰이면</dt><dd>대체하기 어려운 사람이 됨</dd></div><div><dt>과하면</dt><dd>공부와 준비만 하다 기회를 놓침</dd></div></dl></div>
+    <div class="card good"><h4>2. 재능을 다듬는 힘</h4><dl><div><dt>근거</dt><dd>상관패인 (표현을 배움이 다듬음)</dd></div><div><dt>잘 쓰이면</dt><dd>기획·설계·개선에서 독보적</dd></div><div><dt>과하면</dt><dd>자기 검열이 심해 말과 결과물이 늦음</dd></div></dl></div>
+    <div class="card good"><h4>3. 버티는 힘</h4><dl><div><dt>근거</dt><dd>신강, 시지 제왕 뿌리</dd></div><div><dt>잘 쓰이면</dt><dd>위기에 흔들리지 않는 신뢰</dd></div><div><dt>과하면</dt><dd>한계를 늦게 알아챔</dd></div></dl></div>
+    <div class="card good"><h4>4. 정밀함</h4><dl><div><dt>근거</dt><dd>작은 보석 일간, 음의 중심</dd></div><div><dt>잘 쓰이면</dt><dd>오류를 잡고 품질을 지킴</dd></div><div><dt>과하면</dt><dd>완벽주의, 스스로를 소모</dd></div></dl></div>
+    <div class="card good"><h4>5. 지키는 재물 감각</h4><dl><div><dt>근거</dt><dd>신강 + 인성(문서·안정)</dd></div><div><dt>잘 쓰이면</dt><dd>번 돈을 흩지 않고 자산으로 묶음</dd></div><div><dt>과하면</dt><dd>지나친 안전 추구로 성장 기회를 놓침</dd></div></dl></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s28">
+  <h2><span class="no">28</span>인생 약점 TOP 5</h2>
+  <div class="cards">
+    <div class="card bad"><h4>1. 말을 삼키는 구조</h4><dl><div><dt>근거</dt><dd>상관이 인성에 눌림 + 병신합</dd></div><div><dt>언제</dt><dd>압박이 커지고 물이 묶이는 해(정화가 오는 해)</dd></div><div><dt>장기적으로</dt><dd>혼자 떠안다가 소진, 기여를 인정받지 못함</dd></div></dl></div>
+    <div class="card bad"><h4>2. 늦은 결정</h4><dl><div><dt>근거</dt><dd>네 땅 모두에 숨은 흙, 인성 과다</dd></div><div><dt>언제</dt><dd>흙이 오는 해·달</dd></div><div><dt>장기적으로</dt><dd>좋은 시기를 준비만 하다 흘려보냄</dd></div></dl></div>
+    <div class="card bad"><h4>3. 약한 돈 감각</h4><dl><div><dt>근거</dt><dd>재성 부재</dd></div><div><dt>언제</dt><dd>나무가 없는 대운(55세 이후)</dd></div><div><dt>장기적으로</dt><dd>실력에 비해 보상이 작을 수 있음</dd></div></dl></div>
+    <div class="card bad"><h4>4. 흔들리는 자리</h4><dl><div><dt>근거</dt><dd>진술충 (바깥·일터 자리 충돌)</dd></div><div><dt>언제</dt><dd>용·개·양·소의 해</dd></div><div><dt>장기적으로</dt><dd>쌓은 자리가 외부 요인으로 흔들림</dd></div></dl></div>
+    <div class="card bad"><h4>5. 고집과 경쟁심</h4><dl><div><dt>근거</dt><dd>신강 + 시지 겁재 제왕</dd></div><div><dt>언제</dt><dd>쇠가 오는 해, 나이가 들수록</dd></div><div><dt>장기적으로</dt><dd>말년의 관계 축소, 아랫사람과의 마찰</dd></div></dl></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s29">
+  <h2><span class="no">29</span>대운 계산</h2>
+  <p><span class="tag t-c">계산</span>해의 윗글자가 큰 땅(양)이고 남성이라 대운은 순서대로 흘러요(순행). 출생부터 다음 절기 입동(1988년 11월 7일 오후 1시 44분)까지는 14일 22시간 9분이에요. 3일을 1년으로 보는 기산법을 쓰면 <b>4세 11개월(대운수 5)</b>이고, 첫 대운은 1993년 10월 14일 무렵 시작합니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>대운</th><th class="num">시작 나이</th><th>기간</th><th>주요 기운</th><th>핵심 특징</th><th class="num">점수</th></tr></thead>
+    <tbody>
+      <tr><th>계해</th><td class="num">만 4세 11개월</td><td>1993.10 ~ 2003.10</td><td>물 · 물</td><td>표현과 재주가 자라는 시기</td><td class="num score">62</td></tr>
+      <tr><th>갑자</th><td class="num">만 14세 11개월</td><td>2003.10 ~ 2013.10</td><td>나무 · 물</td><td>물의 묶음 완성, 용신·희신이 함께</td><td class="num score">72</td></tr>
+      <tr><th>을축</th><td class="num">만 24세 11개월</td><td>2013.10 ~ 2023.10</td><td>나무 · 흙</td><td>돈 기회와 나와의 충돌, 일터를 꺾음</td><td class="num score">48</td></tr>
+      <tr><th>병인</th><td class="num">만 34세 11개월</td><td>2023.10 ~ 2033.10</td><td>불 · 나무</td><td>자리와 쌓는 돈, 책임 증가</td><td class="num score">58</td></tr>
+      <tr><th>정묘</th><td class="num">만 44세 11개월</td><td>2033.10 ~ 2043.10</td><td>불 · 나무</td><td>큰 돈과 압박이 함께</td><td class="num score">60</td></tr>
+      <tr><th>무진</th><td class="num">만 54세 11개월</td><td>2043.10 ~ 2053.10</td><td>흙 · 흙</td><td>흙 과다, 일터·배우자 자리 흔들림</td><td class="num score">42</td></tr>
+      <tr><th>기사</th><td class="num">만 64세 11개월</td><td>2053.10 ~ 2063.10</td><td>흙 · 불</td><td>배우자 자리를 치는 뱀</td><td class="num score">40</td></tr>
+      <tr><th>경오</th><td class="num">만 74세 11개월</td><td>2063.10 ~ 2073.10</td><td>쇠 · 불</td><td>경쟁 기운과 불의 압박</td><td class="num score">45</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="dad-s30">
+  <h2><span class="no">30</span>평생 대운 상세분석</h2>
+  <div class="cards">
+    <div class="card"><h4>계해 대운 · 5~15세 · 62</h4><p>꾸준히 만들어 내는 힘(식신)과 틀을 깨는 표현(상관)의 물이에요. 가장 필요한 약이 어린 시절에 들어와 머리와 표현이 자라기 좋은 시기입니다. 돼지가 배우자 자리와 겹쳐(자형) 생각을 혼자 곱씹는 습관이 이때 자리 잡기 쉬워요. <b>얻는 것:</b> 총명함, 표현력. <b>부담:</b> 예민함, 원국 윗자리의 큰 땅이 비를 끌어안아(무계합) 부모 영향이 큼.</p></div>
+    <div class="card good"><h4>갑자 대운 · 15~25세 · 72</h4><p>큰 나무(정재)와 쥐(식신). 쥐가 원국의 원숭이·용과 물의 묶음(신자진 삼합)을 10년 내내 완성해요. 용신과 희신이 함께 오는 평생 최고의 대운입니다. 학업과 첫 사회 진출에서 재능이 결과로 이어지기 좋았던 시기예요. <b>얻는 것:</b> 실력, 첫 성과, 자신감. <b>부담:</b> 큰 나무가 윗자리 큰 땅을 흔들어(갑무충) 부모·집안과 생각 차이.</p></div>
+    <div class="card"><h4>을축 대운 · 25~35세 · 48</h4><p>풀(편재)이 나를 정면으로 치고(을신충), 소(편인)가 일터 자리를 꺾고(축술형) 윗자리를 깨뜨려요(축진파). 돈 기회는 보이는데 쥐려 하면 마찰이 생기고, 직장 안 조정이 잦았을 가능성이 높아요. 젖은 흙이 생각을 더 무겁게 해요. <b>얻는 것:</b> 경험, 현실 감각의 시작. <b>부담:</b> 방향 고민, 자리 변동.</p></div>
+    <div class="card"><h4>병인 대운 · 35~45세 · 58</h4><p>자리(정관)와 쌓는 돈(정재). 32번에서 자세히 봐요. <b>얻는 것:</b> 직책, 고정 수입, 가정 경제 기반. <b>부담:</b> 책임, 말할 자유, 결과물 쪽 변동.</p></div>
+    <div class="card good"><h4>정묘 대운 · 45~55세 · 60</h4><p>압박(편관)과 크게 움직이는 돈(편재). 토끼가 배우자 자리와 나무로 묶이고(해묘 반합) 일터 자리와 손을 잡아(묘술합), 재물이 크게 움직이는 10년이에요. 등불이 원국의 큰 강을 끌어안아(정임합) 표현이 묶이고, 원국의 태양과 섞여 압박이 복잡해져요(관살혼잡). <b>얻는 것:</b> 재물 확장. <b>부담:</b> 돈이 압박을 키움(재생살), 리스크 관리.</p></div>
+    <div class="card bad"><h4>무진 대운 · 55~65세 · 42</h4><p>큰 땅과 용, 기신인 흙이 위아래로 와요. 용이 원국의 용과 겹치고(자형), 일터 자리를 치고(진술충), 배우자 자리와 예민해져요(원진·귀문). 은퇴 전후의 정체, 문서·재산 문제, 생각의 무게가 커지는 시기예요. 다만 용이 원숭이와 물로 이어져(반합) 숨구멍은 있어요. <b>얻는 것:</b> 문서·자산 정리. <b>부담:</b> 정체, 결정 지연.</p></div>
+    <div class="card bad"><h4>기사 대운 · 65~75세 · 40</h4><p>부드러운 흙(편인)과 뱀(정관). 뱀이 배우자 자리 돼지를 정면으로 쳐요(사해충). 일터 자리와는 원진·귀문, 결과 자리와는 합이면서 꺾는 관계(사신 합·형)예요. 가정과 배우자의 변화, 생활 리듬의 흔들림에 대비가 필요한 시기예요. <b>얻는 것:</b> 명예·역할의 마무리. <b>부담:</b> 가정 변화, 컨디션.</p></div>
+    <div class="card"><h4>경오 대운 · 75~85세 · 45</h4><p>큰 바위(겁재)와 말(편관). 말이 개와 불로 묶이고(오술 반합), 바위가 원국의 태양과 부딪혀요(병경충). 독립심과 고집이 강해지는 시기예요. <b>얻는 것:</b> 자기 주관. <b>부담:</b> 고립, 열의 경향.</p></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s31">
+  <h2><span class="no">31</span>인생 주요 변곡점</h2>
+  <p class="note">아래는 일이 일어난다는 뜻이 아니라, 그런 종류의 변화 가능성이 상대적으로 강해지는 시기예요.</p>
+  <div class="pair">
+    <div><b>상승 가능성</b><span>갑자 대운(2003~2013), 2032년 임자년, 정묘 대운 초반(2034년 갑인년), 2027년 3월</span></div>
+    <div><b>정체 가능성</b><span>을축 대운 후반, 무진 대운(2043~2053)</span></div>
+    <div><b>변화가 강한 시기</b><span>2023·2033년(대운 교체), 2025년(호랑이·뱀·원숭이 삼형), 2028년(원숭이가 대운을 침), 2037년</span></div>
+    <div><b>재물 변화</b><span>정묘 대운 전체, 2028년, 2034~2035년</span></div>
+    <div><b>관계 변화</b><span>2025년·2037년(뱀이 배우자 자리를 침), 2031년(배우자 자리 자형과 합), 기사 대운</span></div>
+    <div><b>책임 증가</b><span>병인 대운 전체, 특히 2026년. 정묘 대운 2036~2038년</span></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s32">
+  <h2><span class="no">32</span>현재 대운 집중분석 · 병인</h2>
+  <div class="pair">
+    <div><b>1. 핵심 주제</b><span>자리와 쌓는 돈. 나무(쌓는 돈)가 불(직책)을 키우는 흐름(재생관)이라, 재정 기반이 직책과 신뢰를 받쳐 줘요.</span></div>
+    <div><b>2. 이전과 달라진 점</b><span>을축 대운의 '나와 부딪히는 돈'(을신충)이 '나를 받쳐 주는 돈'(정재)으로 바뀌었어요. 흩어지던 기운이 하나의 틀로 모이는 변화예요.</span></div>
+    <div><b>3. 좋아지는 것</b><span>나무가 흙을 갈아 격이 살아나요. 호랑이가 배우자 자리와 손잡아(인해합) 가정과 재산의 기반이 함께 묶여요.</span></div>
+    <div><b>4. 부담스러워지는 것</b><span>태양이 원국의 태양과 겹쳐 나를 일에 묶는 힘이 두 배가 돼요(병신합). 호랑이가 결과 자리를 쳐서(인신충) 결과물·아랫사람·자녀 쪽 변동이 생겨요. 이 10년의 해들은 전반에 불과 흙이 몰려 있어요.</span></div>
+    <div><b>5. 직업</b><span>책임과 직책이 커지는 방향이에요. 담당 업무·부서·프로젝트는 자주 바뀌기 쉬워요. 조직 안의 전문가 자리를 굳히기 좋은 대운입니다.</span></div>
+    <div><b>6. 재물</b><span>버는 힘보다 모으는 힘이 커져요. 월급·저축·부동산처럼 쌓는 돈이 맞고, 투기성 돈은 이 대운과 맞지 않아요.</span></div>
+    <div><b>7. 관계</b><span>윗사람과의 관계가 일의 중심이 되고, 아랫사람 관리에 품이 들어요. 돈 문제가 가정 문제와 연결되기 쉬워요.</span></div>
+    <div><b>8. 가장 중요한 선택</b><span>무엇을 쌓을지 고르는 것이에요. 이 대운에 쌓은 기반이 정묘 대운에서 굴릴 수 있는 크기를 정해요. 그리고 말을 삼키는 습관을 기록과 보고로 바꾸는 것도 이 대운의 과제예요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s33">
+  <h2><span class="no">33</span>최근·현재·향후 세운</h2>
+  <p class="note">원국 → 병인 대운 → 그해 순서로 겹쳐 봤어요. 지난 해는 그 시기에 두드러졌을 가능성만 적었으니, 실제와의 비교는 직접 해 보세요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>해</th><th class="num">점수</th><th>흐름</th><th>직업</th><th>재물</th><th>관계</th><th>이동·결정</th><th>주의점</th></tr></thead>
+    <tbody>
+      <tr><th>2023 계묘</th><td class="num score">62</td><td>대운 교체, 재능이 돈으로</td><td>성과·협업, 하반기 책임 증가</td><td>수입 기회</td><td>후배 쪽 예민함</td><td>새 역할 시작</td><td>성과가 조직 몫으로 묶임</td></tr>
+      <tr><th>2024 갑진</th><td class="num score">48</td><td>돈은 잡히고 자리는 흔들림</td><td>일터 자리 충돌(진술충)</td><td>저축·관리 안정</td><td>배우자와 예민함</td><td>부서·역할 변동 압력</td><td>같은 문제의 반복</td></tr>
+      <tr><th>2025 을사</th><td class="num score">36</td><td>이 대운의 가장 깊은 골</td><td>공식 책임·절차가 무거움</td><td>쥐려는 돈과 마찰</td><td>배우자 자리 충돌(사해충)</td><td>일정·서류·이동이 얽힘(삼형)</td><td>집·몸·계약</td></tr>
+      <tr><th>2026 병오</th><td class="num score">47</td><td>불의 묶음, 책임 폭발</td><td>평가·책임 몰림</td><td>책임이 먼저</td><td>윗선 중심</td><td>큰 결정은 11~12월</td><td>과열, 말 삼킴</td></tr>
+      <tr><th>2027 정미</th><td class="num score">50</td><td>조정받고 참는 해</td><td>일터 자리 꺾임(술미 형·파)</td><td>3월 기회</td><td>표현이 묶임(정임합)</td><td>움직이려면 3월</td><td>5~7월 무거움</td></tr>
+      <tr><th>2028 무신</th><td class="num score">45</td><td>대운과 정면 충돌</td><td>경쟁, 자리 이동</td><td>돈 계획 흔들림(인신충)</td><td>배우자와 서운함</td><td>이동·이직 가능성</td><td>보증·공동 투자</td></tr>
+      <tr><th>2029 기유</th><td class="num score">48</td><td>윗사람 덕, 혼자 버팀</td><td>혼자 하는 일에 강함</td><td>큰 기회도 위험도 적음</td><td>선배와 좋고 동료와 틈</td><td>공부·자격 투자</td><td>융통성 부족</td></tr>
+      <tr><th>2030 경술</th><td class="num score">41</td><td>일터 자리 시험, 마지막 고비</td><td>평가·자리 문제</td><td>경쟁 지출</td><td>윗사람과 마찰</td><td>결정 미루기</td><td>버티기</td></tr>
+      <tr><th>2031 신해</th><td class="num score">60</td><td>물 복귀, 대운과 배우자 자리가 손잡음</td><td>나에 관한 결정</td><td>가정 재정 설계</td><td>경쟁자 뚜렷</td><td>방향 정하기</td><td>혼자 곱씹기</td></tr>
+      <tr><th>2032 임자</th><td class="num score">72</td><td>이 대운 최고, 물의 묶음</td><td>독립·전문직 전환에 유리</td><td>만든 것이 돈으로</td><td>윗사람에게 직설 주의</td><td>실행</td><td>말의 수위</td></tr>
+    </tbody>
+  </table></div>
+  <p>해별 상세와 달 흐름은 <a href="https://claude.ai/artifact/WmujcUdgaUpVoDNJ7YJ4Sr">대운록</a>에 있어요.</p>
+</section>
+
+<section class="s" id="dad-s34">
+  <h2><span class="no">34</span>가장 좋은 시기와 부담스러운 시기</h2>
+  <div class="cards">
+    <div class="card good"><h4>상대적으로 좋은 시기</h4>
+      <ul class="plain">
+        <li><b>갑자 대운(15~25세):</b> 물의 묶음이 완성되고 나무가 함께 와 용신과 희신이 동시에 작동했어요.</li>
+        <li><b>2032년 임자년:</b> 같은 물의 묶음이 1년간 완성되고, 대운의 태양을 식혀요.</li>
+        <li><b>정묘 대운 초반(2034~2035년):</b> 나무가 몰려 재성이 가장 강해지는 때예요.</li>
+        <li><b>매년 쥐·돼지의 달(11~12월)과 토끼의 달(3월):</b> 물과 나무가 오는 달이에요.</li>
+      </ul></div>
+    <div class="card bad"><h4>상대적으로 부담이 큰 시기</h4>
+      <ul class="plain">
+        <li><b>2025년 을사년:</b> 배우자 자리 충돌과 세 글자가 꺾는 관계가 겹쳤어요.</li>
+        <li><b>2026~2030년 전반:</b> 불과 흙의 해가 이어져요.</li>
+        <li><b>2037년 정사년:</b> 등불이 두 겹이 되고, 뱀이 배우자 자리를 쳐요.</li>
+        <li><b>무진·기사 대운(55~75세):</b> 기신인 흙이 길게 오고, 배우자 자리 충돌이 다시 생겨요.</li>
+        <li><b>매년 뱀의 달(5월):</b> 거의 해마다 가장 조심할 달로 나와요.</li>
+      </ul></div>
+  </div>
+</section>
+
+<section class="s" id="dad-s35">
+  <h2><span class="no">35</span>영역별 종합평가</h2>
+  <p class="note">50점은 실패가 아니라 중간값이에요. 점수보다 이유를 봐 주세요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>영역</th><th class="num">점수</th><th>이유</th></tr></thead>
+    <tbody>
+      <tr><th>기본 원국 안정성</th><td class="num score">58</td><td>신강으로 버티는 힘은 좋아요. 다만 흙이 넘치고 돈의 기운이 없으며, 바깥 자리와 일터 자리가 부딪혀요.</td></tr>
+      <tr><th>직업</th><td class="num score">66</td><td>전문성과 조직 적응력이 함께 있어요. 자리 변동과 말을 삼키는 습관이 감점 요인이에요.</td></tr>
+      <tr><th>재물</th><td class="num score">55</td><td>지키는 힘은 좋고 버는 힘은 운에 기대요. 15~55세 나무 대운이 보완해 줘요.</td></tr>
+      <tr><th>인간관계</th><td class="num score">53</td><td>깊고 신의 있지만 넓지 않아요. 경쟁심과 비판력이 마찰 요인이에요.</td></tr>
+      <tr><th>배우자</th><td class="num score">57</td><td>원국에 배우자 자리를 치는 충은 없어요. 윗세대와의 원진·귀문, 결과 자리와의 해가 있어요.</td></tr>
+      <tr><th>가족</th><td class="num score">54</td><td>윗세대의 보호가 큰 만큼 기대와 부담도 커요. 진술충으로 일찍 분리되기 쉬워요.</td></tr>
+      <tr><th>변화 대응</th><td class="num score">50</td><td>버티는 힘은 강하지만, 정밀한 보석이라 환경 변화에 에너지를 많이 써요.</td></tr>
+      <tr><th>자기관리</th><td class="num score">63</td><td>준비하고 대비하는 인성이 강해요. 과로를 늦게 알아채는 점이 약점이에요.</td></tr>
+      <tr><th>장기 성장성</th><td class="num score">62</td><td>중년까지 나무 대운이 이어지고 2032년 정점이 있어요. 55세 이후의 흙 대운을 위한 준비가 관건이에요.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="dad-s36">
+  <h2><span class="no">36</span>현암 선생 최종 총평</h2>
+  <div class="pair">
+    <div><b>어떤 사람인가</b><span>겉은 단단하고 속은 정밀한 사람이에요. 많이 알고, 깊이 준비하고, 끝까지 책임지는 사람입니다.</span></div>
+    <div><b>가장 강한 무기</b><span>쌓아 둔 지식을 정확한 결과물로 바꾸는 힘. 대체하기 어려운 전문성이에요.</span></div>
+    <div><b>가장 큰 약점</b><span>할 말을 삼키고 혼자 끌어안는 것. 그리고 준비가 길어 출발이 늦는 것이에요.</span></div>
+    <div><b>잘못 고르면 손해가 큰 것</b><span>잘 모르는 분야의 투기, 경쟁심에 끌려 하는 지출, 말을 아끼다 내 기여가 남의 몫이 되는 상황이에요.</span></div>
+    <div><b>능력이 살아나는 환경</b><span>전문성이 인정되고, 규칙은 분명하되 내 재량이 있고, 의견을 글로 낼 수 있는 곳이에요.</span></div>
+    <div><b>인생 전반의 흐름</b><span>10대 후반~20대 초반에 한 번 크게 피고, 20대 후반~30대 초반에 방향을 고민하고, 35~55세에 기반과 재물을 만들어요. 55세 이후에는 그것을 지키는 흐름이에요.</span></div>
+    <div><b>젊은 시절과 중년 이후</b><span>젊을 때는 재주가 앞서고, 중년에는 책임과 돈이 앞서요. 나이가 들수록 독립심과 고집이 강해져요.</span></div>
+    <div><b>장기적으로 관리할 것</b><span>표현의 출구, 몸의 과로 신호, 그리고 55세 이후를 위해 중년에 번 것을 흔들리지 않는 자산으로 묶어 두는 것이에요.</span></div>
+  </div>
+  <blockquote class="saying">이 명식은 흙 속에 묻힌 보석이에요. 묻혀 있는 동안에도 보석은 보석이지만, 씻어야 빛이 납니다. 이 사람에게 그 물은 말과 글, 그리고 자기 이름을 건 결과물이에요. 중년에 들어오는 나무의 운을 놓치지 말고 쌓아 두면, 늦게 출발한 만큼 오래 가는 사람이 됩니다.<small>현암 선생의 한마디</small></blockquote>
+  <p class="note">이 분석은 출생정보와 명리 계산만으로 했어요. 앞선 대화에서 나온 생활 이야기는 판단 근거로 쓰지 않았어요. 일진록, 월운록, 대운록과 같은 원국·용신 판단 위에 있습니다.</p>
+</section>
+
+</main>
+</div>
+</div>
+
+</div>
+<div class="person-pane" id="pane-mom" data-key="mom" hidden><div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">현암 선생의 원국 정밀 분석</div>
+    <h1>기사일주 · 가을 들판의 흙</h1>
+    <div class="who">여성 · 1973년 9월 30일 양력 · 오시(시·분 미상) · 서울 · 윤달 아님 · 분석 기준일 2026년 10월 7일</div>
+  </div>
+  <div class="wheel" aria-hidden="true"><svg viewBox="0 0 200 200">
+<defs><radialGradient id="wg-mom" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D6B26E" stop-opacity=".28"/><stop offset="100%" stop-color="#D6B26E" stop-opacity="0"/></radialGradient></defs>
+<circle cx="100" cy="100" r="98" fill="url(#wg-mom)"/>
+<g class="spin">
+<circle cx="100" cy="100" r="94" fill="none" stroke="#D6B26E" stroke-opacity=".55" stroke-width="1"/>
+<circle cx="100" cy="100" r="76" fill="none" stroke="#D6B26E" stroke-opacity=".3" stroke-width="1"/>
+<text x="100.0" y="19.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">자</text>
+<line x1="119.7" y1="26.6" x2="124.3" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">축</text>
+<line x1="153.7" y1="46.3" x2="166.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">인</text>
+<line x1="173.4" y1="80.3" x2="190.8" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="185.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">묘</text>
+<line x1="173.4" y1="119.7" x2="190.8" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">진</text>
+<line x1="153.7" y1="153.7" x2="166.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">사</text>
+<line x1="119.7" y1="173.4" x2="124.3" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="100.0" y="189.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">오</text>
+<line x1="80.3" y1="173.4" x2="75.7" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">미</text>
+<line x1="46.3" y1="153.7" x2="33.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">신</text>
+<line x1="26.6" y1="119.7" x2="9.2" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="15.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">유</text>
+<line x1="26.6" y1="80.3" x2="9.2" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">술</text>
+<line x1="46.3" y1="46.3" x2="33.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">해</text>
+<line x1="80.3" y1="26.6" x2="75.7" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+</g>
+<g class="spin2">
+<circle cx="100" cy="100" r="54" fill="none" stroke="#D6B26E" stroke-opacity=".25" stroke-dasharray="2 4"/>
+<circle cx="100.0" cy="46.0" r="11" fill="#0C1222" stroke="#62C795" stroke-width="1.2"/><text x="100.0" y="50.0" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#62C795">목</text>
+<circle cx="151.4" cy="83.3" r="11" fill="#0C1222" stroke="#F0715A" stroke-width="1.2"/><text x="151.4" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#F0715A">화</text>
+<circle cx="131.7" cy="143.7" r="11" fill="#0C1222" stroke="#E0B25E" stroke-width="1.2"/><text x="131.7" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E0B25E">토</text>
+<circle cx="68.3" cy="143.7" r="11" fill="#0C1222" stroke="#E4E6F0" stroke-width="1.2"/><text x="68.3" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E4E6F0">금</text>
+<circle cx="48.6" cy="83.3" r="11" fill="#0C1222" stroke="#7C9CF0" stroke-width="1.2"/><text x="48.6" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#7C9CF0">수</text>
+</g>
+<circle cx="100" cy="100" r="30" fill="#0C1222" stroke="#D6B26E" stroke-opacity=".8"/>
+<circle cx="100" cy="100" r="25" fill="none" stroke="#D6B26E" stroke-opacity=".35"/>
+<text x="100" y="97" text-anchor="middle" font-family="Song Myung, serif" font-size="13" fill="#F1D9A0">현암</text>
+<text x="100" y="113" text-anchor="middle" font-family="Song Myung, serif" font-size="9.5" fill="#D6B26E" letter-spacing="2">선생</text>
+</svg></div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차"><div class="tt">목차</div><ol class="toc-list"></ol></nav>
+<main >
+
+<section class="s" id="mom-s0">
+  <h2><span class="no">0</span>한눈에 보는 결론</h2>
+  <div class="legend"><span><span class="tag t-c">계산</span>확정할 수 있는 값</span><span><span class="tag t-i">명리 해석</span>전통 명리 체계에 따른 해석</span><span><span class="tag t-r">현실 가능성</span>현실에서 나타나기 쉬운 모습</span></div>
+  <p class="lead">한가을에 태어난 논밭의 흙이에요. 이 명식의 본질은 <b>재주와 표현의 기운(식상)이 원국 전체를 끌고 가는 구조</b>입니다. 해·달·날의 땅 글자 셋이 모여 쇠의 묶음을 완성했고, 윗줄에도 보석과 바위가 드러나 있어요. 손재주, 말솜씨, 감각, 남을 먹이고 챙기는 정성이 이 사람의 가장 큰 무기예요.</p>
+  <p>그 대신 흙이 쇠를 키워 내느라 기운이 늘 밖으로 빠져나가요. 그래서 신약이에요. 많이 해 주고, 많이 말하고, 많이 챙긴 뒤에 혼자 지치는 모양이 되기 쉽습니다. 이 흙을 살리는 약은 불이에요. 따뜻한 햇볕과 어머니 같은 보살핌의 기운(인성)이 들어올 때 힘이 붙어요.</p>
+  <p>규칙·직장·남편의 별인 나무(관성)는 원국에 겉으로도 속으로도 하나도 없어요. 틀에 맞추기보다 자기 방식으로 일하고, 누군가에게 기대기보다 스스로 꾸려 가는 명식이에요. 돈의 기운(편재)이 해 윗자리에 드러나 있어서, 재주를 돈으로 바꾸는 감각도 있습니다.</p>
+  <p>43~53세 병인 대운에 처음으로 용신인 불이 크게 들어왔고, 2026년 여름부터는 정묘 대운으로 불이 이어져요. 인생의 후반이 전반보다 따뜻한 명식입니다.</p>
+</section>
+
+<section class="s" id="mom-s1">
+  <h2><span class="no">1</span>출생정보와 계산 기준</h2>
+  <div class="tbl"><table><tbody>
+    <tr><th>성별</th><td>여성</td></tr>
+    <tr><th>생년월일</th><td>1973년 9월 30일, 양력, 윤달 아님</td></tr>
+    <tr><th>출생시각</th><td>오시(11시~13시)로 전해짐, 정확한 시·분 미상</td></tr>
+    <tr><th>출생지역</th><td>서울 (약 동경 127.0도)</td></tr>
+    <tr><th>기준</th><td>해는 입춘, 달은 절기 시각, 날은 0시, 시는 진태양시 기준</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="s" id="mom-s2">
+  <h2><span class="no">2</span>진태양시 계산</h2>
+  <div class="tbl"><table><tbody>
+    <tr><th>출생신고 시각</th><td>오시로 전해짐</td></tr>
+    <tr><th>표준시·서머타임</th><td>한국 표준시(동경 135도 기준). 1973년에는 서머타임이 없었어요.</td></tr>
+    <tr><th>경도 보정</th><td>(127.0 − 135) × 4분 = <b>약 −32분</b></td></tr>
+    <tr><th>균시차</th><td>9월 30일 <b>약 +10분</b></td></tr>
+    <tr><th>보정 결과</th><td>진태양시 = 시계 시각 − 약 22분</td></tr>
+    <tr><th>최종 적용</th><td><b>경오시</b> (말씀하신 오시를 그대로 적용)</td></tr>
+  </tbody></table></div>
+  <p><span class="tag t-c">계산</span>시계로 11시 22분 이후에 태어났다면 진태양시로도 말 시(오시)라 <b>경오시</b>가 맞아요. 시계로 11시~11시 21분 사이였다면 진태양시로는 뱀 시가 되어 <b>기사시</b>가 됩니다. 이 경우 시간이 바위(상관) 대신 흙(비견)이 되어 일간이 조금 더 단단해지고, 말의 날은 조금 무뎌져요. 다만 해·달·날의 큰 구조는 그대로라 아래 결론의 뼈대는 바뀌지 않아요.</p>
+</section>
+
+<section class="s" id="mom-s3">
+  <h2><span class="no">3</span>절기와 사주팔자 확정</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th>경계</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><th>해</th><td>1973년 입춘 2월 4일</td><td>입춘 이후 → <b>계축년</b></td></tr>
+      <tr><th>달</th><td>백로 9월 8일 새벽 3시 58분 ~ 한로 10월 8일 저녁 7시 24분</td><td>그 사이 → 닭의 달, <b>신유월</b></td></tr>
+      <tr><th>날</th><td>날짜 계산</td><td><b>기사일</b></td></tr>
+      <tr><th>시</th><td>오시 적용</td><td>기토 날의 말 시 → <b>경오시</b></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="mom-s4">
+  <h2><span class="no">4</span>원국 표</h2>
+  <div class="pillars">
+    <div class="pil"><span class="lab">시주</span><span class="tg">상관</span><span class="ch">경</span><span class="na">큰 바위</span><span class="ch">오</span><span class="na">말 · 한여름의 불</span><span class="tg">편인</span></div>
+    <div class="pil me"><span class="lab">일주 · 나</span><span class="tg">나</span><span class="ch">기</span><span class="na">논밭의 흙</span><span class="ch">사</span><span class="na">뱀 · 초여름의 불</span><span class="tg">정인</span></div>
+    <div class="pil"><span class="lab">월주</span><span class="tg">식신</span><span class="ch">신</span><span class="na">작은 보석</span><span class="ch">유</span><span class="na">닭 · 한가을의 쇠</span><span class="tg">식신</span></div>
+    <div class="pil"><span class="lab">년주</span><span class="tg">편재</span><span class="ch">계</span><span class="na">비·이슬</span><span class="ch">축</span><span class="na">소 · 늦겨울 언 흙</span><span class="tg">비견</span></div>
+  </div>
+  <p><span class="tag t-c">계산</span>일간은 기토, 논밭의 부드러운 흙이에요. 월령은 닭, 한가을의 쇠입니다.</p>
+  <p><span class="tag t-i">명리 해석</span>윗줄에 비·이슬, 보석, 흙, 바위가 서 있어요. 그중 둘(보석·바위)이 재주와 표현의 기운이에요. 아랫줄의 소·닭·뱀이 쇠로 묶이고, 말 한 마리만 홀로 불로 남아 이 흙을 지키고 있어요.</p>
+</section>
+
+<section class="s" id="mom-s5">
+  <h2><span class="no">5</span>지장간과 십성</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>자리</th><th>땅 글자</th><th>숨은 기운 (앞 → 뒤)</th><th>십성</th><th>흙의 생애 단계</th></tr></thead>
+    <tbody>
+      <tr><th>년</th><td>소</td><td>비·이슬(계수) · 보석(신금) · <b>논밭 흙(기토)</b></td><td>편재 · 식신 · 비견</td><td>묘 (창고에 든 상태)</td></tr>
+      <tr><th>월</th><td>닭</td><td>바위(경금) · <b>보석(신금)</b></td><td>상관 · 식신</td><td>장생 (막 태어난 상태)</td></tr>
+      <tr><th>일</th><td>뱀</td><td>큰 땅(무토) · 바위(경금) · <b>태양(병화)</b></td><td>겁재 · 상관 · 정인</td><td>제왕 (힘이 가장 센 단계)</td></tr>
+      <tr><th>시</th><td>말</td><td>태양(병화) · 논밭 흙(기토) · <b>등불(정화)</b></td><td>정인 · 비견 · 편인</td><td>건록 (스스로 서는 단계)</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-c">계산</span>백로 후 22일째라 닭 달의 기운 중 보석(신금)이 주관하던 때(사령)이고, 그 보석이 월간에 드러나 있어요.</p>
+  <p><span class="tag t-i">명리 해석</span>네 땅 글자 중 셋에 쇠가 숨어 있어요. 반대로 나무는 어디에도 없습니다. 일지 뱀과 시지 말은 생애 단계로는 이 흙이 가장 힘 있는 자리(제왕·건록)예요. 하지만 뱀이 쇠의 묶음에 끌려가서, 실제로 이 흙을 지키는 건 말 하나에 가까워요.</p>
+</section>
+
+<section class="s" id="mom-s6">
+  <h2><span class="no">6</span>음양 구조</h2>
+  <p><span class="tag t-c">계산</span>음이 여섯(비·이슬, 소, 보석, 닭, 논밭 흙, 뱀), 양이 둘(바위, 말)이에요.</p>
+  <p><span class="tag t-i">명리 해석</span>음기가 강한 명식이에요. 음은 안으로 모으고, 관찰하고, 참고, 섬세하게 다듬는 기운입니다.</p>
+  <p><span class="tag t-r">현실 가능성</span>겉으로는 부드럽고 조용해 보이지만 눈썰미가 빠르고 상황을 정확히 읽는 편이에요. 과하면 속으로 걱정을 키우고, 표현을 쌓아 두었다가 한 번에 정확하게 말하는 모양이 됩니다.</p>
+</section>
+
+<section class="s" id="mom-s7">
+  <h2><span class="no">7</span>오행 실제 세력</h2>
+  <p><span class="tag t-c">계산</span>겉 글자 수로는 쇠 3, 흙 2, 불 2, 물 1, 나무 0이에요.</p>
+  <div class="bars">
+    <div class="bar"><b>쇠</b><div class="tr"><div class="fl" style="width:95%;background:var(--g0)"></div></div><span class="lv">매우 강함</span></div>
+    <div class="bar"><b>불</b><div class="tr"><div class="fl" style="width:45%;background:var(--g3)"></div></div><span class="lv">보통</span></div>
+    <div class="bar"><b>흙</b><div class="tr"><div class="fl" style="width:38%;background:var(--g2)"></div></div><span class="lv">약함~보통</span></div>
+    <div class="bar"><b>물</b><div class="tr"><div class="fl" style="width:30%;background:var(--g4)"></div></div><span class="lv">약함</span></div>
+    <div class="bar"><b>나무</b><div class="tr"><div class="fl" style="width:3%;background:var(--g5)"></div></div><span class="lv">없음</span></div>
+  </div>
+  <div class="pair">
+    <div><b>쇠 · 매우 강함</b><span>월령이 쇠이고, 소·닭·뱀이 쇠의 묶음을 완성했어요. 보석과 바위가 윗줄에 둘 다 드러났어요. 원국을 쥐고 있는 기운이에요.</span></div>
+    <div><b>불 · 보통</b><span>뱀과 말 두 글자에 있어요. 하지만 뱀은 쇠의 묶음에 끌려가 불의 역할이 약해지고, 말이 홀로 버텨요.</span></div>
+    <div><b>흙 · 약함~보통</b><span>나(논밭 흙)와 소가 있지만, 소도 쇠의 묶음에 들어가 쇠를 키워요. 말 속 흙과 뱀 속 흙이 숨은 뿌리예요.</span></div>
+    <div><b>물 · 약함</b><span>해 윗자리 비·이슬 하나와 소 속 물뿐이에요. 다만 넘치는 쇠가 물을 낳아 주는 흐름이 있어요.</span></div>
+    <div><b>나무 · 없음</b><span>겉에도 속에도 없어요. 가을은 쇠가 나무를 자르는 계절이라 운에서 나무가 와도 쇠와 부딪히기 쉬워요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s8">
+  <h2><span class="no">8</span>월령과 계절</h2>
+  <p><span class="tag t-i">명리 해석</span>한가을 닭의 달은 쇠가 가장 왕성한 때예요. 흙에게 쇠는 내가 낳는 자식 같은 기운(식상)이라, 계절이 흙의 힘을 계속 밖으로 끌어내요(실령). 생애 단계로는 닭 자리가 '장생'이라 흙 자체의 생기는 있지만, 계절의 힘은 쇠 편입니다.</p>
+  <p>이 계절의 흙은 차가워지는 들판이에요. 햇볕(불)이 들어야 따뜻해지고, 그래야 쇠를 키우고도 지치지 않아요. 조후와 억부가 같은 답, 불을 가리켜요.</p>
+</section>
+
+<section class="s" id="mom-s9">
+  <h2><span class="no">9</span>신강·신약</h2>
+  <div class="pair">
+    <div><b>득령</b><span>없음. 월령이 힘을 빼는 쇠예요.</span></div>
+    <div><b>득지</b><span>형식상 있음. 일지 뱀이 나를 낳는 불(정인)이고 제왕 자리예요. 하지만 쇠의 묶음에 들어가 힘이 반감돼요.</span></div>
+    <div><b>득세</b><span>약함. 시지 말(건록)이 가장 믿을 만한 뿌리예요.</span></div>
+    <div><b>힘을 빼는 쪽</b><span>쇠의 묶음, 보석, 바위가 모두 힘을 밖으로 빼요(설기). 해 윗자리 비·이슬은 내가 다스려야 하는 돈의 기운이라 이것도 힘을 써요.</span></div>
+  </div>
+  <p><span class="tag t-i">명리 해석</span>결론은 <b>신약</b>, 그중에서도 재주와 표현이 넘쳐 기운이 새는 <b>식상 과다형 신약</b>이에요. 말이 시지에서 받쳐 줘서 극신약까지는 아니에요. 이 판단은 꽤 분명합니다.</p>
+  <p><span class="tag t-r">현실 가능성</span>할 수 있는 건 많은데 체력과 기운이 그 속도를 다 따라가지 못하기 쉬워요. 잘하는 일일수록 오래 하면 지쳐요.</p>
+</section>
+
+<section class="s" id="mom-s10">
+  <h2><span class="no">10</span>십성 핵심 구조</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>십성</th><th>쉬운 뜻</th><th>위치·세력</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><th>식신</th><td>꾸준히 만들어 내는 힘</td><td>월간·월령 사령, 소 속</td><td class="lv-w">과다</td></tr>
+      <tr><th>상관</th><td>틀을 깨는 표현</td><td>시간 드러남, 닭·뱀 속</td><td class="lv-w">강함</td></tr>
+      <tr><th>정인</th><td>나를 돕고 보살피는 기운</td><td>일지 뱀 본기운, 말 속</td><td class="lv-m">보통 (묶임)</td></tr>
+      <tr><th>편인</th><td>독특한 생각·직감</td><td>시지 말 본기운</td><td class="lv-m">보통</td></tr>
+      <tr><th>비견</th><td>나와 같은 기운</td><td>소 본기운, 말 속</td><td class="lv-m">약함</td></tr>
+      <tr><th>겁재</th><td>경쟁하는 기운</td><td>뱀 속</td><td class="lv-m">약함</td></tr>
+      <tr><th>편재</th><td>크게 움직이는 돈</td><td>년간 드러남, 소 속</td><td class="lv-m">보통</td></tr>
+      <tr><th>정재</th><td>차곡차곡 쌓는 돈</td><td>없음</td><td class="lv-m">없음</td></tr>
+      <tr><th>정관·편관</th><td>규칙과 질서·압박</td><td>없음</td><td class="lv-w">없음</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="plain">
+    <li><b>1순위 식신·상관:</b> 손재주, 감각, 요리·꾸밈·가르침 같은 '만들어 내는' 재능. 말의 정확함과 비판력.</li>
+    <li><b>2순위 정인·편인:</b> 뱀과 말의 불. 지칠 때 돌아갈 집, 배움, 직감.</li>
+    <li><b>3순위 편재:</b> 재주를 돈으로 바꾸는 감각(식상생재).</li>
+    <li><b>4순위 비견:</b> 약한 자존의 뿌리.</li>
+  </ul>
+  <p><span class="tag t-i">명리 해석</span>규칙의 별(관성)이 없는데 표현의 별(상관)은 강해요. 정해진 틀이나 윗사람의 지시보다 내 감각과 판단을 믿는 구조예요. 재주가 돈으로 흐르는 길(식상생재)은 열려 있지만, 그 흐름을 오래 감당할 체력(일간)이 약한 게 과제입니다.</p>
+</section>
+
+<section class="s" id="mom-s11">
+  <h2><span class="no">11</span>합·충·형·파·해</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>관계</th><th>어디와 어디</th><th>쉬운 뜻</th><th>영향을 주는 영역</th></tr></thead>
+    <tbody>
+      <tr><th>사유축 삼합</th><td>년지·월지·일지</td><td>소·닭·뱀이 쇠로 묶임</td><td>재주·표현·자녀(식상)가 삶의 중심축. 배우자 자리까지 이 흐름에 들어감</td></tr>
+      <tr><th>축오 원진·귀문·해</th><td>년지 ↔ 시지</td><td>소와 말이 괜히 불편하고 예민함</td><td>윗세대와 아랫세대, 젊은 시절과 말년 사이의 미묘한 감정. 직관과 신경의 예민함</td></tr>
+      <tr><th>사오</th><td>일지 ↔ 시지</td><td>뱀과 말, 같은 불의 이웃</td><td>배우자 자리와 자녀 자리가 같은 불로 이어짐. 집과 노년의 온기</td></tr>
+      <tr><th>기토 → 계수</th><td>일간 → 년간</td><td>내가 돈(편재)을 다스림</td><td>돈을 직접 굴리고 관리하려는 성향</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-i">명리 해석</span>원국의 중심은 <b>쇠의 묶음</b>이에요. 해·달·날이 이어 붙어 완성됐고, 월령도 쇠라 아주 단단하게 성립해요. 원국 안에 정면 충돌(충)은 없어요. 그래서 흔들림보다는 한 방향으로 강하게 쏠리는 모양이에요. 충은 운에서 들어올 때 생기는데, 나무의 토끼(묘유충)와 돼지(사해충)가 대표적이에요.</p>
+</section>
+
+<section class="s" id="mom-s12">
+  <h2><span class="no">12</span>조후</h2>
+  <p><span class="tag t-i">명리 해석</span>한가을 쇠의 달, 언 흙의 소, 비·이슬까지 있어 기본은 서늘하고 약간 습해요. 뱀과 말의 불이 그 차가움을 덜어 줘서, 조후는 극단적이지 않아요. 그래도 필요한 건 <b>불</b>이에요. 억부(신약이라 돕는 기운이 필요)로 보나 조후(서늘한 가을 들판)로 보나 답이 같아 용신 판단이 안정적입니다.</p>
+</section>
+
+<section class="s" id="mom-s13">
+  <h2><span class="no">13</span>격국</h2>
+  <p><span class="tag t-i">명리 해석</span>월지 닭의 본기운인 보석(신금)이 태어난 때를 주관하고 월간에 드러나 있어 <b>식신격</b>이에요. 쇠의 묶음까지 더해져 식신의 세력이 매우 커요. 식신격은 몸이 받쳐 줄 때 '재주로 먹고사는' 좋은 격인데, 이 명식은 몸이 약해서 인성(불)으로 일간을 돕는 것이 격을 완성하는 길이에요. 원국에 뱀과 말의 불이 있어 격은 성립하고, 운에서 불이 오면 크게 살아나요. 상관(바위)까지 드러나 식신과 상관이 섞인 점은 재주가 많은 대신 한 우물보다 여러 갈래로 퍼지기 쉬운 면이에요.</p>
+</section>
+
+<section class="s" id="mom-s14">
+  <h2><span class="no">14</span>용신·희신·기신</h2>
+  <div class="cards">
+    <div class="card good"><h4>핵심 용신 · 불 (태양·등불)</h4><p>지친 흙을 데우고 낳아 주며, 넘치는 쇠를 다스려요. 운에서 오면 체력과 자신감, 배움과 보호가 들어와요.</p></div>
+    <div class="card good"><h4>보조 용신 · 흙</h4><p>나와 같은 기운이라 뿌리를 단단히 해요. 버티는 힘, 내 편이 생겨요.</p></div>
+    <div class="card"><h4>조건부 · 나무</h4><p>원국에 없는 규칙과 직장의 별이에요. 불을 낳아 주면 좋지만, 쇠와 정면으로 부딪히면 스트레스와 마찰이 돼요. 함께 오는 글자에 따라 달라져요.</p></div>
+    <div class="card bad"><h4>기신 · 쇠</h4><p>이미 넘치는 재주의 기운이에요. 더 오면 일과 말이 늘어 기운이 새요.</p></div>
+    <div class="card bad"><h4>기신 · 물</h4><p>돈의 기운이지만, 몸이 약한 흙에게 많은 물은 감당하기 버거워요. 불도 꺼요.</p></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s15">
+  <h2><span class="no">15</span>이 사주의 가장 독특한 특징</h2>
+  <ul class="plain">
+    <li><b>쇠의 묶음이 해·달·날에 걸쳐 완성됨.</b> 재주와 표현의 기운이 인생의 중심축이에요. 무엇을 하든 '손과 말로 만들어 내는' 일이 핵심이 돼요.</li>
+    <li><b>규칙·직장·남편의 별이 하나도 없음.</b> 남이 정한 틀에 맞추는 것보다 스스로 정한 방식이 편해요. 관계에서 의존하기보다 스스로 꾸려 가는 구조예요.</li>
+    <li><b>배우자 자리 뱀이 쇠의 묶음에 끌려감.</b> 배우자 자리의 기운이 재주·자녀 쪽으로 흡수돼, 결혼 후 생활의 중심이 자녀와 집안일로 옮겨 가기 쉬워요.</li>
+    <li><b>이 흙을 지키는 건 시지 말 하나.</b> 나이가 들수록, 시간이 갈수록 힘이 붙는 구조예요. 인생 후반이 전반보다 따뜻해요.</li>
+    <li><b>해 윗자리에 돈의 기운이 드러남.</b> 재주를 돈으로 바꾸는 감각이 있어요. 돈을 직접 다루고 관리하려는 성향이에요.</li>
+    <li><b>음 여섯, 양 둘.</b> 조용히 관찰하고 정확히 짚는 사람이에요.</li>
+  </ul>
+</section>
+
+<section class="s" id="mom-s16">
+  <h2><span class="no">16</span>성격과 사고방식</h2>
+  <div class="pair">
+    <div><b>겉모습</b><span>부드럽고 차분하며 상냥해 보여요(음, 논밭 흙).</span></div>
+    <div><b>내부 사고</b><span>판단이 빠르고 정확해요. 마음에 안 드는 것이 바로 눈에 보이는 편이에요(상관).</span></div>
+    <div><b>판단 방식</b><span>감각과 경험으로 판단해요. 규칙보다 실제로 되는지를 봐요.</span></div>
+    <div><b>행동 속도</b><span>손이 빠르고 일을 벌리는 편이에요. 체력은 그 속도를 다 못 따라가요.</span></div>
+    <div><b>스트레스 반응</b><span>말로 풀거나 몸으로 바쁘게 움직여 잊으려 해요. 한계를 넘으면 기운이 한꺼번에 꺼지는 모양이에요.</span></div>
+    <div><b>경쟁 상황</b><span>정면 경쟁보다 실력과 결과로 증명하려 해요(비겁 약, 식상 강).</span></div>
+    <div><b>인간관계</b><span>잘 챙기고 잘 먹이는 사람이에요(식신). 가까운 사이일수록 직설이 늘어요(상관).</span></div>
+    <div><b>감정 표현</b><span>말로 정확히 표현하는 편이에요. 다만 서운함은 쌓아 두었다가 한 번에 꺼내기도 해요(음).</span></div>
+    <div><b>약점이 드러날 때</b><span>아무도 알아주지 않는데 혼자 계속 챙길 때, 그리고 위에서 일방적으로 정한 규칙을 따라야 할 때요.</span></div>
+    <div><b>장점이 가장 클 때</b><span>내 재주를 내 방식대로 펼치고, 그 결과를 사람들이 바로 누리는 자리예요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s17">
+  <h2><span class="no">17</span>장점과 약점</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>성향</th><th>장점</th><th>과하면</th></tr></thead>
+    <tbody>
+      <tr><th>정성 (식신)</th><td>사람을 먹이고 챙기는 힘</td><td>나를 돌보지 않고 소진</td></tr>
+      <tr><th>정확한 말 (상관)</th><td>문제를 바로 짚음</td><td>직설이 상처가 됨</td></tr>
+      <tr><th>손재주·감각</th><td>무엇이든 금방 익힘</td><td>여러 갈래로 퍼져 한 가지가 깊어지지 않음</td></tr>
+      <tr><th>독립성 (관성 없음)</th><td>스스로 판단하고 꾸려 감</td><td>도움을 요청하지 않음, 규칙과 마찰</td></tr>
+      <tr><th>돈 감각 (편재)</th><td>재주를 돈으로 바꿈</td><td>체력 이상으로 일을 벌림</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="mom-s18">
+  <h2><span class="no">18</span>능력과 재능</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>영역</th><th>평가</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><th>창작</th><td class="lv-s">강</td><td>식신과 상관이 모두 강함</td></tr>
+      <tr><th>기술(손기술)</th><td class="lv-s">강</td><td>쇠의 정밀함 + 만들어 내는 힘</td></tr>
+      <tr><th>교육</th><td class="lv-s">강</td><td>알려 주고 챙기는 식신, 정확한 말의 상관</td></tr>
+      <tr><th>독립 업무</th><td class="lv-s">강</td><td>관성 없음, 자기 방식</td></tr>
+      <tr><th>전문직</th><td class="lv-s">강</td><td>식신격, 재주 중심 구조</td></tr>
+      <tr><th>실행</th><td class="lv-s">중상</td><td>손이 빠름, 체력이 변수</td></tr>
+      <tr><th>기획</th><td class="lv-s">중상</td><td>상관의 새 방식</td></tr>
+      <tr><th>영업·협상</th><td class="lv-s">중상</td><td>말솜씨와 돈 감각(식상생재)</td></tr>
+      <tr><th>분석</th><td class="lv-m">중</td><td>감각형이라 체계적 분석보다 직관이 앞섬</td></tr>
+      <tr><th>연구</th><td class="lv-m">중</td><td>인성이 보통</td></tr>
+      <tr><th>리더십</th><td class="lv-m">중</td><td>실력으로 이끄는 형</td></tr>
+      <tr><th>사업</th><td class="lv-m">중</td><td>돈의 감각은 있으나 체력이 약함</td></tr>
+      <tr><th>관리</th><td class="lv-w">중하</td><td>규칙의 별이 없어 사람·조직 관리가 피곤함</td></tr>
+      <tr><th>조직 운영</th><td class="lv-w">약</td><td>관성 부재</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="mom-s19">
+  <h2><span class="no">19</span>직업운</h2>
+  <div class="pair">
+    <div><b>조직생활</b><span>중하. 규칙의 별이 없어 위계가 강한 조직은 답답해요.</span></div>
+    <div><b>상명하복</b><span>약. 이유 없는 지시에는 바로 말이 나가요(상관).</span></div>
+    <div><b>독립성·전문성</b><span>강. 재주 하나로 서는 구조예요.</span></div>
+    <div><b>안정 vs 변동</b><span>내 재주로 버는 변동형이 더 맞아요. 다만 체력을 고려해 일의 양을 스스로 조절할 수 있는 형태가 좋아요.</span></div>
+  </div>
+  <p><span class="tag t-r">현실 가능성</span>가장 맞는 형태는 <b>재주를 직접 파는 독립형·전문형</b>이에요. 예시로는 교육·강의·상담, 요리·제과·공예·디자인·미용 같은 손기술, 글·콘텐츠·기획, 판매·서비스 운영, 프리랜서 전문 업무가 있어요. 하나로 단정하지 않습니다.</p>
+</section>
+
+<section class="s" id="mom-s20">
+  <h2><span class="no">20</span>재물운</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>평가</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><th>버는 힘</th><td class="lv-s">중상</td><td>재주가 돈으로 흐르는 길(식상생재)이 열려 있음</td></tr>
+      <tr><th>지키는 힘</th><td class="lv-w">중하</td><td>신약, 식상이 계속 씀</td></tr>
+      <tr><th>현금흐름</th><td class="lv-m">중</td><td>재주 소득은 들쭉날쭉할 수 있음</td></tr>
+      <tr><th>소비</th><td class="lv-w">중상</td><td>식신은 먹고 누리고 베푸는 기운</td></tr>
+      <tr><th>저축</th><td class="lv-m">중</td><td>의지는 있으나 남을 챙기는 지출이 많음</td></tr>
+      <tr><th>투자·투기</th><td class="lv-w">중하·약</td><td>몸이 약해 큰 돈의 변동을 감당하기 버거움</td></tr>
+      <tr><th>사업 재물</th><td class="lv-m">중</td><td>돈 감각은 있고 체력이 변수</td></tr>
+      <tr><th>장기 자산</th><td class="lv-m">중</td><td>흙 일간, 땅·집과 인연은 보통</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-i">명리 해석</span>버는 힘이 지키는 힘보다 큰 명식이에요. 돈을 버는 재주는 있는데, 그 돈이 사람을 챙기고 누리는 데로 흘러가기 쉬워요. 돈의 관리는 자동이체처럼 '묶어 두는 장치'를 쓰는 게 이 명식에 맞아요.</p>
+</section>
+
+<section class="s" id="mom-s21">
+  <h2><span class="no">21</span>인간관계</h2>
+  <div class="pair">
+    <div><b>처음</b><span>상냥하고 센스 있어요. 금방 편하게 해 줘요.</span></div>
+    <div><b>가까워진 뒤</b><span>잘 챙기는 만큼 잔소리와 직설도 늘어요.</span></div>
+    <div><b>상사</b><span>권위만 내세우는 사람과 부딪혀요. 실력 있는 윗사람과는 잘 맞아요.</span></div>
+    <div><b>후배·아랫사람</b><span>잘 가르치고 잘 챙겨요(식신).</span></div>
+    <div><b>잘 맞는 사람</b><span>불과 흙의 기운, 즉 따뜻하게 받쳐 주고 든든한 사람이요.</span></div>
+    <div><b>자주 부딪히는 사람</b><span>규칙과 체면을 앞세우며 지시하는 사람이요.</span></div>
+    <div><b>갈등 방식</b><span>말로 정확히 짚어요. 쌓였다가 한 번에 꺼내는 경우도 있어요.</span></div>
+    <div><b>관계를 끊는 방식</b><span>더 이상 챙기지 않는 것으로 거리를 둬요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s22">
+  <h2><span class="no">22</span>연애·배우자운</h2>
+  <p><span class="tag t-i">명리 해석</span>여성에게 남편 별인 관성(나무)이 원국에 없어요. 배우자 자리는 뱀, 나를 돕는 불(정인)이고 생애 단계로는 가장 힘센 '제왕'이에요. 다만 이 뱀이 쇠의 묶음에 들어가 있어요.</p>
+  <div class="pair">
+    <div><b>연애 스타일</b><span>상대에게 기대기보다 챙기는 쪽이에요. 연애를 삶의 중심에 두지 않아요.</span></div>
+    <div><b>끌리는 방식</b><span>든든하게 받쳐 주는 사람, 나를 따뜻하게 해 주는 사람에게 끌려요(배우자 자리 정인).</span></div>
+    <div><b>배우자상</b><span>보호하고 받쳐 주는 사람. 생활 속에서 의지가 되는 사람이에요.</span></div>
+    <div><b>주도권</b><span>집안의 실제 운영은 내가 쥐는 쪽이에요(관성 없음, 식상 강).</span></div>
+    <div><b>갈등</b><span>상대의 부족한 점이 잘 보이고 말로 바로 나와요. 상관이 관성을 누르는 구조라, 배우자에게 기준이 높아지기 쉬워요.</span></div>
+    <div><b>결혼생활 안정성</b><span>중간. 원국에 배우자 자리를 치는 충은 없어요. 운에서 돼지가 올 때(사해충) 흔들림이 커져요.</span></div>
+    <div><b>반복되는 약점</b><span>결혼 후 관심과 기운이 자녀와 집안일로 쏠리면서, 부부만의 시간이 줄어드는 것이에요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s23">
+  <h2><span class="no">23</span>가족운</h2>
+  <p><span class="tag t-i">명리 해석</span>해 윗자리에 아버지 별(편재)이 드러나 있어요. 아버지의 영향이나 아버지 쪽 환경이 일찍부터 삶에 들어와 있는 구조예요. 어머니 별인 인성(불)은 일지·시지 가까이에 있어, 나이가 들수록 어머니 같은 보살핌의 기운이 가까워져요. 년지 소와 시지 말이 원진·귀문이라, 윗세대와 아랫세대 사이에서 감정의 줄다리기를 하는 역할이 생기기 쉬워요. 가족 안에서는 챙기고 먹이고 정리하는 역할을 맡기 쉬워요.</p>
+  <p class="note">실제 가족 구성과 관계는 원국만으로 알 수 없어요.</p>
+</section>
+
+<section class="s" id="mom-s24">
+  <h2><span class="no">24</span>자녀운</h2>
+  <p><span class="tag t-i">명리 해석</span>여성에게 자녀 별은 식상(쇠)이에요. 이 명식은 그 식상이 원국의 중심축이라, 자녀에 대한 애정과 헌신이 아주 큰 구조예요. 자녀 자리 시주는 바위(상관)와 말(편인)이라, 자녀는 영리하고 자기 생각이 분명한 쪽으로 나타나기 쉬워요.</p>
+  <ul class="plain">
+    <li><b>강점:</b> 아이의 재능을 알아보고 키워 주는 힘.</li>
+    <li><b>주의:</b> 정성이 넘치면 간섭과 잔소리로 느껴질 수 있어요. 아이를 챙기는 만큼 나를 챙기는 것도 필요해요.</li>
+  </ul>
+</section>
+
+<section class="s" id="mom-s25">
+  <h2><span class="no">25</span>건강의 명리적 경향</h2>
+  <p class="note">명리학적 경향일 뿐, 건강 진단이 아니에요.</p>
+  <ul class="plain">
+    <li><b>식상 과다:</b> 기운을 많이 써서 과로 뒤 한꺼번에 지치는 경향.</li>
+    <li><b>강한 쇠:</b> 호흡기·피부·장 쪽이 예민해지는 경향.</li>
+    <li><b>약한 흙:</b> 소화가 컨디션을 따라 흔들리는 경향.</li>
+    <li><b>소·말 원진·귀문:</b> 신경이 예민해 잠이 얕아지는 경향.</li>
+    <li><b>운의 영향:</b> 불이 오는 해에 회복하고, 쇠와 물이 겹치는 해에 지쳐요.</li>
+  </ul>
+</section>
+
+<section class="s" id="mom-s26">
+  <h2><span class="no">26</span>이동·변화운</h2>
+  <ul class="plain">
+    <li><b>정착 vs 이동:</b> 원국에 충이 없어 기본은 정착형이에요.</li>
+    <li><b>이동의 글자:</b> 해·날 기준 이동의 글자(역마)가 돼지예요. 돼지가 오는 해(1983, 1995, 2007, 2019, 2031년)와 계해 대운(13~23세)에 이동·변화가 커져요. 돼지는 배우자 자리 뱀과 정면으로 부딪히기도 해요.</li>
+    <li><b>환경 변화 스트레스:</b> 중간. 적응은 빠르지만 그만큼 기운을 써요.</li>
+  </ul>
+</section>
+
+<section class="s" id="mom-s27">
+  <h2><span class="no">27</span>인생 강점 TOP 5</h2>
+  <div class="cards">
+    <div class="card good"><h4>1. 만들어 내는 재주</h4><dl><div><dt>근거</dt><dd>식신격 + 쇠의 묶음</dd></div><div><dt>잘 쓰이면</dt><dd>무엇이든 결과물로 만들어 냄</dd></div><div><dt>과하면</dt><dd>일을 너무 벌림</dd></div></dl></div>
+    <div class="card good"><h4>2. 정확한 말</h4><dl><div><dt>근거</dt><dd>상관 드러남</dd></div><div><dt>잘 쓰이면</dt><dd>문제를 바로 짚고 해결</dd></div><div><dt>과하면</dt><dd>직설이 관계를 다침</dd></div></dl></div>
+    <div class="card good"><h4>3. 사람을 챙기는 정성</h4><dl><div><dt>근거</dt><dd>식신</dd></div><div><dt>잘 쓰이면</dt><dd>주변이 이 사람 덕에 편해짐</dd></div><div><dt>과하면</dt><dd>나를 돌보지 못함</dd></div></dl></div>
+    <div class="card good"><h4>4. 돈으로 바꾸는 감각</h4><dl><div><dt>근거</dt><dd>식상생재, 편재 드러남</dd></div><div><dt>잘 쓰이면</dt><dd>재주가 수입이 됨</dd></div><div><dt>과하면</dt><dd>체력 이상으로 벌려다 지침</dd></div></dl></div>
+    <div class="card good"><h4>5. 스스로 서는 힘</h4><dl><div><dt>근거</dt><dd>관성 없음, 시지 건록</dd></div><div><dt>잘 쓰이면</dt><dd>누구에게도 기대지 않는 자립</dd></div><div><dt>과하면</dt><dd>도움 요청을 못 함</dd></div></dl></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s28">
+  <h2><span class="no">28</span>인생 약점 TOP 5</h2>
+  <div class="cards">
+    <div class="card bad"><h4>1. 기운이 새는 구조</h4><dl><div><dt>근거</dt><dd>식상 과다 신약</dd></div><div><dt>언제</dt><dd>쇠·물의 해(2028·2029년 등)</dd></div><div><dt>장기적으로</dt><dd>번아웃, 체력 저하</dd></div></dl></div>
+    <div class="card bad"><h4>2. 규칙과의 마찰</h4><dl><div><dt>근거</dt><dd>관성 없음 + 상관</dd></div><div><dt>언제</dt><dd>나무(관)가 쇠와 부딪히는 해</dd></div><div><dt>장기적으로</dt><dd>조직·제도와의 갈등</dd></div></dl></div>
+    <div class="card bad"><h4>3. 지키지 못하는 돈</h4><dl><div><dt>근거</dt><dd>신약 + 식신의 지출</dd></div><div><dt>언제</dt><dd>물이 많은 해</dd></div><div><dt>장기적으로</dt><dd>번 만큼 남지 않음</dd></div></dl></div>
+    <div class="card bad"><h4>4. 높은 기준</h4><dl><div><dt>근거</dt><dd>상관이 관을 누름</dd></div><div><dt>언제</dt><dd>가까운 관계일수록</dd></div><div><dt>장기적으로</dt><dd>배우자·자녀와의 거리</dd></div></dl></div>
+    <div class="card bad"><h4>5. 예민한 신경</h4><dl><div><dt>근거</dt><dd>소·말 원진·귀문, 음 강함</dd></div><div><dt>언제</dt><dd>말·소·양의 해</dd></div><div><dt>장기적으로</dt><dd>수면·걱정</dd></div></dl></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s29">
+  <h2><span class="no">29</span>대운 계산</h2>
+  <p><span class="tag t-c">계산</span>해의 윗글자가 비·이슬(음)이고 여성이라 대운은 순서대로 흘러요(순행). 출생부터 다음 절기 한로(1973년 10월 8일 저녁 7시 24분)까지 약 8.3일이에요. 3일을 1년으로 보면 <b>2세 9개월(대운수 3)</b>입니다. 출생 시각이 오시 안에서 달라도 며칠 차이라 대운수는 같아요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>대운</th><th class="num">시작 나이</th><th>기간</th><th>주요 기운</th><th>핵심 특징</th><th class="num">점수</th></tr></thead>
+    <tbody>
+      <tr><th>임술</th><td class="num">만 2세 9개월</td><td>1976.7 ~ 1986.7</td><td>물 · 흙</td><td>개가 말과 불로 묶임, 흙이 받쳐 줌</td><td class="num score">55</td></tr>
+      <tr><th>계해</th><td class="num">만 12세 9개월</td><td>1986.7 ~ 1996.7</td><td>물 · 물</td><td>돈의 물이 넘침, 배우자 자리 충돌, 이동</td><td class="num score">40</td></tr>
+      <tr><th>갑자</th><td class="num">만 22세 9개월</td><td>1996.7 ~ 2006.7</td><td>나무 · 물</td><td>처음 들어온 규칙의 별이 나와 합</td><td class="num score">50</td></tr>
+      <tr><th>을축</th><td class="num">만 32세 9개월</td><td>2006.7 ~ 2016.7</td><td>나무 · 흙</td><td>쇠의 묶음 강화, 표현이 묶임</td><td class="num score">45</td></tr>
+      <tr><th>병인</th><td class="num">만 42세 9개월</td><td>2016.7 ~ 2026.7</td><td>불 · 나무</td><td>처음 용신이 크게 옴</td><td class="num score">62</td></tr>
+      <tr><th>정묘</th><td class="num">만 52세 9개월</td><td>2026.7 ~ 2036.7</td><td>불 · 나무</td><td>불은 이어지고, 토끼가 닭을 침</td><td class="num score">58</td></tr>
+      <tr><th>무진</th><td class="num">만 62세 9개월</td><td>2036.7 ~ 2046.7</td><td>흙 · 흙</td><td>흙이 받쳐 줌, 용과 닭이 손잡음</td><td class="num score">58</td></tr>
+      <tr><th>기사</th><td class="num">만 72세 9개월</td><td>2046.7 ~ 2056.7</td><td>흙 · 불</td><td>내 기운이 단단, 쇠의 묶음 재강화</td><td class="num score">52</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="mom-s30">
+  <h2><span class="no">30</span>평생 대운 상세분석</h2>
+  <div class="cards">
+    <div class="card"><h4>임술 · 3~13세 · 55</h4><p>큰 강(정재)과 개(겁재). 개가 시지 말과 불로 묶여(오술 반합) 흙을 받쳐 줘요. 소를 꺾고(축술형) 닭과 은근히 부딪혀(유술 해) 어린 시절 환경의 작은 마찰은 있어요. <b>얻는 것:</b> 기초 체력. <b>부담:</b> 집안 환경의 조정.</p></div>
+    <div class="card bad"><h4>계해 · 13~23세 · 40</h4><p>비·이슬과 돼지, 물이 위아래로 와요. 약한 흙에게 넘치는 돈의 기운이에요(재다신약). 돼지가 배우자 자리 뱀을 정면으로 치고(사해충), 이동의 글자이기도 해요. 학업·진로·거처의 변동이 컸을 가능성이 높은 시기예요. <b>얻는 것:</b> 현실 감각. <b>부담:</b> 기운 소모, 환경 변화.</p></div>
+    <div class="card"><h4>갑자 · 23~33세 · 50</h4><p>원국에 없던 규칙의 별(정관 큰 나무)이 처음 들어와 나와 합을 해요(갑기합). 조직·직장·배우자 인연이 강하게 들어오는 때예요. 다만 시간 바위가 그 나무를 치고(갑경충), 쥐가 말과 부딪혀요(자오충). 인연과 마찰이 함께 오는 10년이에요. <b>얻는 것:</b> 사회적 자리, 인연. <b>부담:</b> 규칙과의 마찰.</p></div>
+    <div class="card"><h4>을축 · 33~43세 · 45</h4><p>풀(편관)과 소. 소가 쇠의 묶음을 더 단단히 해서 재주와 일이 더 늘어요. 풀이 바위와 묶여(을경합) 직설은 줄지만, 보석과 부딪혀(을신충) 압박이 있어요. 해야 할 일이 가장 많았을 시기예요. <b>얻는 것:</b> 실력, 책임. <b>부담:</b> 과로.</p></div>
+    <div class="card good"><h4>병인 · 43~53세 · 62</h4><p>처음으로 용신인 태양(정인)이 대운에 왔어요. 태양이 보석과 묶여(병신합) 넘치는 식상을 다스리고, 호랑이가 말과 불로 묶여(인오 반합) 흙을 데워요. 다만 호랑이가 배우자 자리 뱀을 꺾어요(인사 형·해). <b>얻는 것:</b> 안정, 자신감, 배움. <b>부담:</b> 배우자 자리의 조정.</p></div>
+    <div class="card good"><h4>정묘 · 53~63세 · 58</h4><p>32번에서 자세히 봐요. 등불(편인)이 용신을 이어 주고, 토끼(편관)가 일터 자리 닭을 정면으로 쳐요(묘유충). <b>얻는 것:</b> 온기, 직관. <b>부담:</b> 역할·환경 변화.</p></div>
+    <div class="card"><h4>무진 · 63~73세 · 58</h4><p>큰 땅과 용, 흙이 위아래로 와서 약한 흙을 든든히 받쳐 줘요. 용이 닭과 손잡아(진유합) 쇠를 키우기도 하지만, 몸이 단단해진 상태라 감당이 돼요. <b>얻는 것:</b> 버티는 힘, 자산. <b>부담:</b> 윗자리 소를 깨뜨림(축진파).</p></div>
+    <div class="card"><h4>기사 · 73~83세 · 52</h4><p>나와 같은 흙과 뱀(정인). 뱀이 배우자 자리 뱀과 겹치고 쇠의 묶음을 다시 강화해요. <b>얻는 것:</b> 자기 주관. <b>부담:</b> 기운 소모.</p></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s31">
+  <h2><span class="no">31</span>인생 주요 변곡점</h2>
+  <p class="note">일이 일어난다는 뜻이 아니라, 그런 종류의 변화 가능성이 상대적으로 강해지는 시기예요.</p>
+  <div class="pair">
+    <div><b>상승 가능성</b><span>병인 대운(2016~2026), 2026년 병오년, 무진 대운(2036~2046)</span></div>
+    <div><b>정체 가능성</b><span>계해 대운(1986~1996), 을축 대운 후반</span></div>
+    <div><b>변화가 강한 시기</b><span>계해 대운, 2019년·2031년(돼지의 해), 2026년 대운 교체, 2029년(대운과 닭의 충)</span></div>
+    <div><b>재물 변화</b><span>계해 대운, 2023년(편재의 해)</span></div>
+    <div><b>관계 변화</b><span>갑자 대운(규칙의 별과 합), 2024년(갑기합), 2028년(배우자 자리 합·형), 2031년(배우자 자리 충)</span></div>
+    <div><b>책임 증가</b><span>을축 대운, 2029년(쇠의 묶음 강화)</span></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s32">
+  <h2><span class="no">32</span>현재 대운 집중분석 · 정묘 (2026년 7월~)</h2>
+  <div class="pair">
+    <div><b>1. 핵심 주제</b><span>온기와 변화. 등불이 용신의 흐름을 이어 주고, 토끼가 사회 자리를 흔들어요.</span></div>
+    <div><b>2. 달라진 점</b><span>병인 대운의 태양(정인)이 '보살피는 불'이었다면, 정묘의 등불(편인)은 '혼자 깊어지는 불'이에요. 직관과 내면의 힘이 커져요.</span></div>
+    <div><b>3. 좋아지는 것</b><span>불이 계속 들어와 체력과 자신감이 유지돼요. 토끼의 나무가 불을 낳아 줘서 관성(나무)이 처음으로 '도움이 되는 규칙'으로 작동할 수 있어요.</span></div>
+    <div><b>4. 부담</b><span>토끼가 월지 닭을 정면으로 쳐서(묘유충) 일하는 자리, 사회적 역할, 쇠의 묶음 자체가 흔들려요. 넘치던 식상이 정리되는 좋은 면도 있지만, 역할 변화 스트레스가 따라와요.</span></div>
+    <div><b>5. 직업</b><span>하던 일의 형태가 바뀌거나 새 방식으로 옮겨 가기 쉬워요. 배움·자격·상담처럼 내면의 깊이를 쓰는 쪽이 맞아요.</span></div>
+    <div><b>6. 재물</b><span>큰 확장보다 정리의 10년이에요. 관성이 들어와 지출에 규칙을 세우기 좋아요.</span></div>
+    <div><b>7. 관계</b><span>토끼가 말과 깨뜨리는 관계(묘오파)라 자녀 자리와 미묘한 거리감이 생길 수 있어요. 자녀의 독립을 받아들이는 시기예요.</span></div>
+    <div><b>8. 가장 중요한 선택</b><span>쏟아 붓던 기운을 나에게 돌리는 것이에요. 이 대운에 시작하는 배움과 쉼이 63세 이후 무진 대운의 든든한 바닥이 돼요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s33">
+  <h2><span class="no">33</span>최근·현재·향후 세운</h2>
+  <p class="note">원국 → 대운 → 그해 순서로 겹쳐 봤어요. 지난 해는 가능성만 적었으니 실제와의 비교는 직접 해 보세요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>해</th><th class="num">점수</th><th>흐름</th><th>일·역할</th><th>재물</th><th>관계</th><th>주의점</th></tr></thead>
+    <tbody>
+      <tr><th>2023 계묘</th><td class="num score">45</td><td>토끼가 닭을 침(묘유충)</td><td>역할 흔들림</td><td>돈의 물 들어옴</td><td>자녀 자리와 깨뜨림(묘오파)</td><td>기운 소모</td></tr>
+      <tr><th>2024 갑진</th><td class="num score">52</td><td>규칙의 별과 합(갑기합)</td><td>책임·인연</td><td>용이 닭과 손잡아 일 늘어남</td><td>배우자·조직과 묶임</td><td>시간 바위와 충(갑경충)</td></tr>
+      <tr><th>2025 을사</th><td class="num score">46</td><td>쇠의 묶음 재완성</td><td>일이 몰림</td><td>지출</td><td>배우자 자리 겹침, 대운과 꺾임</td><td>과로</td></tr>
+      <tr><th>2026 병오</th><td class="num score">68</td><td>용신의 해, 7월 대운 교체</td><td>자신감 회복</td><td>안정</td><td>윗자리 소와 예민함</td><td>잠·신경</td></tr>
+      <tr><th>2027 정미</th><td class="num score">60</td><td>불과 흙의 해</td><td>무난</td><td>안정</td><td>윗자리 소와 충(축미충)</td><td>윗세대 일</td></tr>
+      <tr><th>2028 무신</th><td class="num score">45</td><td>배우자 자리 합·형(사신)</td><td>조정</td><td>지출</td><td>부부 사이 조정</td><td>예민함(대운 원진)</td></tr>
+      <tr><th>2029 기유</th><td class="num score">42</td><td>쇠의 묶음 강화, 대운과 충</td><td>할 일 폭증</td><td>소모</td><td>도움 요청 필요</td><td>번아웃</td></tr>
+      <tr><th>2030 경술</th><td class="num score">48</td><td>개가 말과 불로 묶임</td><td>회복 시작</td><td>보통</td><td>배우자 자리 원진·귀문</td><td>예민함</td></tr>
+      <tr><th>2031 신해</th><td class="num score">42</td><td>돼지가 배우자 자리를 침(사해충)</td><td>변동</td><td>보통</td><td>집·배우자 변화</td><td>이동·결정</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="mom-s34">
+  <h2><span class="no">34</span>가장 좋은 시기와 부담스러운 시기</h2>
+  <div class="cards">
+    <div class="card good"><h4>상대적으로 좋은 시기</h4><ul class="plain">
+      <li><b>병인 대운(2016~2026):</b> 처음 용신인 불이 대운으로 왔어요.</li>
+      <li><b>2026~2027년:</b> 불과 흙의 해가 연달아 와요.</li>
+      <li><b>무진 대운(2036~2046):</b> 흙이 몸을 받쳐 줘요.</li>
+      <li><b>매년 말의 달(6월)·양의 달(7월):</b> 불과 흙이 오는 달이에요.</li>
+    </ul></div>
+    <div class="card bad"><h4>상대적으로 부담이 큰 시기</h4><ul class="plain">
+      <li><b>계해 대운(1986~1996):</b> 물이 넘치고 배우자 자리 충돌이 있었어요.</li>
+      <li><b>2028~2029년:</b> 쇠가 몰리고 대운과 부딪혀요.</li>
+      <li><b>2031년:</b> 돼지가 배우자 자리를 쳐요.</li>
+      <li><b>매년 닭의 달(9월)·돼지의 달(11월):</b> 쇠와 물이 오는 달이에요.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="s" id="mom-s35">
+  <h2><span class="no">35</span>영역별 종합평가</h2>
+  <p class="note">50점은 중간값이에요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>영역</th><th class="num">점수</th><th>이유</th></tr></thead>
+    <tbody>
+      <tr><th>기본 원국 안정성</th><td class="num score">52</td><td>충은 없지만 식상으로 크게 쏠리고 몸이 약해요.</td></tr>
+      <tr><th>직업</th><td class="num score">62</td><td>재주가 뚜렷하고 독립형에 강해요. 조직 적응이 약점이에요.</td></tr>
+      <tr><th>재물</th><td class="num score">54</td><td>버는 길은 열려 있고 지키는 힘이 약해요.</td></tr>
+      <tr><th>인간관계</th><td class="num score">58</td><td>잘 챙기지만 직설이 관계를 다치게 할 수 있어요.</td></tr>
+      <tr><th>배우자</th><td class="num score">52</td><td>남편 별이 없고 배우자 자리가 자녀 쪽으로 쏠려요. 충은 없어요.</td></tr>
+      <tr><th>가족</th><td class="num score">58</td><td>가족을 챙기는 중심 역할이에요. 세대 사이 예민함이 있어요.</td></tr>
+      <tr><th>변화 대응</th><td class="num score">55</td><td>적응은 빠르지만 기운을 많이 써요.</td></tr>
+      <tr><th>자기관리</th><td class="num score">50</td><td>남을 먼저 챙기느라 나를 뒤로 미루기 쉬워요.</td></tr>
+      <tr><th>장기 성장성</th><td class="num score">62</td><td>43세 이후 불과 흙의 대운이 이어져 후반이 더 따뜻해요.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="mom-s36">
+  <h2><span class="no">36</span>현암 선생 최종 총평</h2>
+  <div class="pair">
+    <div><b>어떤 사람인가</b><span>손과 말로 무엇이든 만들어 내고, 주변 사람을 먹이고 챙기는 사람이에요.</span></div>
+    <div><b>가장 강한 무기</b><span>재주를 결과물로, 결과물을 돈으로 바꾸는 감각이에요.</span></div>
+    <div><b>가장 큰 약점</b><span>내 기운보다 많이 쓰는 것. 챙기다 지치는 것이에요.</span></div>
+    <div><b>잘못 고르면 손해가 큰 것</b><span>체력 이상으로 일을 벌리는 것, 위계가 강한 틀 안에 오래 묶이는 것이에요.</span></div>
+    <div><b>능력이 살아나는 환경</b><span>내 방식대로 일하고, 그 결과를 사람들이 바로 누리는 자리예요.</span></div>
+    <div><b>인생의 흐름</b><span>젊은 시절은 물이 많아 차갑고 바빴어요. 43세 이후 불이 들어와 따뜻해지고, 63세 이후 흙이 받쳐 줘요. 늦게 피는 명식입니다.</span></div>
+    <div><b>장기적으로 관리할 것</b><span>체력, 그리고 쏟는 기운의 방향이에요. 남을 위한 정성의 일부를 나에게 돌리는 연습이 필요해요.</span></div>
+  </div>
+  <blockquote class="saying">이 명식은 가을 들판의 흙이에요. 쇠를 키워 내느라 늘 기운을 쓰지만, 그 덕에 주변이 넉넉해져요. 다만 들판도 햇볕을 받아야 다음 해에 또 키워 낼 수 있어요. 받는 것을 어색해하지 말고, 지금 들어온 불의 운에 나를 데우는 시간을 꼭 넣으세요.<small>현암 선생의 한마디</small></blockquote>
+  <p class="note">태어난 시는 오시로 가정했어요. 출생 정보와 명리 계산만으로 분석했고, 가족 관계 정보는 판단 근거로 쓰지 않았어요.</p>
+</section>
+
+</main>
+</div>
+</div>
+
+</div>
+<div class="person-pane" id="pane-daughter" data-key="daughter" hidden><div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">현암 선생의 원국 정밀 분석</div>
+    <h1>정묘일주 · 봄밤의 등불</h1>
+    <div class="who">여성 · 2013년 5월 1일 양력 오후 6시 23분 · 서울 · 윤달 아님 · 분석 기준일 2026년 10월 7일 (만 13세)</div>
+  </div>
+  <div class="wheel" aria-hidden="true"><svg viewBox="0 0 200 200">
+<defs><radialGradient id="wg-daughter" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D6B26E" stop-opacity=".28"/><stop offset="100%" stop-color="#D6B26E" stop-opacity="0"/></radialGradient></defs>
+<circle cx="100" cy="100" r="98" fill="url(#wg-daughter)"/>
+<g class="spin">
+<circle cx="100" cy="100" r="94" fill="none" stroke="#D6B26E" stroke-opacity=".55" stroke-width="1"/>
+<circle cx="100" cy="100" r="76" fill="none" stroke="#D6B26E" stroke-opacity=".3" stroke-width="1"/>
+<text x="100.0" y="19.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">자</text>
+<line x1="119.7" y1="26.6" x2="124.3" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">축</text>
+<line x1="153.7" y1="46.3" x2="166.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">인</text>
+<line x1="173.4" y1="80.3" x2="190.8" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="185.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">묘</text>
+<line x1="173.4" y1="119.7" x2="190.8" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">진</text>
+<line x1="153.7" y1="153.7" x2="166.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">사</text>
+<line x1="119.7" y1="173.4" x2="124.3" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="100.0" y="189.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">오</text>
+<line x1="80.3" y1="173.4" x2="75.7" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">미</text>
+<line x1="46.3" y1="153.7" x2="33.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">신</text>
+<line x1="26.6" y1="119.7" x2="9.2" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="15.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">유</text>
+<line x1="26.6" y1="80.3" x2="9.2" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">술</text>
+<line x1="46.3" y1="46.3" x2="33.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">해</text>
+<line x1="80.3" y1="26.6" x2="75.7" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+</g>
+<g class="spin2">
+<circle cx="100" cy="100" r="54" fill="none" stroke="#D6B26E" stroke-opacity=".25" stroke-dasharray="2 4"/>
+<circle cx="100.0" cy="46.0" r="11" fill="#0C1222" stroke="#62C795" stroke-width="1.2"/><text x="100.0" y="50.0" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#62C795">목</text>
+<circle cx="151.4" cy="83.3" r="11" fill="#0C1222" stroke="#F0715A" stroke-width="1.2"/><text x="151.4" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#F0715A">화</text>
+<circle cx="131.7" cy="143.7" r="11" fill="#0C1222" stroke="#E0B25E" stroke-width="1.2"/><text x="131.7" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E0B25E">토</text>
+<circle cx="68.3" cy="143.7" r="11" fill="#0C1222" stroke="#E4E6F0" stroke-width="1.2"/><text x="68.3" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E4E6F0">금</text>
+<circle cx="48.6" cy="83.3" r="11" fill="#0C1222" stroke="#7C9CF0" stroke-width="1.2"/><text x="48.6" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#7C9CF0">수</text>
+</g>
+<circle cx="100" cy="100" r="30" fill="#0C1222" stroke="#D6B26E" stroke-opacity=".8"/>
+<circle cx="100" cy="100" r="25" fill="none" stroke="#D6B26E" stroke-opacity=".35"/>
+<text x="100" y="97" text-anchor="middle" font-family="Song Myung, serif" font-size="13" fill="#F1D9A0">현암</text>
+<text x="100" y="113" text-anchor="middle" font-family="Song Myung, serif" font-size="9.5" fill="#D6B26E" letter-spacing="2">선생</text>
+</svg></div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차"><div class="tt">목차</div><ol class="toc-list"></ol></nav>
+<main >
+
+<section class="s" id="daughter-s0">
+  <h2><span class="no">0</span>한눈에 보는 결론</h2>
+  <div class="legend"><span><span class="tag t-c">계산</span>확정할 수 있는 값</span><span><span class="tag t-i">명리 해석</span>전통 명리 체계에 따른 해석</span><span><span class="tag t-r">현실 가능성</span>현실에서 나타나기 쉬운 모습</span></div>
+  <p class="lead">늦봄 저녁에 켜진 등불이에요. 이 명식의 본질은 <b>밝고 재주 많은 불이, 하나뿐인 땔감(토끼)에 기대어 타는 구조</b>입니다. 해 아래의 뱀과 달 위의 태양이 같은 불로 든든히 응원해서 자존심과 기세가 있어요. 늦봄의 흙이 재주와 표현의 힘을 줍니다.</p>
+  <p>약점은 땔감이에요. 등불의 유일한 나무인 일지 토끼가, 시지 닭과 정면으로 부딪혀요(묘유충). 마음의 뿌리와 현실의 기운이 맞서는 모양이라, 기분과 의욕에 파도가 생기기 쉬워요. 해 위의 비·이슬이 등불을 정면으로 건드려(정계충) 규칙과 압박에도 민감합니다.</p>
+  <p>필요한 약은 나무예요. 배움과 응원, 마음을 받쳐 주는 기운(인성)입니다. 그다음이 불, 곧 친구와 자신감이에요. 지금(2024~2034년) 무오 대운은 불이 들어오는 10년이라, 이 아이에게는 힘이 붙는 시기예요.</p>
+  <p class="note">아직 열세 살이에요. 이 분석은 타고난 기질과 흐름을 읽는 것이지, 아이의 미래를 정하는 것이 아니에요. 특히 연애·배우자·자녀 항목은 먼 훗날의 경향으로만 짧게 적었어요.</p>
+</section>
+
+<section class="s" id="daughter-s1">
+  <h2><span class="no">1</span>출생정보와 계산 기준</h2>
+  <div class="tbl"><table><tbody>
+    <tr><th>성별</th><td>여성</td></tr>
+    <tr><th>생년월일</th><td>2013년 5월 1일, 양력, 윤달 아님</td></tr>
+    <tr><th>출생시각</th><td>오후 6시 23분</td></tr>
+    <tr><th>출생지역</th><td>서울 (약 동경 127.0도)</td></tr>
+    <tr><th>기준</th><td>해는 입춘, 달은 절기 시각, 날은 0시, 시는 진태양시 기준</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="s" id="daughter-s2">
+  <h2><span class="no">2</span>진태양시 계산</h2>
+  <div class="tbl"><table><tbody>
+    <tr><th>출생신고 시각</th><td>18시 23분</td></tr>
+    <tr><th>표준시·서머타임</th><td>한국 표준시. 2013년 서머타임 없음</td></tr>
+    <tr><th>경도 보정</th><td><b>약 −32분</b></td></tr>
+    <tr><th>균시차</th><td>5월 1일 <b>약 +3분</b></td></tr>
+    <tr><th>최종 진태양시</th><td><b>약 17시 53분</b></td></tr>
+    <tr><th>최종 적용</th><td>닭 시(오후 5시~7시)</td></tr>
+  </tbody></table></div>
+  <p><span class="tag t-c">계산</span>닭 시 한가운데라 앞뒤 경계와 53분 이상 떨어져 있어요. 시주가 바뀔 여지가 없어요.</p>
+</section>
+
+<section class="s" id="daughter-s3">
+  <h2><span class="no">3</span>절기와 사주팔자 확정</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th>경계</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><th>해</th><td>2013년 입춘 2월 4일</td><td>입춘 이후 → <b>계사년</b> (뱀띠 확정)</td></tr>
+      <tr><th>달</th><td>청명 4월 4일 밤 11시 50분 ~ 입하 5월 5일 오후 5시 4분</td><td>그 사이 → 용의 달, <b>병진월</b></td></tr>
+      <tr><th>날</th><td>날짜 계산</td><td><b>정묘일</b></td></tr>
+      <tr><th>시</th><td>진태양시 17시 53분</td><td>정화 날의 닭 시 → <b>기유시</b></td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-c">계산</span>입하 나흘 전이라 달 경계와는 여유가 있어요.</p>
+</section>
+
+<section class="s" id="daughter-s4">
+  <h2><span class="no">4</span>원국 표</h2>
+  <div class="pillars">
+    <div class="pil"><span class="lab">시주</span><span class="tg">식신</span><span class="ch">기</span><span class="na">논밭의 흙</span><span class="ch">유</span><span class="na">닭 · 한가을의 쇠</span><span class="tg">편재</span></div>
+    <div class="pil me"><span class="lab">일주 · 나</span><span class="tg">나</span><span class="ch">정</span><span class="na">등불</span><span class="ch">묘</span><span class="na">토끼 · 한봄의 나무</span><span class="tg">편인</span></div>
+    <div class="pil"><span class="lab">월주</span><span class="tg">겁재</span><span class="ch">병</span><span class="na">하늘의 태양</span><span class="ch">진</span><span class="na">용 · 늦봄 축축한 흙</span><span class="tg">상관</span></div>
+    <div class="pil"><span class="lab">년주</span><span class="tg">편관</span><span class="ch">계</span><span class="na">비·이슬</span><span class="ch">사</span><span class="na">뱀 · 초여름의 불</span><span class="tg">겁재</span></div>
+  </div>
+  <p><span class="tag t-c">계산</span>일간은 정화, 등불·촛불 같은 기운이에요. 월령은 용, 늦봄의 축축한 흙입니다.</p>
+  <p><span class="tag t-i">명리 해석</span>오행이 다섯 가지 모두 있는 명식이에요. 불이 셋으로 가장 많고, 나무는 일지 토끼 하나예요. 그 토끼가 이 등불의 생명줄입니다.</p>
+</section>
+
+<section class="s" id="daughter-s5">
+  <h2><span class="no">5</span>지장간과 십성</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>자리</th><th>땅 글자</th><th>숨은 기운 (앞 → 뒤)</th><th>십성</th><th>등불의 생애 단계</th></tr></thead>
+    <tbody>
+      <tr><th>년</th><td>뱀</td><td>큰 땅(무토) · 바위(경금) · <b>태양(병화)</b></td><td>상관 · 정재 · 겁재</td><td>제왕 (힘이 가장 센 단계)</td></tr>
+      <tr><th>월</th><td>용</td><td>풀(을목) · 비(계수) · <b>큰 땅(무토)</b></td><td>편인 · 편관 · 상관</td><td>쇠 (힘이 기우는 단계)</td></tr>
+      <tr><th>일</th><td>토끼</td><td>큰 나무(갑목) · <b>풀(을목)</b></td><td>정인 · 편인</td><td>병 (기운이 여린 단계)</td></tr>
+      <tr><th>시</th><td>닭</td><td>바위(경금) · <b>보석(신금)</b></td><td>정재 · 편재</td><td>장생 (새로 시작하는 단계)</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-c">계산</span>청명 후 27일째라 용 달의 기운 중 큰 땅(무토)이 주관하던 때(사령)예요. 큰 땅은 드러나지 않았고, 용 속의 비(계수)가 해 윗자리에 드러나 있어요.</p>
+  <p><span class="tag t-i">명리 해석</span>해 자리 뱀이 등불의 가장 힘센 자리(제왕)예요. 뿌리가 해, 곧 먼 곳에 있는 셈이라 어릴 때부터 집안·윗세대의 응원이 힘이 돼요. 정작 내 바로 아래 토끼는 기운이 여린 단계(병)입니다.</p>
+</section>
+
+<section class="s" id="daughter-s6">
+  <h2><span class="no">6</span>음양 구조</h2>
+  <p><span class="tag t-c">계산</span>음이 여섯(비·이슬, 뱀, 등불, 토끼, 논밭 흙, 닭), 양이 둘(태양, 용)이에요.</p>
+  <p><span class="tag t-i">명리 해석</span>음기가 강한 명식에 일간도 음이에요. 불이 많아 겉은 밝지만, 기운의 결은 섬세하고 안으로 모으는 쪽이에요.</p>
+  <p><span class="tag t-r">현실 가능성</span>밝고 활발해 보이지만 속으로는 눈치가 빠르고 감정을 오래 품는 아이일 가능성이 높아요. 과하면 서운함을 말하지 않고 담아 두는 모양이 돼요.</p>
+</section>
+
+<section class="s" id="daughter-s7">
+  <h2><span class="no">7</span>오행 실제 세력</h2>
+  <p><span class="tag t-c">계산</span>겉 글자 수로는 불 3, 흙 2, 나무 1, 쇠 1, 물 1이에요.</p>
+  <div class="bars">
+    <div class="bar"><b>불</b><div class="tr"><div class="fl" style="width:62%;background:var(--g2)"></div></div><span class="lv">강함</span></div>
+    <div class="bar"><b>흙</b><div class="tr"><div class="fl" style="width:60%;background:var(--g2)"></div></div><span class="lv">강함</span></div>
+    <div class="bar"><b>쇠</b><div class="tr"><div class="fl" style="width:55%;background:var(--g3)"></div></div><span class="lv">보통 이상</span></div>
+    <div class="bar"><b>나무</b><div class="tr"><div class="fl" style="width:30%;background:var(--g5)"></div></div><span class="lv">약함</span></div>
+    <div class="bar"><b>물</b><div class="tr"><div class="fl" style="width:25%;background:var(--g4)"></div></div><span class="lv">약함</span></div>
+  </div>
+  <div class="pair">
+    <div><b>불 · 강함</b><span>등불, 태양, 뱀(제왕). 다만 늦봄은 불이 아직 왕성하지 않은 계절이라 '매우 강함'은 아니에요.</span></div>
+    <div><b>흙 · 강함</b><span>월령 용, 시간 논밭 흙. 늦봄은 흙이 주관하는 때라 힘이 실려요.</span></div>
+    <div><b>쇠 · 보통 이상</b><span>시지 닭 하나지만, 용과 손잡고(진유합) 뱀과 반쯤 묶여(사유 반합) 겉보다 커요.</span></div>
+    <div><b>나무 · 약함</b><span>일지 토끼와 용 속 풀뿐이에요. 늦봄이라 나무 기운이 아직 남아 있지만, 토끼가 닭과 부딪혀(묘유충) 다쳐 있어요.</span></div>
+    <div><b>물 · 약함</b><span>해 윗자리 비·이슬과 용 속 비뿐이에요. 하지만 드러난 자리에서 등불을 정면으로 건드려 존재감이 있어요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s8">
+  <h2><span class="no">8</span>월령과 계절</h2>
+  <p><span class="tag t-i">명리 해석</span>청명과 입하 사이, 봄이 끝나고 여름이 오는 길목이에요. 월지 용은 축축한 흙이고 물을 저장하는 창고(수고)이기도 해요. 등불에게 흙은 내가 만들어 내는 재주와 표현(상관)이라, 계절이 등불의 힘을 밖으로 끌어내요. 생애 단계로는 '쇠', 기세가 기우는 자리예요.</p>
+  <p>다행히 늦봄이라 나무 기운이 아직 남아 등불을 받쳐 주고, 여름이 다가오며 불이 점점 힘을 얻는 계절이에요. 자랄수록 기운이 붙는 쪽으로 볼 수 있어요.</p>
+</section>
+
+<section class="s" id="daughter-s9">
+  <h2><span class="no">9</span>신강·신약</h2>
+  <div class="pair">
+    <div><b>득령</b><span>없음. 월령이 힘을 빼는 흙이에요. 다만 늦봄이라 나무 기운이 조금 남아 있어요.</span></div>
+    <div><b>득지</b><span>있음. 일지 토끼가 나를 돕는 나무(편인)예요. 하지만 닭과 부딪혀 다쳐 있어요.</span></div>
+    <div><b>득세</b><span>있음. 월간 태양(겁재)과 해 자리 뱀(제왕 뿌리)이 응원해요.</span></div>
+    <div><b>힘을 빼는 쪽</b><span>용(상관)과 논밭 흙(식신)이 힘을 빼고, 닭(재성)이 합으로 커지며, 비·이슬(편관)이 등불을 정면으로 쳐요.</span></div>
+  </div>
+  <p><span class="tag t-i">명리 해석</span>결론은 <b>중화에 가까운 신약</b>이에요. 응원하는 불은 있지만, 땔감인 나무가 다쳐 있고 힘을 빼는 기운이 조금 더 많아요. 크게 기운 사주가 아니라, 운에 따라 쉽게 좋아지는 균형형에 가까워요.</p>
+</section>
+
+<section class="s" id="daughter-s10">
+  <h2><span class="no">10</span>십성 핵심 구조</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>십성</th><th>쉬운 뜻</th><th>위치·세력</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><th>상관</th><td>틀을 깨는 표현</td><td>월령 용, 뱀 속</td><td class="lv-s">강함</td></tr>
+      <tr><th>식신</th><td>꾸준히 만들어 내는 힘</td><td>시간 드러남</td><td class="lv-s">보통 이상</td></tr>
+      <tr><th>겁재</th><td>경쟁하는 기운</td><td>월간 태양, 뱀 본기운(제왕)</td><td class="lv-s">강함</td></tr>
+      <tr><th>편재·정재</th><td>움직이는 돈·쌓는 돈</td><td>시지 닭, 합으로 커짐</td><td class="lv-m">보통 이상</td></tr>
+      <tr><th>편관</th><td>나를 누르는 규칙·압박</td><td>해 윗자리 드러남, 등불과 충</td><td class="lv-m">보통 (존재감 큼)</td></tr>
+      <tr><th>편인·정인</th><td>직감·배움·보살핌</td><td>일지 토끼, 용 속</td><td class="lv-w">약함 (충으로 다침)</td></tr>
+      <tr><th>비견</th><td>나와 같은 기운</td><td>없음</td><td class="lv-m">없음</td></tr>
+      <tr><th>정관</th><td>규칙과 질서</td><td>없음</td><td class="lv-m">없음</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="plain">
+    <li><b>1순위 상관·식신:</b> 말, 그림, 글, 손재주 같은 표현의 재능. 새로운 걸 만들어 보는 힘.</li>
+    <li><b>2순위 겁재:</b> 지기 싫어하는 마음, 자존심, 친구 사이의 존재감.</li>
+    <li><b>3순위 재성:</b> 현실 감각, 갖고 싶은 것을 분명히 아는 마음.</li>
+    <li><b>4순위 편관:</b> 규칙과 평가에 대한 긴장감.</li>
+  </ul>
+  <p><span class="tag t-i">명리 해석</span>재주(식상)가 현실(재성)로 흘러가는 길이 열려 있어요. 대신 마음을 받쳐 주는 인성이 약해서, 칭찬과 응원 같은 '마음의 땔감'이 이 아이에게 유난히 중요해요.</p>
+</section>
+
+<section class="s" id="daughter-s11">
+  <h2><span class="no">11</span>합·충·형·파·해</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>관계</th><th>어디와 어디</th><th>쉬운 뜻</th><th>영향을 주는 영역</th></tr></thead>
+    <tbody>
+      <tr><th>묘유충</th><td>일지 ↔ 시지</td><td>토끼와 닭이 정면 충돌</td><td>마음의 뿌리(인성)와 현실(재성)이 맞섬. 기분의 기복, 공부와 하고 싶은 것 사이의 갈등</td></tr>
+      <tr><th>정계충</th><td>일간 ↔ 년간</td><td>비·이슬이 등불을 건드림</td><td>규칙·평가·윗사람에 대한 긴장. 책임감의 근거이기도 함</td></tr>
+      <tr><th>진유합</th><td>월지 ↔ 시지</td><td>용과 닭이 손잡음</td><td>재주가 현실의 결과로 이어짐</td></tr>
+      <tr><th>사유 반합</th><td>년지 ↔ 시지</td><td>뱀과 닭이 쇠로 반쯤 묶임</td><td>현실 감각이 커지고, 불의 뿌리(뱀)가 일부 쇠로 끌려감</td></tr>
+      <tr><th>묘진 해</th><td>일지 ↔ 월지</td><td>토끼와 용이 은근히 방해</td><td>가까운 친구·형제 같은 관계에서의 미묘한 서운함</td></tr>
+      <tr><th>계병</th><td>년간 → 월간</td><td>비·이슬이 태양을 누름</td><td>응원하는 기운을 규칙이 견제</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-i">명리 해석</span>원국의 중심은 <b>묘유충</b>이에요. 등불의 유일한 땔감이 흔들리는 자리라, 이 아이의 마음은 안정과 자극 사이를 오가기 쉬워요. 충은 움직임이기도 해서, 호기심과 변화를 즐기는 면으로도 나타나요.</p>
+</section>
+
+<section class="s" id="daughter-s12">
+  <h2><span class="no">12</span>조후</h2>
+  <p><span class="tag t-i">명리 해석</span>늦봄의 축축한 흙, 비·이슬이 있지만 불이 셋이라 춥지도 덥지도 않은 무난한 조후예요. 약간 습한 쪽이라 불과 나무가 오면 산뜻해져요. 조후로 급한 약은 없고, 억부(신약을 돕는 나무와 불)가 용신을 정해요.</p>
+</section>
+
+<section class="s" id="daughter-s13">
+  <h2><span class="no">13</span>격국</h2>
+  <p><span class="tag t-i">명리 해석</span>격을 하나로 단정하기 어려운 명식이에요. 월지 용의 본기운인 큰 땅(상관)이 태어난 때를 주관했지만 드러나지 않았고, 대신 용 속의 비(편관)가 해 윗자리에 드러났어요. 그래서 <b>상관격의 바탕 위에 편관이 드러난 모양</b>으로 봐요. 상관과 편관이 함께 있으면 재주와 규칙이 서로 견제해요. 잘 쓰이면 '규칙 안에서 빛나는 재주', 어긋나면 '규칙에 대한 반발'이에요. 어느 쪽으로 자랄지는 주변 어른들의 태도가 크게 좌우해요.</p>
+</section>
+
+<section class="s" id="daughter-s14">
+  <h2><span class="no">14</span>용신·희신·기신</h2>
+  <div class="cards">
+    <div class="card good"><h4>핵심 용신 · 나무</h4><p>등불의 땔감이에요. 배움, 응원, 마음을 받쳐 주는 어른의 기운이에요. 운에서 오면 마음이 안정되고 공부가 잘 붙어요.</p></div>
+    <div class="card good"><h4>보조 용신 · 불</h4><p>나와 같은 기운이에요. 친구, 자신감, 체력이에요.</p></div>
+    <div class="card"><h4>조건부 · 물</h4><p>규칙의 기운이에요. 나무와 함께 오면 나무를 키워 좋지만, 혼자 오면 등불을 꺼요.</p></div>
+    <div class="card bad"><h4>기신 · 쇠</h4><p>땔감인 토끼를 치는 기운이에요. 많아지면 마음이 흔들리고 현실의 부담이 커져요.</p></div>
+    <div class="card bad"><h4>부담 · 축축한 흙</h4><p>재주의 기운이지만, 많아지면 등불의 힘을 빼고 불을 덮어요.</p></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s15">
+  <h2><span class="no">15</span>이 사주의 가장 독특한 특징</h2>
+  <ul class="plain">
+    <li><b>유일한 땔감(토끼)이 닭과 정면 충돌.</b> 마음의 뿌리가 흔들리기 쉬운 구조예요. 그래서 응원과 안정감이 다른 아이들보다 더 크게 작용해요.</li>
+    <li><b>해 자리 뱀이 제왕.</b> 가장 강한 뿌리가 집안·윗세대 자리에 있어요. 가족의 응원이 이 아이의 가장 큰 힘이에요.</li>
+    <li><b>규칙의 별(편관)이 해 윗자리에서 나를 정면으로 침.</b> 평가와 규칙에 민감해요. 긴장 속에서 오히려 책임감을 보이는 면도 있어요.</li>
+    <li><b>닭이 용·뱀 양쪽과 손잡음.</b> 현실 감각, 무엇을 원하는지 아는 힘이 나이에 비해 분명해요.</li>
+    <li><b>다섯 기운이 모두 있음.</b> 한쪽으로 크게 치우치지 않아, 운의 도움을 받으면 금방 균형을 찾는 명식이에요.</li>
+    <li><b>재주(상관) 월령에 겁재 태양.</b> 무대에서 빛나고 싶은 마음, 표현으로 인정받고 싶은 마음이 강해요.</li>
+  </ul>
+</section>
+
+<section class="s" id="daughter-s16">
+  <h2><span class="no">16</span>성격과 사고방식</h2>
+  <div class="pair">
+    <div><b>겉모습</b><span>밝고 따뜻하며 표정이 살아 있어요(불 셋).</span></div>
+    <div><b>내부 사고</b><span>섬세하고 감정을 오래 품어요(음 강, 토끼 병지).</span></div>
+    <div><b>판단 방식</b><span>느낌과 현실 감각을 함께 써요. 하고 싶은 것과 해야 하는 것을 저울질해요.</span></div>
+    <div><b>행동 속도</b><span>마음이 정해지면 빨라요(불).</span></div>
+    <div><b>스트레스 반응</b><span>평가·지적에 긴장하고(편관 충), 기분이 오르내려요(묘유충). 위축되거나 반발하는 두 갈래로 나타날 수 있어요.</span></div>
+    <div><b>경쟁 상황</b><span>지기 싫어해요(겁재 제왕). 인정받으면 크게 힘을 내요.</span></div>
+    <div><b>인간관계</b><span>친구가 중요하고, 친구 사이 존재감이 커요. 가까운 사이의 서운함에 예민해요(묘진 해).</span></div>
+    <div><b>감정 표현</b><span>재주(그림·글·말)로는 잘 표현하지만, 진짜 속마음은 아껴요.</span></div>
+    <div><b>약점이 드러날 때</b><span>비교당하거나 일방적으로 규칙을 강요받을 때예요.</span></div>
+    <div><b>장점이 가장 클 때</b><span>재주를 인정받고, 스스로 정한 목표를 향해 갈 때예요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s17">
+  <h2><span class="no">17</span>장점과 약점</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>성향</th><th>장점</th><th>과하면</th></tr></thead>
+    <tbody>
+      <tr><th>표현력 (상관)</th><td>생각을 재치 있게 드러냄</td><td>말대꾸, 규칙에 대한 반발</td></tr>
+      <tr><th>승부욕 (겁재)</th><td>목표를 향한 집중</td><td>비교에 상처받음</td></tr>
+      <tr><th>현실 감각 (재성)</th><td>원하는 걸 분명히 앎</td><td>당장의 것에 마음이 쏠림</td></tr>
+      <tr><th>섬세함 (음)</th><td>남의 마음을 잘 읽음</td><td>혼자 서운함을 키움</td></tr>
+      <tr><th>긴장감 (편관)</th><td>책임감, 맡은 일을 해냄</td><td>시험·평가 앞 위축</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="daughter-s18">
+  <h2><span class="no">18</span>능력과 재능</h2>
+  <p class="note">지금은 가능성의 결이에요. 자라면서 얼마든지 바뀌어요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>영역</th><th>평가</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><th>창작·표현</th><td class="lv-s">강</td><td>상관 월령 + 식신 드러남</td></tr>
+      <tr><th>말·발표</th><td class="lv-s">강</td><td>상관, 불의 밝음</td></tr>
+      <tr><th>기획</th><td class="lv-s">중상</td><td>새로운 방식을 떠올리는 상관</td></tr>
+      <tr><th>영업·협상</th><td class="lv-s">중상</td><td>재주가 현실로 이어지는 길</td></tr>
+      <tr><th>리더십</th><td class="lv-s">중상</td><td>겁재 제왕, 무리 속 존재감</td></tr>
+      <tr><th>교육</th><td class="lv-m">중상</td><td>표현은 강하고 인성은 운으로 보완</td></tr>
+      <tr><th>기술</th><td class="lv-m">중상</td><td>식신의 손재주</td></tr>
+      <tr><th>실행</th><td class="lv-m">중</td><td>마음이 정해지면 빠르나 기복</td></tr>
+      <tr><th>분석·연구</th><td class="lv-m">중</td><td>인성이 약해 오래 파고드는 힘은 운에서 보충</td></tr>
+      <tr><th>관리·조직 운영</th><td class="lv-m">중</td><td>규칙 감각은 있으나 상관과 견제</td></tr>
+      <tr><th>독립 업무</th><td class="lv-s">중상</td><td>자기 방식이 분명함</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="daughter-s19">
+  <h2><span class="no">19</span>직업운 (먼 훗날의 경향)</h2>
+  <p><span class="tag t-i">명리 해석</span>재주와 표현으로 사람 앞에 서는 일, 그리고 그 재주를 결과물로 만드는 일이 맞는 구조예요. 조직 안에서는 규칙의 긴장(편관)과 반발(상관)이 함께 있어, 재량이 있는 자리에서 더 빛나요.</p>
+  <p><span class="tag t-r">현실 가능성</span>예시로는 디자인·미디어·콘텐츠·공연 같은 표현 분야, 교육·상담, 마케팅·기획, 서비스·브랜드 운영 같은 쪽이 있어요. 지금 정할 일은 아니고, 재주를 여러 갈래로 경험해 보게 하는 것이 이 명식에 맞아요.</p>
+</section>
+
+<section class="s" id="daughter-s20">
+  <h2><span class="no">20</span>재물운 (먼 훗날의 경향)</h2>
+  <div class="pair">
+    <div><b>버는 힘</b><span>중상. 재주가 현실로 흐르는 길(식상생재)이 있어요.</span></div>
+    <div><b>지키는 힘</b><span>중하. 신약 쪽이고 경쟁 기운(겁재)이 있어 갖고 싶은 데 쓰기 쉬워요.</span></div>
+    <div><b>소비 성향</b><span>마음에 드는 것에 분명하게 써요.</span></div>
+    <div><b>투기</b><span>약. 토끼를 치는 쇠(재성)가 커지면 마음까지 흔들려요.</span></div>
+  </div>
+  <p><span class="tag t-r">현실 가능성</span>지금 나이에는 용돈을 스스로 계획하고 기록하는 습관이 이 명식의 약점을 미리 다듬어 줘요.</p>
+</section>
+
+<section class="s" id="daughter-s21">
+  <h2><span class="no">21</span>인간관계</h2>
+  <div class="pair">
+    <div><b>처음</b><span>밝고 금방 어울려요.</span></div>
+    <div><b>가까워진 뒤</b><span>의리가 있고, 그만큼 서운함도 커요.</span></div>
+    <div><b>친구</b><span>무리의 중심에 서고 싶은 마음이 있어요. 비교되는 관계엔 예민해요.</span></div>
+    <div><b>선생님·어른</b><span>평가하는 어른 앞에서 긴장해요. 인정해 주는 어른에게는 크게 마음을 열어요.</span></div>
+    <div><b>잘 맞는 사람</b><span>나무와 불의 기운, 곧 응원하고 함께 즐거워해 주는 사람이요.</span></div>
+    <div><b>부딪히는 사람</b><span>비교하고 지적하는 사람, 현실만 따지는 사람이요.</span></div>
+    <div><b>갈등과 정리</b><span>바로 터뜨리기보다 서운함을 쌓았다가 거리를 두는 쪽이에요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s22">
+  <h2><span class="no">22</span>연애·배우자운 (성인 이후의 경향)</h2>
+  <p><span class="tag t-i">명리 해석</span>배우자 자리는 토끼, 마음을 받쳐 주는 기운(편인)이에요. 성인이 된 뒤에는 정신적으로 의지가 되고 대화가 통하는 사람을 찾는 쪽으로 볼 수 있어요. 이 자리가 닭과 부딪혀(묘유충) 관계에서 마음의 기복이 생기기 쉬우니, 서두르지 않고 천천히 확인하는 연애가 맞아요. 먼 훗날의 이야기라 여기까지만 적을게요.</p>
+</section>
+
+<section class="s" id="daughter-s23">
+  <h2><span class="no">23</span>가족운</h2>
+  <p><span class="tag t-i">명리 해석</span>가장 강한 뿌리(뱀, 제왕)가 해, 곧 집안·윗세대 자리에 있어요. 가족과 윗세대의 응원이 이 아이의 가장 큰 힘이 되는 구조예요. 등불에게 어머니 별은 나무(인성)로 일지 토끼 가까이에 있고, 아버지 별은 쇠(재성)로 시지 닭에 있어요. 토끼와 닭이 부딪히는 모양이라, 부모님의 의견 차이를 아이가 민감하게 느끼기 쉬워요. 두 분이 아이 앞에서 한목소리를 내 주는 것이 이 명식에 특히 중요해요.</p>
+  <p class="note">실제 가족 관계는 원국만으로 판단하지 않아요.</p>
+</section>
+
+<section class="s" id="daughter-s24">
+  <h2><span class="no">24</span>자녀운 (먼 훗날의 경향)</h2>
+  <p><span class="tag t-i">명리 해석</span>여성에게 자녀 별은 식상(흙)이에요. 월령과 시간에 있어 힘이 있고, 자녀를 아끼고 재주를 키워 주는 쪽으로 볼 수 있어요. 먼 훗날의 경향으로만 적어 둘게요.</p>
+</section>
+
+<section class="s" id="daughter-s25">
+  <h2><span class="no">25</span>건강의 명리적 경향</h2>
+  <p class="note">명리학적 경향일 뿐, 건강 진단이 아니에요.</p>
+  <ul class="plain">
+    <li><b>불 많음:</b> 열이 오르고 잠이 늦어지는 경향. 생활 리듬이 컨디션을 좌우해요.</li>
+    <li><b>다친 토끼:</b> 긴장이 몸에 쌓이는 경향(어깨·눈 피로).</li>
+    <li><b>쇠·축축한 흙:</b> 호흡기·피부·소화가 계절을 타는 경향.</li>
+    <li><b>운의 영향:</b> 나무와 불의 해에 활기, 쇠의 해에 지치기 쉬워요.</li>
+  </ul>
+</section>
+
+<section class="s" id="daughter-s26">
+  <h2><span class="no">26</span>이동·변화운</h2>
+  <ul class="plain">
+    <li><b>이동의 글자:</b> 일지 토끼 기준 이동의 글자(역마)가 뱀인데, 해 자리에 이미 있어요. 활동적이고 새로운 곳에 대한 호기심이 있는 구조예요.</li>
+    <li><b>환경 변화:</b> 묘유충이 있어 변화에 설레면서도 마음이 흔들려요. 큰 변화 앞에서는 적응할 시간을 넉넉히 주는 게 좋아요.</li>
+    <li><b>민감한 해:</b> 닭이 오는 해(2029년)는 토끼를 다시 쳐서 환경 변화가 크게 느껴지기 쉬워요.</li>
+  </ul>
+</section>
+
+<section class="s" id="daughter-s27">
+  <h2><span class="no">27</span>인생 강점 TOP 5</h2>
+  <div class="cards">
+    <div class="card good"><h4>1. 표현의 재능</h4><dl><div><dt>근거</dt><dd>상관 월령 + 식신</dd></div><div><dt>잘 쓰이면</dt><dd>사람을 움직이는 말과 작품</dd></div><div><dt>과하면</dt><dd>규칙과의 마찰</dd></div></dl></div>
+    <div class="card good"><h4>2. 밝은 기운</h4><dl><div><dt>근거</dt><dd>불 셋</dd></div><div><dt>잘 쓰이면</dt><dd>주변을 환하게 함</dd></div><div><dt>과하면</dt><dd>지칠 때까지 밝은 척</dd></div></dl></div>
+    <div class="card good"><h4>3. 승부욕과 자존심</h4><dl><div><dt>근거</dt><dd>겁재 태양 + 제왕 뱀</dd></div><div><dt>잘 쓰이면</dt><dd>목표를 끝까지 밀어붙임</dd></div><div><dt>과하면</dt><dd>비교에 쉽게 상처</dd></div></dl></div>
+    <div class="card good"><h4>4. 현실 감각</h4><dl><div><dt>근거</dt><dd>재성이 합으로 커짐</dd></div><div><dt>잘 쓰이면</dt><dd>재주를 결과로 만듦</dd></div><div><dt>과하면</dt><dd>당장의 것에 쏠림</dd></div></dl></div>
+    <div class="card good"><h4>5. 균형 회복력</h4><dl><div><dt>근거</dt><dd>오행 다섯이 모두 있음</dd></div><div><dt>잘 쓰이면</dt><dd>좋은 운에서 빠르게 성장</dd></div><div><dt>과하면</dt><dd>운에 따라 기분 변화</dd></div></dl></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s28">
+  <h2><span class="no">28</span>인생 약점 TOP 5</h2>
+  <div class="cards">
+    <div class="card bad"><h4>1. 흔들리는 마음의 뿌리</h4><dl><div><dt>근거</dt><dd>묘유충</dd></div><div><dt>언제</dt><dd>쇠·닭이 오는 해</dd></div><div><dt>장기적으로</dt><dd>의욕의 기복</dd></div></dl></div>
+    <div class="card bad"><h4>2. 평가에 대한 긴장</h4><dl><div><dt>근거</dt><dd>정계충 (편관이 나를 침)</dd></div><div><dt>언제</dt><dd>물이 혼자 오는 해</dd></div><div><dt>장기적으로</dt><dd>중요한 순간의 위축</dd></div></dl></div>
+    <div class="card bad"><h4>3. 약한 인성</h4><dl><div><dt>근거</dt><dd>나무가 하나, 그것도 다침</dd></div><div><dt>언제</dt><dd>응원이 없을 때</dd></div><div><dt>장기적으로</dt><dd>오래 파고드는 공부의 어려움</dd></div></dl></div>
+    <div class="card bad"><h4>4. 비교에 대한 예민함</h4><dl><div><dt>근거</dt><dd>겁재 + 음 강함</dd></div><div><dt>언제</dt><dd>경쟁 환경</dd></div><div><dt>장기적으로</dt><dd>자존감의 기복</dd></div></dl></div>
+    <div class="card bad"><h4>5. 반발의 가능성</h4><dl><div><dt>근거</dt><dd>상관 + 편관</dd></div><div><dt>언제</dt><dd>일방적 규칙을 강요받을 때</dd></div><div><dt>장기적으로</dt><dd>권위와의 갈등</dd></div></dl></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s29">
+  <h2><span class="no">29</span>대운 계산</h2>
+  <p><span class="tag t-c">계산</span>해의 윗글자가 비·이슬(음)이고 여성이라 순행이에요. 출생부터 다음 절기 입하(2013년 5월 5일 오후 5시 4분)까지 3일 22시간 41분, <b>1세 4개월(대운수 1)</b>이에요. 첫 대운은 2014년 8월 무렵 시작합니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>대운</th><th class="num">시작 나이</th><th>기간</th><th>주요 기운</th><th>핵심 특징</th><th class="num">점수</th></tr></thead>
+    <tbody>
+      <tr><th>정사</th><td class="num">만 1세 4개월</td><td>2014.8 ~ 2024.8</td><td>불 · 불</td><td>같은 불의 응원</td><td class="num score">66</td></tr>
+      <tr><th>무오</th><td class="num">만 11세 4개월</td><td>2024.8 ~ 2034.8</td><td>흙 · 불</td><td>건록의 불, 규칙의 압박을 묶음</td><td class="num score">66</td></tr>
+      <tr><th>기미</th><td class="num">만 21세 4개월</td><td>2034.8 ~ 2044.8</td><td>흙 · 흙</td><td>토끼가 나무로 묶여 안정</td><td class="num score">58</td></tr>
+      <tr><th>경신</th><td class="num">만 31세 4개월</td><td>2044.8 ~ 2054.8</td><td>쇠 · 쇠</td><td>돈의 기운이 크게, 토끼와 예민함</td><td class="num score">42</td></tr>
+      <tr><th>신유</th><td class="num">만 41세 4개월</td><td>2054.8 ~ 2064.8</td><td>쇠 · 쇠</td><td>닭이 토끼를 다시 침</td><td class="num score">38</td></tr>
+      <tr><th>임술</th><td class="num">만 51세 4개월</td><td>2064.8 ~ 2074.8</td><td>물 · 흙</td><td>규칙의 별과 합, 토끼와 손잡음</td><td class="num score">55</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="daughter-s30">
+  <h2><span class="no">30</span>평생 대운 상세분석</h2>
+  <div class="cards">
+    <div class="card good"><h4>정사 · 1~11세 · 66</h4><p>등불과 뱀, 나와 같은 불이 위아래로 왔어요. 약한 등불을 든든히 응원한 시기예요. 등불이 해 윗자리 비·이슬과 부딪혀(정계충) 규칙에 대한 긴장은 일찍부터 있었을 수 있어요. <b>얻는 것:</b> 자신감, 밝음. <b>부담:</b> 규칙과의 줄다리기.</p></div>
+    <div class="card good"><h4>무오 · 11~21세 · 66</h4><p>32번에서 자세히 봐요. 큰 땅(상관)과 말(건록). <b>얻는 것:</b> 체력과 자기 주장. <b>부담:</b> 표현이 세지며 생기는 마찰.</p></div>
+    <div class="card"><h4>기미 · 21~31세 · 58</h4><p>논밭의 흙과 양(식신). 양이 토끼와 나무로 반쯤 묶여(묘미 반합) 마음의 뿌리가 단단해져요. 흙이 많아 기운을 쓰지만, 재주로 자리를 잡는 시기예요. <b>얻는 것:</b> 안정, 재주의 결실. <b>부담:</b> 기운 소모.</p></div>
+    <div class="card bad"><h4>경신 · 31~41세 · 42</h4><p>바위와 원숭이, 쇠가 위아래로 와요. 돈과 현실의 기운이 커지지만 약한 등불이 감당하기 벅차요(재다신약). 원숭이가 토끼와 예민하고(원진·귀문), 뱀과 합이면서 꺾어요(사신 합·형). <b>얻는 것:</b> 현실 기반. <b>부담:</b> 마음의 피로.</p></div>
+    <div class="card bad"><h4>신유 · 41~51세 · 38</h4><p>보석과 닭. 닭이 토끼를 다시 정면으로 쳐요(묘유충). 원국의 약점이 운에서 겹치는 10년이에요. <b>얻는 것:</b> 단련. <b>부담:</b> 기복, 관계 변화.</p></div>
+    <div class="card"><h4>임술 · 51~61세 · 55</h4><p>큰 강(정관)이 등불과 손잡고(정임합), 개가 토끼와 손잡아(묘술합) 불로 바뀌어요. 규칙과 안정이 나를 돕는 쪽으로 돌아서요. <b>얻는 것:</b> 안정, 명예. <b>부담:</b> 일터 자리 충돌(진술충).</p></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s31">
+  <h2><span class="no">31</span>인생 주요 변곡점</h2>
+  <p class="note">일이 일어난다는 뜻이 아니라, 그런 종류의 변화 가능성이 상대적으로 강해지는 시기예요.</p>
+  <div class="pair">
+    <div><b>상승 가능성</b><span>무오 대운(2024~2034), 2026~2027년, 기미 대운 초반</span></div>
+    <div><b>정체 가능성</b><span>신유 대운(2054~2064)</span></div>
+    <div><b>변화가 강한 시기</b><span>2028~2029년(토끼와 원숭이·닭), 2034년 대운 교체</span></div>
+    <div><b>공부·진로의 고비</b><span>2028년(마음의 예민함), 2030년(월지 충, 진학 무렵)</span></div>
+    <div><b>관계 변화</b><span>2029년(배우자 자리 충), 경신·신유 대운</span></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s32">
+  <h2><span class="no">32</span>현재 대운 집중분석 · 무오 (2024~2034)</h2>
+  <div class="pair">
+    <div><b>1. 핵심 주제</b><span>힘이 붙는 10년. 말(건록)이 등불에게 스스로 서는 뿌리를 줘요.</span></div>
+    <div><b>2. 달라진 점</b><span>정사 대운이 '응원받는 불'이었다면, 무오는 '스스로 타는 불'이에요. 자기 주장과 독립심이 커져요.</span></div>
+    <div><b>3. 좋아지는 것</b><span>큰 땅이 해 윗자리 비·이슬과 묶여(무계합) 등불을 치던 압박이 풀려요. 평가와 규칙에 대한 긴장이 줄어드는 10년이에요.</span></div>
+    <div><b>4. 부담</b><span>큰 땅(상관)이 위에 와서 표현이 세져요. 말이 바른 만큼 날카로워지기 쉬워요. 말이 토끼와 깨뜨리는 관계(묘오파)라 마음의 뿌리가 가끔 흔들려요.</span></div>
+    <div><b>5. 공부·진로</b><span>표현·창작·발표처럼 자기 목소리를 내는 활동에서 두각을 나타내기 좋아요. 암기형 공부는 응원(나무)이 들어오는 해에 잘 붙어요.</span></div>
+    <div><b>6. 돈·현실</b><span>아직은 용돈 관리 정도예요. 갖고 싶은 것에 대한 주장이 분명해지는 시기예요.</span></div>
+    <div><b>7. 관계</b><span>친구 관계의 비중이 커지고, 부모님과는 '설득'이 필요한 시기로 바뀌어요.</span></div>
+    <div><b>8. 가장 중요한 것</b><span>세지는 표현력을 막지 않고 방향을 잡아 주는 것이에요. 이 대운에 생긴 자기 목소리가 평생의 무기가 돼요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s33">
+  <h2><span class="no">33</span>최근·현재·향후 세운</h2>
+  <p class="note">원국 → 대운 → 그해 순서로 겹쳐 봤어요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>해</th><th class="num">점수</th><th>흐름</th><th>공부·활동</th><th>마음</th><th>관계</th><th>살필 점</th></tr></thead>
+    <tbody>
+      <tr><th>2023 계묘</th><td class="num score">52</td><td>토끼가 겹쳐 나무는 늘고, 닭과의 충도 커짐</td><td>배움의 기운</td><td>기복</td><td>규칙 긴장(정계충)</td><td>지적에 예민</td></tr>
+      <tr><th>2024 갑진</th><td class="num score">56</td><td>큰 나무(정인)가 옴, 대운 교체</td><td>배움이 붙음</td><td>안정</td><td>친구 사이 서운함(묘진 해)</td><td>용의 자형</td></tr>
+      <tr><th>2025 을사</th><td class="num score">60</td><td>풀과 뱀, 나무와 불</td><td>활기</td><td>자신감</td><td>원만</td><td>현실 욕구 증가</td></tr>
+      <tr><th>2026 병오</th><td class="num score">64</td><td>불의 해, 대운과 같은 말</td><td>자기 표현</td><td>밝음</td><td>친구 중심</td><td>토끼와 깨뜨림(묘오파)</td></tr>
+      <tr><th>2027 정미</th><td class="num score">63</td><td>토끼가 나무로 묶임(묘미 반합)</td><td>집중</td><td>안정</td><td>원만</td><td>규칙 긴장(정계충)</td></tr>
+      <tr><th>2028 무신</th><td class="num score">46</td><td>원숭이가 토끼와 예민(원진·귀문)</td><td>집중 흔들림</td><td>예민</td><td>뱀과 합·형</td><td>마음 살피기</td></tr>
+      <tr><th>2029 기유</th><td class="num score">42</td><td>닭이 토끼를 침(묘유충)</td><td>환경 변화 체감</td><td>기복</td><td>적응 필요</td><td>새 환경 적응 시간</td></tr>
+      <tr><th>2030 경술</th><td class="num score">50</td><td>개가 토끼와 손잡아 불, 용과 충</td><td>진로 고민</td><td>회복</td><td>윗사람과 예민</td><td>진학 무렵 변동</td></tr>
+      <tr><th>2031 신해</th><td class="num score">56</td><td>돼지가 토끼와 나무로 묶임</td><td>배움 회복</td><td>안정</td><td>뱀과 충(사해충)</td><td>이동</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="daughter-s34">
+  <h2><span class="no">34</span>가장 좋은 시기와 부담스러운 시기</h2>
+  <div class="cards">
+    <div class="card good"><h4>상대적으로 좋은 시기</h4><ul class="plain">
+      <li><b>정사·무오 대운(2014~2034):</b> 불이 20년간 응원해요.</li>
+      <li><b>2025~2027년:</b> 나무와 불의 해가 이어져요.</li>
+      <li><b>매년 호랑이·토끼의 달(2~3월)과 말의 달(6월):</b> 땔감과 불이 오는 달이에요.</li>
+    </ul></div>
+    <div class="card bad"><h4>상대적으로 부담이 큰 시기</h4><ul class="plain">
+      <li><b>2028~2029년:</b> 쇠의 해가 토끼를 흔들어요.</li>
+      <li><b>경신·신유 대운(2044~2064):</b> 쇠가 길게 와요. 미리 마음의 근육을 키워 두면 좋아요.</li>
+      <li><b>매년 닭의 달(9월):</b> 토끼를 치는 달이에요.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="s" id="daughter-s35">
+  <h2><span class="no">35</span>영역별 종합평가</h2>
+  <p class="note">50점은 중간값이에요. 열세 살 아이의 점수는 지금의 결일 뿐, 자라면서 얼마든지 달라져요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>영역</th><th class="num">점수</th><th>이유</th></tr></thead>
+    <tbody>
+      <tr><th>기본 원국 안정성</th><td class="num score">56</td><td>오행이 고루 있지만 유일한 땔감이 충을 받아요.</td></tr>
+      <tr><th>재능·진로</th><td class="num score">64</td><td>표현의 재능이 분명해요.</td></tr>
+      <tr><th>재물</th><td class="num score">55</td><td>버는 길은 있고 지키는 힘은 키워야 해요.</td></tr>
+      <tr><th>인간관계</th><td class="num score">62</td><td>밝고 존재감 있어요. 비교에 예민해요.</td></tr>
+      <tr><th>배우자 (성인 이후)</th><td class="num score">52</td><td>배우자 자리가 충을 받아요. 천천히 가는 관계가 맞아요.</td></tr>
+      <tr><th>가족</th><td class="num score">62</td><td>가장 강한 뿌리가 집안 자리에 있어요.</td></tr>
+      <tr><th>변화 대응</th><td class="num score">57</td><td>호기심은 많고 마음은 흔들려요.</td></tr>
+      <tr><th>자기관리</th><td class="num score">52</td><td>기분의 기복을 다스리는 연습이 필요해요.</td></tr>
+      <tr><th>장기 성장성</th><td class="num score">64</td><td>21세까지 불의 대운, 31세까지 안정의 대운이 이어져요.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="s" id="daughter-s36">
+  <h2><span class="no">36</span>현암 선생 최종 총평</h2>
+  <div class="pair">
+    <div><b>어떤 아이인가</b><span>밝게 빛나고 재주가 많은 등불이에요. 겉은 환하고 속은 섬세해요.</span></div>
+    <div><b>가장 강한 무기</b><span>표현의 재능, 그리고 인정받을 때 끝까지 해내는 승부욕이에요.</span></div>
+    <div><b>가장 큰 약점</b><span>마음의 뿌리가 흔들리기 쉬운 것, 평가와 비교에 예민한 것이에요.</span></div>
+    <div><b>어른들이 조심할 것</b><span>비교와 일방적인 규칙이에요. 이 아이에게는 지적보다 인정이, 명령보다 이유가 훨씬 잘 들어가요.</span></div>
+    <div><b>능력이 살아나는 환경</b><span>자기 목소리를 낼 수 있고, 그 목소리를 응원받는 자리예요.</span></div>
+    <div><b>인생의 흐름</b><span>21세까지 불의 대운이 응원하고, 20대에 마음의 뿌리가 단단해져요. 30~50대의 쇠의 대운을 위해 지금부터 마음의 근육을 키워 두면 좋아요.</span></div>
+    <div><b>장기적으로 관리할 것</b><span>마음의 땔감이에요. 배움, 믿어 주는 사람, 스스로를 칭찬하는 습관이 이 아이의 나무가 됩니다.</span></div>
+  </div>
+  <blockquote class="saying">이 아이는 봄밤의 등불이에요. 불씨는 충분히 밝은데, 그 불을 지켜 줄 땔감이 하나뿐이에요. 그 땔감은 결국 곁에 있는 어른들의 믿음이에요. 지적보다 인정을, 비교보다 이유를 건네면, 이 등불은 오래 그리고 멀리 비춥니다.<small>현암 선생의 한마디</small></blockquote>
+  <p class="note">출생 정보와 명리 계산만으로 분석했어요. 아이의 미래를 정하는 글이 아니라, 타고난 결을 이해하기 위한 글이에요.</p>
+</section>
+
+</main>
+</div>
+</div>
+
+</div>
+<div class="person-pane" id="pane-family" data-key="family" hidden><div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">현암 선생의 가족 명식</div>
+    <h1>세 사람의 명식, 한 집의 오행</h1>
+    <div class="who">아빠 1988년 10월 23일 · 엄마 1973년 9월 30일 · 딸 2013년 5월 1일 · 분석 기준일 2026년 10월 7일</div>
+  </div>
+  <div class="wheel" aria-hidden="true"><svg viewBox="0 0 200 200">
+<defs><radialGradient id="wg-family" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D6B26E" stop-opacity=".28"/><stop offset="100%" stop-color="#D6B26E" stop-opacity="0"/></radialGradient></defs>
+<circle cx="100" cy="100" r="98" fill="url(#wg-family)"/>
+<g class="spin">
+<circle cx="100" cy="100" r="94" fill="none" stroke="#D6B26E" stroke-opacity=".55" stroke-width="1"/>
+<circle cx="100" cy="100" r="76" fill="none" stroke="#D6B26E" stroke-opacity=".3" stroke-width="1"/>
+<text x="100.0" y="19.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">자</text>
+<line x1="119.7" y1="26.6" x2="124.3" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">축</text>
+<line x1="153.7" y1="46.3" x2="166.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">인</text>
+<line x1="173.4" y1="80.3" x2="190.8" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="185.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">묘</text>
+<line x1="173.4" y1="119.7" x2="190.8" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="173.6" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">진</text>
+<line x1="153.7" y1="153.7" x2="166.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="142.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">사</text>
+<line x1="119.7" y1="173.4" x2="124.3" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="100.0" y="189.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">오</text>
+<line x1="80.3" y1="173.4" x2="75.7" y2="190.8" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="177.6" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">미</text>
+<line x1="46.3" y1="153.7" x2="33.5" y2="166.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="146.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">신</text>
+<line x1="26.6" y1="119.7" x2="9.2" y2="124.3" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="15.0" y="104.0" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">유</text>
+<line x1="26.6" y1="80.3" x2="9.2" y2="75.7" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="26.4" y="61.5" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">술</text>
+<line x1="46.3" y1="46.3" x2="33.5" y2="33.5" stroke="#D6B26E" stroke-opacity=".3"/>
+<text x="57.5" y="30.4" text-anchor="middle" font-family="Song Myung, serif" font-size="12" fill="#F1D9A0" fill-opacity=".85">해</text>
+<line x1="80.3" y1="26.6" x2="75.7" y2="9.2" stroke="#D6B26E" stroke-opacity=".3"/>
+</g>
+<g class="spin2">
+<circle cx="100" cy="100" r="54" fill="none" stroke="#D6B26E" stroke-opacity=".25" stroke-dasharray="2 4"/>
+<circle cx="100.0" cy="46.0" r="11" fill="#0C1222" stroke="#62C795" stroke-width="1.2"/><text x="100.0" y="50.0" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#62C795">목</text>
+<circle cx="151.4" cy="83.3" r="11" fill="#0C1222" stroke="#F0715A" stroke-width="1.2"/><text x="151.4" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#F0715A">화</text>
+<circle cx="131.7" cy="143.7" r="11" fill="#0C1222" stroke="#E0B25E" stroke-width="1.2"/><text x="131.7" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E0B25E">토</text>
+<circle cx="68.3" cy="143.7" r="11" fill="#0C1222" stroke="#E4E6F0" stroke-width="1.2"/><text x="68.3" y="147.7" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#E4E6F0">금</text>
+<circle cx="48.6" cy="83.3" r="11" fill="#0C1222" stroke="#7C9CF0" stroke-width="1.2"/><text x="48.6" y="87.3" text-anchor="middle" font-family="Song Myung, serif" font-size="11" fill="#7C9CF0">수</text>
+</g>
+<circle cx="100" cy="100" r="30" fill="#0C1222" stroke="#D6B26E" stroke-opacity=".8"/>
+<circle cx="100" cy="100" r="25" fill="none" stroke="#D6B26E" stroke-opacity=".35"/>
+<text x="100" y="97" text-anchor="middle" font-family="Song Myung, serif" font-size="13" fill="#F1D9A0">현암</text>
+<text x="100" y="113" text-anchor="middle" font-family="Song Myung, serif" font-size="9.5" fill="#D6B26E" letter-spacing="2">선생</text>
+</svg></div>
+</header>
+
+<main style="display:grid;gap:0">
+
+<section class="s" id="family-f1">
+  <h2><span class="no">1</span>세 사람의 원국</h2>
+  <p>궁합은 각자의 사주를 먼저 따로 세운 뒤에 겹쳐 봐요. 세 분 모두 진태양시와 절기를 다시 계산했어요.</p>
+  <div class="trio">
+    <article class="person">
+      <div class="who2"><h3>아빠</h3><span>신해일주 · 늦가을의 보석</span></div>
+      <div class="pillars">
+        <div class="pil"><span class="lab">시</span><span class="ch">병</span><span class="ch">신</span></div>
+        <div class="pil me"><span class="lab">일</span><span class="ch">신</span><span class="ch">해</span></div>
+        <div class="pil"><span class="lab">월</span><span class="ch">임</span><span class="ch">술</span></div>
+        <div class="pil"><span class="lab">년</span><span class="ch">무</span><span class="ch">진</span></div>
+      </div>
+      <p class="ess">흙에 묻히기 쉬운 보석. 물로 씻고 나무로 흙을 헤쳐야 빛나요.</p>
+      <dl class="kv">
+        <div><dt>나</dt><dd>작은 보석(신금)</dd></div>
+        <div><dt>힘</dt><dd>신강 (돕는 흙이 넘침)</dd></div>
+        <div><dt>필요한 것</dt><dd>물 → 나무</dd></div>
+        <div><dt>부담</dt><dd>흙, 과한 불</dd></div>
+        <div><dt>지금 대운</dt><dd>병인 (2023~2033)</dd></div>
+      </dl>
+    </article>
+    <article class="person">
+      <div class="who2"><h3>엄마</h3><span>기사일주 · 가을 들판의 흙</span></div>
+      <div class="pillars">
+        <div class="pil"><span class="lab">시</span><span class="ch">경</span><span class="ch">오</span></div>
+        <div class="pil me"><span class="lab">일</span><span class="ch">기</span><span class="ch">사</span></div>
+        <div class="pil"><span class="lab">월</span><span class="ch">신</span><span class="ch">유</span></div>
+        <div class="pil"><span class="lab">년</span><span class="ch">계</span><span class="ch">축</span></div>
+      </div>
+      <p class="ess">쇠를 키워 내느라 힘이 빠지는 들판. 햇볕과 흙이 받쳐 줘야 해요.</p>
+      <dl class="kv">
+        <div><dt>나</dt><dd>논밭의 흙(기토)</dd></div>
+        <div><dt>힘</dt><dd>신약 (재주와 표현이 기운을 많이 씀)</dd></div>
+        <div><dt>필요한 것</dt><dd>불 → 흙</dd></div>
+        <div><dt>부담</dt><dd>쇠, 물</dd></div>
+        <div><dt>지금 대운</dt><dd>정묘 (2026년 7월~2036)</dd></div>
+      </dl>
+    </article>
+    <article class="person">
+      <div class="who2"><h3>딸</h3><span>정묘일주 · 봄밤의 등불</span></div>
+      <div class="pillars">
+        <div class="pil"><span class="lab">시</span><span class="ch">기</span><span class="ch">유</span></div>
+        <div class="pil me"><span class="lab">일</span><span class="ch">정</span><span class="ch">묘</span></div>
+        <div class="pil"><span class="lab">월</span><span class="ch">병</span><span class="ch">진</span></div>
+        <div class="pil"><span class="lab">년</span><span class="ch">계</span><span class="ch">사</span></div>
+      </div>
+      <p class="ess">풀숲 위에 켜진 등불. 재주가 많고, 나무가 불씨를 지켜 줘야 오래 타요.</p>
+      <dl class="kv">
+        <div><dt>나</dt><dd>등불(정화)</dd></div>
+        <div><dt>힘</dt><dd>중화에 가까운 신약</dd></div>
+        <div><dt>필요한 것</dt><dd>나무 → 불</dd></div>
+        <div><dt>부담</dt><dd>쇠, 축축한 흙</dd></div>
+        <div><dt>지금 대운</dt><dd>무오 (2024~2034)</dd></div>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section class="s" id="family-f2">
+  <h2><span class="no">2</span>엄마와 딸의 원국 풀이</h2>
+  <h3>엄마 · 기사일주</h3>
+  <div class="tbl"><table><tbody>
+    <tr><th>시간 계산</th><td>1973년에는 서머타임이 없었어요. 서울은 경도 보정 약 −32분, 9월 30일 균시차 약 +10분이라 진태양시는 시계보다 약 22분 늦어요.</td></tr>
+    <tr><th>해·달·날</th><td>입춘 후라 계축년, 백로(9월 8일)와 한로(10월 8일) 사이라 신유월, 날은 기사일이에요.</td></tr>
+    <tr><th>시</th><td>말씀하신 오시를 그대로 써서 <b>경오시</b>로 봤어요. 단, 시계로 11시~11시 20분 무렵에 태어났다면 진태양시로는 뱀 시가 되어 <b>기사시</b>가 돼요. 이 경우 시간이 경금(상관) 대신 기토(비견)가 되어, 기운이 조금 더 단단하고 말의 날은 조금 무뎌지는 쪽으로 바뀌어요. 큰 틀은 같아요.</td></tr>
+  </tbody></table></div>
+  <p><span class="tag t-i">명리 해석</span>논밭의 흙(기토)이 한가을 닭의 달에 태어났어요. 가장 큰 특징은 년지 소, 월지 닭, 일지 뱀이 <b>쇠의 묶음(사유축 삼합)</b>을 완성한다는 점이에요. 쇠는 이 흙이 만들어 내는 재주와 표현(식상)이에요. 여기에 월간 보석(식신)과 시간 바위(상관)까지 드러나 있어, 재주·말·손재주·자녀에 대한 정성이 아주 강한 명식입니다. 그 대신 흙이 쇠를 키워 내느라 기운이 많이 빠져 신약이에요.</p>
+  <p>필요한 약은 불이에요. 시지의 말(오)이 흙의 가장 강한 뿌리이고, 불이 쇠를 다스리면서 흙을 낳아 줘요. 나무(남편 별, 관성)는 원국에 겉으로도 속으로도 없어요. 그래서 남편에게 기대어 사는 구조라기보다, 자기 재주와 가정을 스스로 꾸려 가는 쪽이에요. 배우자 자리 뱀은 나를 돕는 기운(정인)인데, 쇠의 묶음에 들어가 있어요. 결혼 후 생활의 중심이 자녀와 집안일로 옮겨 가기 쉬운 모양입니다.</p>
+  <h3>딸 · 정묘일주</h3>
+  <div class="tbl"><table><tbody>
+    <tr><th>시간 계산</th><td>18시 23분, 서울 경도 보정 약 −32분, 균시차 약 +3분 → 진태양시 <b>약 17시 53분</b>. 닭 시(17~19시) 한가운데라 경계 걱정이 없어요.</td></tr>
+    <tr><th>해·달·날</th><td>입춘 후라 계사년(뱀띠 확정), 청명(4월 4일)과 입하(5월 5일) 사이라 병진월, 날은 정묘일, 시는 기유시예요.</td></tr>
+    <tr><th>대운</th><td>여성·음의 해라 순행, 입하까지 3.95일 → 1세 4개월 시작. 지금은 <b>무오 대운</b>(2024년 8월~2034년 8월)이에요.</td></tr>
+  </tbody></table></div>
+  <p><span class="tag t-i">명리 해석</span>등불(정화)이 늦봄 축축한 흙의 달에 태어났어요. 일지 토끼(나무)가 등불의 불씨를 지켜 주고, 월간 태양과 년지 뱀이 같은 불로 응원해요. 대신 월지의 흙(상관), 시간의 흙(식신)이 재주와 표현으로 기운을 빼고, 시지 닭(돈의 기운)이 용(진유합)·뱀(사유 반합)과 손잡아 쇠가 커져요. 년간 비·이슬(편관)이 등불을 정면으로 건드려(정계충) 긴장감과 규칙 의식도 있어요. 전체로는 중화에 가까운 신약이고, 나무와 불이 필요해요.</p>
+  <p><span class="tag t-r">현실 가능성</span>재주와 표현력이 좋고, 따뜻하지만 자기 기준이 분명한 아이로 자라기 쉬워요. 다만 배우자 자리 토끼가 시지 닭과 정면으로 부딪혀(묘유충) 마음의 기복이 생기기 쉬워요. 하고 싶은 것과 해야 하는 것 사이에서 흔들리는 모양으로도 나타날 수 있어요. 지금 무오 대운은 불이 들어오는 10년이라, 이 아이에게는 힘이 붙는 시기예요.</p>
+</section>
+
+<section class="s" id="family-f3">
+  <h2><span class="no">3</span>한 집의 오행 지도</h2>
+  <p>세 사람의 글자 스물네 개를 한데 모았어요.</p>
+  <div class="mbars">
+    <div class="mbar"><b>나무</b><div class="tr"><span style="width:4.2%;background:var(--e-wood)"></span></div><span class="ct">1 · 딸 1</span></div>
+    <div class="mbar"><b>불</b><div class="tr"><span style="width:4.2%;background:var(--e-fire);opacity:.55"></span><span style="width:8.4%;background:var(--e-fire);opacity:.8"></span><span style="width:12.5%;background:var(--e-fire)"></span></div><span class="ct">6 · 아1 엄2 딸3</span></div>
+    <div class="mbar"><b>흙</b><div class="tr"><span style="width:12.5%;background:var(--e-earth);opacity:.55"></span><span style="width:8.4%;background:var(--e-earth);opacity:.8"></span><span style="width:8.4%;background:var(--e-earth)"></span></div><span class="ct">7 · 아3 엄2 딸2</span></div>
+    <div class="mbar"><b>쇠</b><div class="tr"><span style="width:8.4%;background:var(--e-metal);opacity:.55"></span><span style="width:12.5%;background:var(--e-metal);opacity:.8"></span><span style="width:4.2%;background:var(--e-metal)"></span></div><span class="ct">6 · 아2 엄3 딸1</span></div>
+    <div class="mbar"><b>물</b><div class="tr"><span style="width:8.4%;background:var(--e-water);opacity:.55"></span><span style="width:4.2%;background:var(--e-water);opacity:.8"></span><span style="width:4.2%;background:var(--e-water)"></span></div><span class="ct">4 · 아2 엄1 딸1</span></div>
+  </div>
+  <div class="keys"><span><i style="background:var(--gold);opacity:.55"></i>아빠</span><span><i style="background:var(--gold);opacity:.8"></i>엄마</span><span><i style="background:var(--gold)"></i>딸</span><span>막대 길이는 24글자 중 비율</span></div>
+  <p><span class="tag t-i">명리 해석</span>흙·불·쇠가 넉넉하고, <b>나무는 딸의 토끼 하나뿐</b>이에요. 원칙·기준·책임의 기운은 많은데, 자라나고 풀어지는 기운은 귀한 집이에요. 그 귀한 나무를 딸이 쥐고 있어요. 이 나무는 아빠에게는 보조 약이고, 딸 자신에게는 불씨를 지키는 힘이에요.</p>
+  <div class="triad"><svg viewBox="0 0 760 430" role="img" aria-label="세 사람이 서로에게 주는 기운">
+    <defs>
+      <marker id="ah-family" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D6B26E"/></marker>
+      <marker id="ahr-family" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E8735A"/></marker>
+    </defs>
+    <path d="M205 100 Q380 40 555 100" fill="none" stroke="#D6B26E" stroke-width="1.6" marker-end="url(#ah-family)"/>
+    <text x="380" y="52" text-anchor="middle" font-size="14" fill="#F1D9A0" font-family="Song Myung, serif">흙과 햇볕을 줌 · 엄마의 약</text>
+    <path d="M555 140 Q380 200 205 140" fill="none" stroke="#E8735A" stroke-width="1.3" stroke-dasharray="5 5" marker-end="url(#ahr-family)"/>
+    <text x="380" y="196" text-anchor="middle" font-size="13" fill="#E8735A">흙을 보탬 · 편안함이자 무게</text>
+    <path d="M345 345 Q230 270 175 175" fill="none" stroke="#D6B26E" stroke-width="1.6" marker-end="url(#ah-family)"/>
+    <text x="196" y="300" text-anchor="middle" font-size="14" fill="#F1D9A0" font-family="Song Myung, serif">물과 나무 · 아빠의 약</text>
+    <path d="M415 345 Q530 270 585 175" fill="none" stroke="#D6B26E" stroke-width="1.6" marker-end="url(#ah-family)"/>
+    <text x="566" y="300" text-anchor="middle" font-size="14" fill="#F1D9A0" font-family="Song Myung, serif">불과 흙 · 엄마의 약</text>
+    <path d="M600 180 Q620 330 450 372" fill="none" stroke="#9399AE" stroke-width="1.2" stroke-dasharray="3 5" marker-end="url(#ah-family)"/>
+    <text x="664" y="330" text-anchor="middle" font-size="12.5" fill="#A3A7B7">불로 응원 · 쇠는 무게</text>
+    <g font-family="Song Myung, serif" text-anchor="middle">
+      <circle cx="150" cy="120" r="56" fill="#0C1222" stroke="#D6B26E"/><text x="150" y="116" font-size="22" fill="#EEE7D7">아빠</text><text x="150" y="140" font-size="13" fill="#E4E6F0">보석 · 신금</text>
+      <circle cx="610" cy="120" r="56" fill="#0C1222" stroke="#D6B26E"/><text x="610" y="116" font-size="22" fill="#EEE7D7">엄마</text><text x="610" y="140" font-size="13" fill="#E0B25E">흙 · 기토</text>
+      <circle cx="380" cy="370" r="56" fill="#0C1222" stroke="#D6B26E"/><text x="380" y="366" font-size="22" fill="#EEE7D7">딸</text><text x="380" y="390" font-size="13" fill="#F0715A">등불 · 정화</text>
+    </g>
+  </svg></div>
+  <p><span class="tag t-i">명리 해석</span>세 사람의 기운이 한 방향으로만 흐르지 않고 서로 주고받아요. 딸은 아빠와 엄마 모두에게 약이 되는 기운을 갖고 태어났어요. 아빠는 엄마에게 약을 주고, 엄마는 아빠에게 편안함을 주지만 그 흙이 아빠에게는 무게도 돼요. 이 집에서 <b>딸이 가장 많이 주는 사람</b>이라는 점이 눈에 띄어요.</p>
+</section>
+
+<section class="s" id="family-f4">
+  <h2><span class="no">4</span>부부 궁합 · 아빠와 엄마</h2>
+  <div class="match">
+    <div class="dial" data-score="55"><svg viewBox="0 0 120 120"></svg><div class="nm">서로 다른 결, 아이로 묶인 인연</div><div class="sub">편하게 맞는 궁합이라기보다, 다른 두 사람이 단단히 묶인 궁합</div></div>
+    <div class="areas" data-areas='[["끌림",60],["정서적 안정",55],["대화",48],["생활 방식",42],["경제관",60],["갈등 해결",50],["장기 안정",60],["서로의 성장",63],["덜 지치는 정도",45],["관계 지속력",62]]'></div>
+  </div>
+  <div class="chips">
+    <span class="chip bad">배우자 자리끼리 정면 충돌 (사해충)</span>
+    <span class="chip good">아빠의 자녀 자리와 엄마의 배우자 자리가 손잡음 (사신합)</span>
+    <span class="chip good">년간끼리 끌어당김 (무계합)</span>
+    <span class="chip good">아빠 윗자리와 엄마 일터 자리 손잡음 (진유합)</span>
+    <span class="chip mid">아빠 집 자리와 엄마 시지의 은근한 끌림 (해오 암합)</span>
+    <span class="chip bad">일터 자리끼리 은근한 방해 (술유 해)</span>
+    <span class="chip bad">시간끼리 부딪힘 (병경충)</span>
+  </div>
+  <div class="pair">
+    <div><b>일간 관계</b><span>엄마의 흙이 아빠의 보석을 낳아 주는 관계(토생금)예요. 아빠에게 엄마는 돌봐 주고 생각을 받쳐 주는 존재(편인)이고, 엄마에게 아빠는 정성을 쏟는 대상(식신)이에요. 엄마가 주고 아빠가 받는 쪽으로 기울기 쉬워요.</span></div>
+    <div><b>배우자 자리</b><span>아빠의 돼지와 엄마의 뱀이 정면으로 부딪혀요(사해충). 집에서의 생활 방식·리듬·취향이 반대쪽에 서기 쉬운 부부예요. 다만 충은 움직임이라, 함께 있으면 정체되지 않고 변화가 많은 집이 됩니다.</span></div>
+    <div><b>묶어 주는 끈</b><span>아빠의 자녀 자리(원숭이)와 엄마의 배우자 자리(뱀)가 손을 잡아요(사신합). 아이를 통해 두 사람이 단단히 묶이는 구조예요. 여기에 년간끼리의 합(무계합)과 아빠 윗자리·엄마 일터 자리의 합(진유합)까지 있어, 집안끼리의 인연도 깊어요.</span></div>
+    <div><b>오행 보완</b><span>아빠의 흙과 태양은 엄마에게 꼭 필요한 약이에요. 반면 엄마의 흙과 쇠는 아빠가 이미 넘치게 가진 기운이라, 아빠의 약(물·나무)을 채워 주지는 못해요. <b>엄마는 아빠에게서 힘을 얻고, 아빠는 엄마에게서 편안함을 얻되 그 편안함이 때로 무게가 되는</b> 비대칭 관계예요.</span></div>
+    <div><b>대화</b><span>엄마는 재주와 표현(식상)이 아주 강해 말이 빠르고 직설적인 편이고, 아빠는 생각을 삼키는 구조예요. 엄마가 말하고 아빠가 듣는 모양이 되기 쉬워요. 아빠가 너무 오래 삼키면 엄마는 "왜 말을 안 하냐"고 답답해하고, 아빠는 엄마의 직설을 잔소리로 느낄 수 있어요.</span></div>
+    <div><b>경제관</b><span>아빠는 지키고 쌓는 형, 엄마는 년간 비·이슬(편재) 덕분에 돈의 흐름을 읽고 재주를 돈으로 바꾸는 감각이 있어요. 역할을 나누면 서로 보완돼요.</span></div>
+    <div><b>지금의 대운</b><span>아빠는 병인, 엄마는 정묘 대운이에요. 둘 다 불과 나무의 계절을 함께 지나요. 엄마에게 불은 용신이라 엄마 쪽 운이 살아나는 10년이에요.</span></div>
+  </div>
+  <p><span class="tag t-r">현실 가능성</span>집에서는 서로의 방식이 자주 부딪히지만, 아이와 집안일을 매개로 쉽게 갈라서지 않는 단단한 부부로 나타나기 쉬워요. 갈등은 크게 터지기보다 생활 습관의 작은 마찰이 쌓이는 쪽이에요.</p>
+  <p><b>부부에게 맞는 처방</b> · 집 안에 각자의 영역(공간·시간)을 분명히 두세요. 배우자 자리끼리 부딪히는 부부는 붙어 있는 시간보다 각자의 숨 쉴 자리가 관계를 오래 가게 해요. 아빠는 생각을 글이나 짧은 메시지로라도 꺼내고, 엄마는 직설 앞에 한 문장의 공감을 붙이면 대화가 훨씬 부드러워져요.</p>
+</section>
+
+<section class="s" id="family-f5">
+  <h2><span class="no">5</span>부녀 궁합 · 아빠와 딸</h2>
+  <div class="match">
+    <div class="dial" data-score="72"><svg viewBox="0 0 120 120"></svg><div class="nm">서로의 약이 되는 부녀</div><div class="sub">세 관계 중 가장 서로를 살리는 궁합</div></div>
+    <div class="areas" data-areas='[["정서적 유대",76],["대화",70],["서로에게 주는 힘",80],["생활 리듬",48],["기대와 자율",55],["장기 관계",74]]'></div>
+  </div>
+  <div class="chips">
+    <span class="chip good">배우자 자리끼리 나무로 묶임 (해묘 반합)</span>
+    <span class="chip good">아빠의 큰 강과 딸이 손잡음 (정임합)</span>
+    <span class="chip good">딸의 띠와 아빠의 자녀 자리가 손잡음 (사신합)</span>
+    <span class="chip good">딸의 토끼와 아빠 일터 자리가 손잡음 (묘술합)</span>
+    <span class="chip bad">월지끼리 정면 충돌 (진술충)</span>
+    <span class="chip mid">딸의 토끼와 아빠 시지의 예민함 (묘신 원진·귀문)</span>
+  </div>
+  <div class="pair">
+    <div><b>육친이 정확히 맞물림</b><span>아빠에게 딸의 등불은 자녀의 별(관성)이고, 딸에게 아빠의 보석은 아버지의 별(편재)이에요. 서로가 서로의 자리에 정확히 놓인, 교과서 같은 부녀 관계예요.</span></div>
+    <div><b>딸은 아빠의 약</b><span>딸의 년간 비·이슬은 아빠의 1순위 약인 물이고, 딸의 토끼는 아빠의 2순위 약인 나무예요. 아빠의 돼지와 딸의 토끼가 만나 나무로 묶여(해묘 반합) 아빠의 넘치는 흙을 갈아 줘요. 딸과 함께 있을 때 아빠의 막힌 기운이 풀리는 구조예요.</span></div>
+    <div><b>말이 통하는 사이</b><span>아빠의 큰 강(표현)이 딸의 등불과 손을 잡아요(정임합). 아빠가 다른 사람에게는 삼키는 말을 딸에게는 꺼내기 쉬워요.</span></div>
+    <div><b>부딪히는 곳</b><span>아빠는 늦가을, 딸은 늦봄에 태어나 월지끼리 정면으로 맞서요(진술충). 생활 리듬과 사회적 성향이 정반대예요. 아빠는 신중하고 딸은 표현이 앞서는 쪽이라, 사춘기에 "왜 그렇게 느리냐"와 "왜 그렇게 급하냐"가 부딪히기 쉬워요.</span></div>
+    <div><b>기대와 자율</b><span>아빠는 기준이 높고, 딸에게는 규칙과 긴장의 기운(편관)이 이미 있어요. 아빠의 기대가 더해지면 아이가 부담을 느낄 수 있어요. 기준을 낮추기보다, 기준을 말할 때 이유를 함께 말해 주세요.</span></div>
+  </div>
+</section>
+
+<section class="s" id="family-f6">
+  <h2><span class="no">6</span>모녀 궁합 · 엄마와 딸</h2>
+  <div class="match">
+    <div class="dial" data-score="61"><svg viewBox="0 0 120 120"></svg><div class="nm">엄마를 데우는 딸</div><div class="sub">딸은 엄마의 약, 엄마의 기준은 딸에게 무게</div></div>
+    <div class="areas" data-areas='[["정서적 유대",68],["대화",58],["서로에게 주는 힘",64],["생활 리듬",46],["기대와 자율",50],["장기 관계",66]]'></div>
+  </div>
+  <div class="chips">
+    <span class="chip good">사회 자리끼리 끌어당김 (병신합)</span>
+    <span class="chip good">엄마 일터 자리와 딸 월지가 손잡음 (진유합)</span>
+    <span class="chip bad">엄마 일터 자리와 딸 배우자 자리가 정면 충돌 (묘유충)</span>
+    <span class="chip bad">엄마 년간과 딸 일간이 부딪힘 (정계충)</span>
+    <span class="chip mid">딸의 띠가 엄마의 배우자 자리와 같은 글자 (뱀)</span>
+  </div>
+  <div class="pair">
+    <div><b>일간 관계</b><span>딸의 등불이 엄마의 흙을 낳아 줘요(화생토). 딸은 엄마에게 마음의 의지가 되는 존재(편인)이고, 딸에게 엄마는 정성을 쏟는 대상(식신)이에요. 어린 딸이 엄마를 챙기는, 정이 깊은 모녀예요.</span></div>
+    <div><b>딸은 엄마의 약</b><span>엄마에게 가장 필요한 불을 딸이 셋이나 갖고 있어요(태양, 등불, 뱀). 딸의 흙도 엄마를 받쳐 줘요. 딸과 있으면 엄마가 기운을 되찾는 구조예요.</span></div>
+    <div><b>닮은 꼴</b><span>딸의 띠 글자(뱀)가 엄마의 배우자 자리 글자와 같아요. 사회 자리끼리도 끌어당겨(병신합) 성향이 통해요. 엄마를 닮은 딸로 보이기 쉬워요.</span></div>
+    <div><b>부딪히는 곳</b><span>엄마의 닭(일터 자리, 기준)이 딸의 토끼(배우자 자리, 마음)를 정면으로 쳐요(묘유충). 엄마의 쇠는 딸에게 부담인 기운이라, 엄마의 기준과 지적이 딸에게는 마음을 자르는 말처럼 들릴 수 있어요. 생활 습관과 공부 이야기에서 부딪히기 쉬워요.</span></div>
+  </div>
+  <p><b>모녀에게 맞는 처방</b> · 엄마의 직설은 사실 정이 깊어서 나오는 말이에요. 다만 딸의 토끼는 쇠에 약하니, 지적은 짧게 하고 칭찬은 길게 해 주세요. 딸에게는 엄마를 돌보는 역할이 자연스럽게 생기기 쉬우니, 아이가 너무 일찍 어른 역할을 맡지 않도록 살펴 주시면 좋아요.</p>
+</section>
+
+<section class="s" id="family-f7">
+  <h2><span class="no">7</span>가족 운의 흐름 · 2026~2029</h2>
+  <div class="flow"><table>
+    <thead><tr><th>해</th><th>아빠</th><th>엄마</th><th>딸</th><th>가족에게</th></tr></thead>
+    <tbody>
+      <tr><th>2026 병오</th><td><span class="score" style="color:var(--g2)">47</span> 책임이 몰리는 해</td><td><span class="score" style="color:var(--g4)">68</span> 불이 용신이라 힘이 붙는 해. 7월 정묘 대운 시작</td><td><span class="score" style="color:var(--g4)">64</span> 불이 응원하는 해</td><td>아빠는 무겁고 엄마와 딸은 힘이 있어요. 아빠가 기대도 되는 해예요.</td></tr>
+      <tr><th>2027 정미</th><td><span class="score" style="color:var(--g3)">50</span> 조정받고 참는 해</td><td><span class="score" style="color:var(--g4)">60</span> 불과 흙의 해. 윗자리 소가 흔들림(축미충)</td><td><span class="score" style="color:var(--g4)">63</span> 토끼가 나무로 묶여 안정(묘미 반합)</td><td>엄마·딸은 무난. 엄마 쪽 윗세대 일에 신경 쓸 수 있어요.</td></tr>
+      <tr><th>2028 무신</th><td><span class="score" style="color:var(--g2)">45</span> 돈 계획이 흔들리는 해</td><td><span class="score" style="color:var(--g2)">45</span> 배우자 자리가 묶이고 꺾임(사신 합·형)</td><td><span class="score" style="color:var(--g2)">46</span> 쇠(돈·현실)가 무거워짐, 표현이 강해짐</td><td>세 사람 모두 무거운 해. 이사 자금은 2027년에 틀을 잡아 두세요.</td></tr>
+      <tr><th>2029 기유</th><td><span class="score" style="color:var(--g2)">48</span> 문서의 해, 집 자리는 조용</td><td><span class="score" style="color:var(--g2)">42</span> 쇠의 묶음이 강해져 기운 소모, 대운과 충</td><td><span class="score" style="color:var(--g2)">42</span> 배우자 자리를 닭이 침(묘유충), 환경 변화가 크게 느껴짐</td><td>이사의 해. 아빠는 무난하지만 엄마와 딸이 지치기 쉬워요.</td></tr>
+    </tbody>
+  </table></div>
+  <p><span class="tag t-i">명리 해석</span>2029년 이사는 아빠 사주로만 보면 무난한 해였어요. 그런데 가족 전체로 보면 이야기가 달라져요. 그해의 닭은 엄마의 쇠를 키우고 딸의 토끼를 쳐서, 두 사람에게는 기운이 많이 드는 해예요. 이사 준비와 짐 정리가 엄마에게 몰리지 않게 나누고, 딸이 새 환경에 적응할 시간을 넉넉히 주세요.</p>
+  <p><span class="tag t-i">명리 해석</span>입주 달도 다시 보면, 9월(닭의 달)은 아빠에게는 좋지만 엄마와 딸에게는 쇠가 겹치는 달이에요. 11월 7일 이후(돼지의 달)는 딸의 토끼와 나무로 묶여 딸에게 편하고, 엄마에게는 배우자 자리를 치는 달이에요. 어느 쪽도 완벽하지는 않아요. 다만 가족 전체로 보면 <b>11월로 미뤄져도 손해가 아니고, 딸에게는 오히려 나은 쪽</b>이에요.</p>
+</section>
+
+<section class="s" id="family-f8">
+  <h2><span class="no">8</span>현암 선생 총평</h2>
+  <div class="pair">
+    <div><b>이 집의 모양</b><span>흙과 쇠가 넉넉한, 원칙과 책임이 단단한 집이에요. 나무는 귀하고, 그 나무를 딸이 쥐고 있어요.</span></div>
+    <div><b>중심</b><span>딸이에요. 아빠와 엄마 모두에게 약이 되는 기운을 갖고 태어났고, 부부를 묶는 끈(사신합)도 자녀 자리를 통해 이어져 있어요.</span></div>
+    <div><b>조심할 것</b><span>부부의 배우자 자리 충돌로 생기는 생활 마찰, 그리고 딸에게 쏟아지는 두 사람의 기준이에요. 아빠의 높은 기준과 엄마의 날카로운 쇠가 한 아이에게 겹치지 않게 해 주세요.</span></div>
+    <div><b>이 집에 필요한 것</b><span>나무의 기운이에요. 명리로 보면 자라고 풀어지는 기운이 부족한 집이라, 함께 몸을 쓰고 웃는 시간, 서로의 성장을 칭찬하는 말이 이 집의 나무가 됩니다.</span></div>
+  </div>
+  <blockquote class="saying">이 집은 흙과 쇠로 단단하게 지어진 집이에요. 그 단단한 집에 봄을 들고 들어온 사람이 딸이고요. 아빠는 엄마에게 햇볕이 되고, 딸은 두 사람 모두에게 약이 됩니다. 서로의 방식이 부딪히는 날에도, 이 집의 끈은 아이를 통해 이어져 있다는 걸 기억하세요.<small>현암 선생의 한마디</small></blockquote>
+  <p class="note">엄마의 태어난 시는 오시로 가정했어요. 정확한 시각을 알게 되면 시주를 다시 확인해 드릴게요. 궁합은 관계의 경향일 뿐, 누가 맞고 틀린지를 정하는 것이 아니에요. 점수의 50은 중간값이에요.</p>
+</section>
+
+</main>
+</div>
+
+</div>
+<script>
+(function(){
+  const col=s=>s>=70?"var(--g5)":s>=60?"var(--g4)":s>=50?"var(--g3)":s>=40?"var(--g2)":s>=30?"var(--g1)":"var(--g0)";
+  document.querySelectorAll(".dial").forEach(d=>{
+    const s=+d.dataset.score, r=50, c=2*Math.PI*r, f=c*s/100;
+    d.querySelector("svg").innerHTML=`<circle cx="60" cy="60" r="${r}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="8"/>
+      <circle cx="60" cy="60" r="${r}" fill="none" stroke="${col(s)}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${f} ${c}" transform="rotate(-90 60 60)" style="filter:drop-shadow(0 0 6px ${col(s)})"/>
+      <text x="60" y="64" text-anchor="middle" font-family="Song Myung, serif" font-size="34" fill="#EEE7D7">${s}</text>
+      <text x="60" y="84" text-anchor="middle" font-size="10" fill="#A3A7B7">100점 중</text>`;
+  });
+  document.querySelectorAll(".areas").forEach(a=>{
+    a.innerHTML=JSON.parse(a.dataset.areas).map(([n,v])=>`<div class="area"><span>${n}</span><div class="tr"><div class="fl" style="width:${v}%;background:${col(v)}"></div></div><b style="color:${col(v)}">${v}</b></div>`).join("");
+  });
+})();
+</script>
+<script>
+(function(){
+  const panes=[...document.querySelectorAll(".person-pane")];
+  panes.forEach(p=>{
+    const secs=[...p.querySelectorAll("section.s")];
+    const toc=p.querySelector(".toc-list");if(!toc)return;
+    toc.innerHTML=secs.map(s=>{const h=s.querySelector("h2");const no=h.querySelector(".no").textContent;const t=h.textContent.replace(no,"").trim();return `<li><a href="#${s.id}" data-id="${s.id}"><span>${no}</span><span>${t}</span></a></li>`}).join("");
+    toc.addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;e.preventDefault();const el=document.getElementById(a.dataset.id);el&&el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});
+    const links=Object.fromEntries([...toc.querySelectorAll("a")].map(a=>[a.dataset.id,a]));
+    if("IntersectionObserver" in window){
+      const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){Object.values(links).forEach(a=>a.classList.remove("on"));links[e.target.id]&&links[e.target.id].classList.add("on")}})},{rootMargin:"-15% 0px -75% 0px"});
+      secs.forEach(s=>io.observe(s));
+    }
+  });
+  const tabs=[...document.querySelectorAll(".famnav [role=tab]")];
+  function show(k,scroll){
+    if(!panes.some(p=>p.dataset.key===k))k="dad";
+    panes.forEach(p=>p.hidden=p.dataset.key!==k);
+    tabs.forEach(t=>t.setAttribute("aria-selected",t.dataset.key===k?"true":"false"));
+    try{history.replaceState(null,"","#"+k)}catch(e){}
+    if(scroll)window.scrollTo({top:0});
+  }
+  tabs.forEach(t=>t.addEventListener("click",()=>show(t.dataset.key,true)));
+  document.querySelector(".famnav [role=tablist]").addEventListener("keydown",e=>{
+    const i=tabs.findIndex(t=>t.getAttribute("aria-selected")==="true");let j=null;
+    if(e.key==="ArrowRight")j=(i+1)%tabs.length; if(e.key==="ArrowLeft")j=(i-1+tabs.length)%tabs.length;
+    if(j!==null){e.preventDefault();show(tabs[j].dataset.key,true);tabs[j].focus()}
+  });
+  const h=(location.hash||"").slice(1); if(h)show(h,false);
+})();
+</script>
+<script>
+(function(){
+  const M={"갑":"wood","을":"wood","병":"fire","정":"fire","무":"earth","기":"earth","경":"metal","신":"metal","임":"water","계":"water",
+           "자":"water","축":"earth","인":"wood","묘":"wood","진":"earth","사":"fire","오":"fire","미":"earth","유":"metal","술":"earth","해":"water"};
+  function paintChar(el){const t=el.textContent.trim();if(t.length===1&&M[t])el.dataset.el=M[t]}
+  function paintPair(el){
+    if(el.dataset.painted)return;const n=[...el.childNodes].find(x=>x.nodeType===3&&x.textContent.trim().length>=2);if(!n)return;
+    const s=n.textContent.trim(), a=s[0], b=s[1]; if(!M[a]||!M[b])return;
+    const f=document.createDocumentFragment();
+    [a,b].forEach(c=>{const sp=document.createElement("span");sp.textContent=c;sp.dataset.el=M[c];f.appendChild(sp)});
+    if(s.length>2)f.appendChild(document.createTextNode(s.slice(2)));
+    n.replaceWith(f);el.dataset.painted="1";
+  }
+  function run(){
+    document.querySelectorAll(".pil .ch").forEach(paintChar);
+    document.querySelectorAll(".gzbig,.meta .gzb,.cell .gz").forEach(paintPair);
+  }
+  run();
+  let q=null;new MutationObserver(()=>{if(q)return;q=requestAnimationFrame(()=>{q=null;run()})}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+</body>
+</html>

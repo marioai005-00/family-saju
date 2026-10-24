@@ -312,7 +312,8 @@ def pick_number(p, day, used, elcount, family=()):
             pick = (n, x, f); break
         if pick: break
     n, x, f = pick
-    formula = f"{f} = {x}" + (f", 45를 넘어 한 바퀴 돌려 {n}" if x > 45 else "")
+    laps = (x - 1) // 45
+    formula = f"{f} = {x}" + (f", 45를 넘어 {'한' if laps == 1 else '두' if laps == 2 else laps} 바퀴 돌려 {n}" if x > 45 else "")
     stars = 3 + (1 if p['yong'] in els or p['hee'] in els else 0) + (1 if day['scores']['종합'] >= 60 else 0) - (1 if day['scores']['종합'] < 40 else 0)
     return dict(number=n, element=E_, why=why, formula=formula, stars=max(1, min(5, stars)))
 

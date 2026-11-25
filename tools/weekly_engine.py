@@ -225,6 +225,18 @@ def day_calc(p, d):
         move += delta; spend += delta; opp += delta; cond += delta; rest += delta; overall = cal
     sc = dict(종합=clamp(overall), 업무=clamp(work), 재물=clamp(money), 인간관계=clamp(rel), 연애·부부=clamp(love), 가족=clamp(fam),
               결정=clamp(dec), 이동=clamp(move), 소비=clamp(spend), 기회=clamp(opp), 컨디션=clamp(cond), 휴식=clamp(rest))
+    # 식상견관 (2026-11-25 추가): 그날 하늘 글자와 원국·대운·올해·이달의 하늘 글자 사이에서
+    # 내 표현(식상)이 윗사람 자리(관성)를 누르면(극) 업무·인간관계·결정을 깎는다. 충만 세던 빈틈을 메움.
+    gwan = []
+    for pos, v in S3.items():
+        if pos == '일간': continue
+        for a, c in ((s, v), (v, s)):
+            if CAT[tengod(dm, a)] == '식상' and CAT[tengod(dm, c)] == '관성' and CTRL[SEL[a]] == SEL[c]:
+                gwan.append(pos)
+    n = len(gwan)
+    if n:
+        for k, v in {'종합': -min(2 * n, 6), '업무': -min(5 * n, 14), '인간관계': -min(4 * n, 12), '결정': -min(2 * n, 6), '컨디션': -min(n, 3), '휴식': -min(n, 3)}.items():
+            sc[k] = clamp(sc[k] + v)
     # 시간대
     slots = []
     for lab, b1, b2 in SLOTS:
@@ -243,7 +255,7 @@ def day_calc(p, d):
                 switch=(switch[1], switch[0].strftime('%H:%M')) if switch else None,
                 ts=ts, tb=tb, sNat=SNAT[s], bNat=ANIMAL[Z.index(b)] + ' · ' + BNAT[b],
                 els=[ELK[e] for e in els], acts=acts, sams=sams, st=[(k, pos, GK[G.index(v)]) for k, pos, v in st],
-                scores=sc, slots=slots, best_slot=best['slot'], worst_slot=worst['slot'])
+                scores=sc, gwan=gwan, slots=slots, best_slot=best['slot'], worst_slot=worst['slot'])
 
 _root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CALIB = {}
